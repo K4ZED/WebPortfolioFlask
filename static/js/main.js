@@ -8,8 +8,13 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
     const target = document.querySelector(targetId);
     if (!target) return;
 
-    const offset = 70;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    const header = document.querySelector(".navbar");
+    const headerHeight = header ? header.offsetHeight : 0;
+    const extraOffset = window.innerWidth <= 768 ? 12 : 4;
+    const offset = headerHeight + extraOffset;
+
+    const top =
+      target.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({
       top,
