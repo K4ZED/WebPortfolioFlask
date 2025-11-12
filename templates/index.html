@@ -4,11 +4,9 @@
     <meta charset="utf-8" />
     <title>Profile Pribadi - {{ name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body data-lang="id">
-    <!-- Navbar -->
     <header class="navbar">
       <div class="nav-left">
         <div class="nav-logo">
@@ -42,29 +40,22 @@
           <span class="t-en">Contact</span>
         </a>
       </nav>
-
-      <!-- Language Toggle -->
       <div class="lang-toggle" id="langToggle">
         <button class="lang-btn active" data-lang="id">ID</button>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
     </header>
-
-    <!-- Hero Section -->
     <section id="home" class="section hero section-animate">
       <div class="hero-content">
         <p class="hero-tag">
           <span class="t-id">PORTOFOLIO · DESAIN · TEKNOLOGI</span>
           <span class="t-en">PORTFOLIO · DESIGN · TECHNOLOGY</span>
         </p>
-
         <p class="hero-subtitle">
           <span class="t-id">Halo, saya</span>
           <span class="t-en">Hi, I’m</span>
         </p>
-
         <h1 class="hero-title">{{ name }}</h1>
-
         <p class="hero-role">
           <span class="t-id">
             Developer &amp; Visual-oriented Problem Solver
@@ -73,7 +64,6 @@
             Developer &amp; Visual-oriented Problem Solver
           </span>
         </p>
-
         <p class="hero-desc">
           <span class="t-id">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit
@@ -86,7 +76,6 @@
             bibendum sapien, et facilisis ipsum volutpat sit amet.
           </span>
         </p>
-
         <div class="hero-actions">
           <a href="#projects" class="btn primary">
             <span class="t-id">Lihat Project</span>
@@ -98,7 +87,6 @@
           </a>
         </div>
       </div>
-
       <div class="hero-avatar section-animate">
   <div class="avatar-frame">
     <div class="avatar-main">
@@ -123,7 +111,6 @@
         </div>
       </div>
     </div>
-
         <div class="avatar-status-row">
             <span class="status-dot"></span>
             <span class="status-text">
@@ -133,10 +120,7 @@
             </div>
         </div>
     </div>
-
     </section>
-
-    <!-- About Section -->
     <section id="about" class="section section-alt section-animate">
       <div class="container">
         <div class="section-header">
@@ -149,7 +133,6 @@
             <span class="t-en">About Me</span>
           </h2>
         </div>
-
         <div class="about-grid">
           <div class="about-text">
             <p>
@@ -220,8 +203,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Skills Section -->
     <section id="skills" class="section section-animate">
       <div class="container">
         <div class="section-header">
@@ -234,7 +215,6 @@
             <span class="t-en">Skills</span>
           </h2>
         </div>
-
         <div class="skills-grid">
           <div class="card">
             <h3>
@@ -258,7 +238,6 @@
               <li>Clean Structure</li>
             </ul>
           </div>
-
           <div class="card">
             <h3>
               <span class="t-id">Frontend &amp; Interaction</span>
@@ -281,7 +260,6 @@
               <li>Responsive Layout</li>
             </ul>
           </div>
-
           <div class="card">
             <h3>
               <span class="t-id">Workflow &amp; Tools</span>
@@ -307,8 +285,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Projects Section -->
     <section id="projects" class="section section-alt section-animate">
       <div class="container">
         <div class="section-header">
@@ -321,7 +297,6 @@
             <span class="t-en">Projects</span>
           </h2>
         </div>
-
         <div class="projects-grid">
           <div class="card project-card">
             <div class="project-tag-row">
@@ -340,7 +315,6 @@
               </span>
             </p>
           </div>
-
           <div class="card project-card">
             <div class="project-tag-row">
               <span class="project-tag">Dashboard</span>
@@ -360,7 +334,6 @@
               </span>
             </p>
           </div>
-
           <div class="card project-card">
             <div class="project-tag-row">
               <span class="project-tag">Experiment</span>
@@ -381,8 +354,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Timeline Section -->
     <section id="timeline" class="section section-animate">
       <div class="container">
         <div class="section-header">
@@ -466,8 +437,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Contact Section -->
     <section id="contact" class="section section-alt section-animate">
       <div class="container">
         <div class="section-header">
@@ -511,8 +480,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
       <p>
         © {{ name }} 2025 ·
@@ -520,8 +487,6 @@
         <span class="t-en">Built with Flask &amp; a bit of JavaScript</span>
       </p>
     </footer>
-
-    <!-- JS -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>
 </html>
