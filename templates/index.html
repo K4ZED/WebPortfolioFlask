@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <title>Profile Pribadi - {{ name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body data-lang="id">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="nav-logo">
+          <span class="logo-mark"></span>
+          <span class="logo-text">Kazed<span class="logo-dot">.</span></span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#home">
+          <span class="t-id">Beranda</span>
+          <span class="t-en">Home</span>
+        </a>
+        <a href="#about">
+          <span class="t-id">Tentang</span>
+          <span class="t-en">About</span>
+        </a>
+        <a href="#skills">
+          <span class="t-id">Skill</span>
+          <span class="t-en">Skills</span>
+        </a>
+        <a href="#projects">
+          <span class="t-id">Project</span>
+          <span class="t-en">Projects</span>
+        </a>
+        <a href="#timeline">
+          <span class="t-id">Timeline</span>
+          <span class="t-en">Timeline</span>
+        </a>
+        <a href="#contact">
+          <span class="t-id">Kontak</span>
+          <span class="t-en">Contact</span>
+        </a>
+      </nav>
+
+      <!-- Language Toggle -->
+      <div class="lang-toggle" id="langToggle">
+        <button class="lang-btn active" data-lang="id">ID</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero section-animate">
+      <div class="hero-content">
+        <p class="hero-tag">
+          <span class="t-id">PORTOFOLIO · DESAIN · TEKNOLOGI</span>
+          <span class="t-en">PORTFOLIO · DESIGN · TECHNOLOGY</span>
+        </p>
+
+        <p class="hero-subtitle">
+          <span class="t-id">Halo, saya</span>
+          <span class="t-en">Hi, I’m</span>
+        </p>
+
+        <h1 class="hero-title">{{ name }}</h1>
+
+        <p class="hero-role">
+          <span class="t-id">
+            Developer &amp; Visual-oriented Problem Solver
+          </span>
+          <span class="t-en">
+            Developer &amp; Visual-oriented Problem Solver
+          </span>
+        </p>
+
+        <p class="hero-desc">
+          <span class="t-id">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit
+            posuere felis, eget finibus mauris rhoncus sed. Integer luctus
+            bibendum sapien, et facilisis ipsum volutpat sit amet.
+          </span>
+          <span class="t-en">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit
+            posuere felis, eget finibus mauris rhoncus sed. Integer luctus
+            bibendum sapien, et facilisis ipsum volutpat sit amet.
+          </span>
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn primary">
+            <span class="t-id">Lihat Project</span>
+            <span class="t-en">View Projects</span>
+          </a>
+          <a href="#contact" class="btn ghost">
+            <span class="t-id">Hubungi Saya</span>
+            <span class="t-en">Contact Me</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-avatar section-animate">
+  <div class="avatar-frame">
+    <div class="avatar-main">
+      <div class="avatar-orb">
+        <span>{{ name[0] if name }}</span>
+      </div>
+      <div class="avatar-info">
+        <p class="avatar-name">{{ name }}</p>
+        <p class="avatar-role">
+          <span class="t-id">Developer · Designer</span>
+          <span class="t-en">Developer · Designer</span>
+        </p>
+        <div class="avatar-tags">
+          <span class="tag-pill">
+            <span class="t-id">Freelance</span>
+            <span class="t-en">Freelance</span>
+          </span>
+          <span class="tag-pill">
+            <span class="t-id">Collaboration</span>
+            <span class="t-en">Collaboration</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+        <div class="avatar-status-row">
+            <span class="status-dot"></span>
+            <span class="status-text">
+            <span class="t-id">Available for freelance &amp; collaboration</span>
+            <span class="t-en">Available for freelance &amp; collaboration</span>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-alt section-animate">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">
+            <span class="t-id">Profil Singkat</span>
+            <span class="t-en">Short Profile</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-id">Tentang Saya</span>
+            <span class="t-en">About Me</span>
+          </h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                gravida, nisl non hendrerit varius, ligula tellus tincidunt
+                justo, et pharetra sapien sem sed massa. Quisque vel vulputate
+                odio. Suspendisse tempor, justo at bibendum viverra, odio enim
+                feugiat ante, quis fermentum nunc velit at arcu.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                gravida, nisl non hendrerit varius, ligula tellus tincidunt
+                justo, et pharetra sapien sem sed massa. Quisque vel vulputate
+                odio. Suspendisse tempor, justo at bibendum viverra, odio enim
+                feugiat ante, quis fermentum nunc velit at arcu.
+              </span>
+            </p>
+            <p>
+              <span class="t-id">
+                Curabitur condimentum ligula in efficitur vehicula. Donec
+                volutpat interdum libero, sit amet varius sapien commodo ac.
+                Aliquam dapibus nibh non elit bibendum, non egestas urna
+                pellentesque.
+              </span>
+              <span class="t-en">
+                Curabitur condimentum ligula in efficitur vehicula. Donec
+                volutpat interdum libero, sit amet varius sapien commodo ac.
+                Aliquam dapibus nibh non elit bibendum, non egestas urna
+                pellentesque.
+              </span>
+            </p>
+          </div>
+          <div class="about-highlights">
+            <div class="badge-row">
+              <span class="badge-chip">
+                <span class="t-id">Web Development</span>
+                <span class="t-en">Web Development</span>
+              </span>
+              <span class="badge-chip">
+                <span class="t-id">UI Thinking</span>
+                <span class="t-en">UI Thinking</span>
+              </span>
+              <span class="badge-chip">
+                <span class="t-id">System Design</span>
+                <span class="t-en">System Design</span>
+              </span>
+            </div>
+            <div class="about-meta">
+              <div class="meta-item">
+                <span class="meta-label t-id">Fokus</span>
+                <span class="meta-label t-en">Focus</span>
+                <span class="meta-value">
+                  <span class="t-id">Backend, UI detail, dan experience</span>
+                  <span class="t-en">Backend, UI detail, and experience</span>
+                </span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label t-id">Style</span>
+                <span class="meta-label t-en">Style</span>
+                <span class="meta-value">
+                  <span class="t-id">Clean, minimal, techy, subtle motion</span>
+                  <span class="t-en">Clean, minimal, techy, subtle motion</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-animate">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">
+            <span class="t-id">Kapasitas &amp; Tooling</span>
+            <span class="t-en">Capabilities &amp; Tooling</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-id">Skill</span>
+            <span class="t-en">Skills</span>
+          </h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card">
+            <h3>
+              <span class="t-id">Backend &amp; Architecture</span>
+              <span class="t-en">Backend &amp; Architecture</span>
+            </h3>
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                non leo sit amet eros pretium consequat non ut justo.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                non leo sit amet eros pretium consequat non ut justo.
+              </span>
+            </p>
+            <ul class="pill-list">
+              <li>Python</li>
+              <li>Flask</li>
+              <li>REST API</li>
+              <li>Clean Structure</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span class="t-id">Frontend &amp; Interaction</span>
+              <span class="t-en">Frontend &amp; Interaction</span>
+            </h3>
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                ac urna sit amet magna dignissim tincidunt.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                ac urna sit amet magna dignissim tincidunt.
+              </span>
+            </p>
+            <ul class="pill-list">
+              <li>HTML / CSS</li>
+              <li>JavaScript</li>
+              <li>Motion Basics</li>
+              <li>Responsive Layout</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span class="t-id">Workflow &amp; Tools</span>
+              <span class="t-en">Workflow &amp; Tools</span>
+            </h3>
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque id ultrices nulla, in ultrices lorem.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque id ultrices nulla, in ultrices lorem.
+              </span>
+            </p>
+            <ul class="pill-list">
+              <li>Git</li>
+              <li>Linux</li>
+              <li>Docker (basic)</li>
+              <li>VS Code</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt section-animate">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">
+            <span class="t-id">Selected Works</span>
+            <span class="t-en">Selected Works</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-id">Project</span>
+            <span class="t-en">Projects</span>
+          </h2>
+        </div>
+
+        <div class="projects-grid">
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">API</span>
+              <span class="project-tag">System</span>
+            </div>
+            <h3>Project One</h3>
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                ornare magna et nisl tincidunt, in posuere dolor consequat.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                ornare magna et nisl tincidunt, in posuere dolor consequat.
+              </span>
+            </p>
+          </div>
+
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">Dashboard</span>
+              <span class="project-tag">Data</span>
+            </div>
+            <h3>Project Two</h3>
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                rhoncus, libero sed elementum suscipit, urna mauris fermentum
+                turpis.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                rhoncus, libero sed elementum suscipit, urna mauris fermentum
+                turpis.
+              </span>
+            </p>
+          </div>
+
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">Experiment</span>
+              <span class="project-tag">UI</span>
+            </div>
+            <h3>Project Three</h3>
+            <p>
+              <span class="t-id">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                sodales libero a quam porta, quis tempus mauris faucibus.
+              </span>
+              <span class="t-en">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                sodales libero a quam porta, quis tempus mauris faucibus.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section section-animate">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">
+            <span class="t-id">Jejak Pengalaman</span>
+            <span class="t-en">Experience Path</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-id">Timeline</span>
+            <span class="t-en">Timeline</span>
+          </h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">2024 — Now</p>
+              <h3>
+                <span class="t-id">Role / Posisi Terbaru</span>
+                <span class="t-en">Latest Role / Position</span>
+              </h3>
+              <p>
+                <span class="t-id">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus pretium ante sit amet lectus interdum bibendum.
+                </span>
+                <span class="t-en">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Phasellus pretium ante sit amet lectus interdum bibendum.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">2022 — 2024</p>
+              <h3>
+                <span class="t-id">Posisi Sebelumnya</span>
+                <span class="t-en">Previous Position</span>
+              </h3>
+              <p>
+                <span class="t-id">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                  mi nisi, sagittis ut finibus non, lobortis at tortor.
+                </span>
+                <span class="t-en">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                  mi nisi, sagittis ut finibus non, lobortis at tortor.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">2020 — 2022</p>
+              <h3>
+                <span class="t-id">Awal Perjalanan</span>
+                <span class="t-en">Early Journey</span>
+              </h3>
+              <p>
+                <span class="t-id">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse accumsan, quam sit amet egestas convallis, dolor
+                  ante pharetra justo.
+                </span>
+                <span class="t-en">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse accumsan, quam sit amet egestas convallis, dolor
+                  ante pharetra justo.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt section-animate">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">
+            <span class="t-id">Let’s Connect</span>
+            <span class="t-en">Let’s Connect</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-id">Kontak</span>
+            <span class="t-en">Contact</span>
+          </h2>
+        </div>
+
+        <p class="section-text">
+          <span class="t-id">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            aliquam libero at leo ornare, vitae dapibus justo fringilla.
+          </span>
+          <span class="t-en">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            aliquam libero at leo ornare, vitae dapibus justo fringilla.
+          </span>
+        </p>
+
+        <div class="contact-info">
+          <p>
+            <span class="contact-label t-id">Email</span>
+            <span class="contact-label t-en">Email</span>:
+            <a href="mailto:Kazed@example.com">kenzaathallah.wijaya@gmail.com</a>
+          </p>
+          <p>
+            <span class="contact-label t-id">LinkedIn</span>
+            <span class="contact-label t-en">LinkedIn</span>:
+            <a href="#" target="_blank">linkedin.com/in/KenzaAthallah</a>
+          </p>
+          <p>
+            <span class="contact-label t-id">GitHub</span>
+            <span class="contact-label t-en">GitHub</span>:
+            <a href="#" target="_blank">github.com/K4zed</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        © {{ name }} 2025 ·
+        <span class="t-id">Dibuat dengan Flask &amp; sedikit JavaScript</span>
+        <span class="t-en">Built with Flask &amp; a bit of JavaScript</span>
+      </p>
+    </footer>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
