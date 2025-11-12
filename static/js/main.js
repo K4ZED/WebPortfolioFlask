@@ -1,10 +1,6 @@
-// Cek device touch biar animasi mouse nggak ganggu di HP
 const isTouchDevice =
   "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-// =======================
-// 1. Smooth scroll navbar
-// =======================
 document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
@@ -12,19 +8,18 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
     const target = document.querySelector(targetId);
     if (!target) return;
 
-    const offset = 70; // tinggi kira2 navbar
+    const offset = 70;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({
       top,
       behavior: "smooth",
     });
+
+    document.body.classList.remove("nav-open");
   });
 });
 
-// ===================================
-// 2. Scroll reveal untuk tiap section
-// ===================================
 const animatedSections = document.querySelectorAll(".section-animate");
 
 const observerOptions = {
@@ -42,30 +37,23 @@ const observer = new IntersectionObserver((entries) => {
 
 animatedSections.forEach((sec) => observer.observe(sec));
 
-// ====================================
-// 3. Parallax halus untuk hero-avatar
-// ====================================
 const heroAvatar = document.querySelector(".hero-avatar");
 
 window.addEventListener("scroll", () => {
   if (!heroAvatar) return;
   const scrollY = window.scrollY || window.pageYOffset;
-  const offset = scrollY * 0.04; // makin besar makin “melayang”
+  const offset = scrollY * 0.04;
   heroAvatar.style.transform = `translateY(${offset}px)`;
 });
 
-// ==========================================
-// 4. Tilt 3D lembut buat kartu profile hero
-// ==========================================
 const avatarFrame = document.querySelector(".avatar-frame");
 
 if (avatarFrame && !isTouchDevice) {
   avatarFrame.addEventListener("mousemove", (e) => {
     const rect = avatarFrame.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width; // 0 - 1
-    const y = (e.clientY - rect.top) / rect.height; // 0 - 1
-
-    const rotateX = (y - 0.5) * 10; // derajat
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const rotateX = (y - 0.5) * 10;
     const rotateY = (x - 0.5) * -10;
 
     avatarFrame.style.transform = `
@@ -76,14 +64,12 @@ if (avatarFrame && !isTouchDevice) {
   });
 
   avatarFrame.addEventListener("mouseleave", () => {
-    avatarFrame.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+    avatarFrame.style.transform =
+      "perspective(900px) rotateX(0deg) rotateY(0deg)";
   });
 }
 
-// ==================================================
-// 5. Scroll progress bar tipis di paling atas layar
-// ==================================================
-(function createScrollProgressBar() {
+(function () {
   const bar = document.createElement("div");
   bar.id = "scroll-progress-bar";
   Object.assign(bar.style, {
@@ -92,8 +78,7 @@ if (avatarFrame && !isTouchDevice) {
     left: "0",
     height: "2px",
     width: "0%",
-    background:
-      "linear-gradient(to right, #60a5fa, #93c5fd)",
+    background: "linear-gradient(to right, #60a5fa, #93c5fd)",
     zIndex: "60",
     pointerEvents: "none",
     transition: "width 0.1s linear",
@@ -114,12 +99,9 @@ if (avatarFrame && !isTouchDevice) {
   updateProgress();
 })();
 
-// ==========================
-// 6. Toggle bahasa ID / EN
-// ==========================
 const langToggle = document.getElementById("langToggle");
 const langButtons = document.querySelectorAll(".lang-btn");
-const body = document.body;
+const bodyEl = document.body;
 
 if (langToggle) {
   langToggle.addEventListener("click", (e) => {
@@ -127,9 +109,56 @@ if (langToggle) {
     if (!btn) return;
     const lang = btn.getAttribute("data-lang") || "id";
 
-    body.setAttribute("data-lang", lang);
+    bodyEl.setAttribute("data-lang", lang);
 
     langButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
+  });
+}
+
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    document.body.classList.toggle("nav-open");
+  });
+}
+
+const projectCards = document.querySelectorAll(".project-card");
+
+projectCards.forEach((card) => {
+  if (isTouchDevice) return;
+
+  card.addEventListener("mouseenter", () => {
+    card.classList.add("is-hovered");
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.classList.remove("is-hovered");
+  });
+});
+
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+if (scrollTopBtn) {
+  const toggleScrollTopBtn = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > 260) {
+      scrollTopBtn.classList.add("visible");
+    } else {
+      scrollTopBtn.classList.remove("visible");
+    }
+  };
+
+  window.addEventListener("scroll", toggleScrollTopBtn);
+  window.addEventListener("resize", toggleScrollTopBtn);
+  toggleScrollTopBtn();
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
 }
