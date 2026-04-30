@@ -456,19 +456,24 @@ body[data-lang="en"] .t-en { display: inline; }
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
-  border: 2px solid rgba(79,127,255,0.45);
+  border: 2px solid rgba(102,152,245,0.4);
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .avatar-ring {
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  border: 1.5px solid transparent;
+  border: 2px solid transparent;
   background:
-    linear-gradient(var(--bg), var(--bg)) padding-box,
     conic-gradient(from 0deg, var(--blue), var(--purple), var(--blue-light), var(--blue)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   animation: spin-ring 5s linear infinite;
+  z-index: 0;
 }
 
 /* Fallback orb if no photo */
