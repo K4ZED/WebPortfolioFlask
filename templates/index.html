@@ -104,8 +104,13 @@
       <div class="hero-avatar section-animate">
         <div class="avatar-frame">
           <div class="avatar-main">
-            <div class="avatar-orb">
-              <span>KA</span>
+            <div class="avatar-photo-wrapper">
+              <img
+                src="{{ url_for('static', filename='img/Ken.png') }}"
+                alt="{{ full_name }}"
+                class="avatar-photo"
+              />
+              <div class="avatar-ring"></div>
             </div>
             <div class="avatar-info">
               <p class="avatar-name">{{ name }}</p>
@@ -568,6 +573,33 @@
             <div class="timeline-line"></div>
             <div class="timeline-content">
               <p class="timeline-year">
+                <span class="t-id">2024 — 2025</span>
+                <span class="t-en">2024 — 2025</span>
+              </p>
+              <h3>
+                <span class="t-id">Data Analyst Intern · Amigo Group</span>
+                <span class="t-en">Data Analyst Intern · Amigo Group</span>
+              </h3>
+              <p>
+                <span class="t-id">
+                  Magang sebagai Data Analyst di Amigo Group dalam program MBKM (Merdeka Belajar
+                  Kampus Merdeka). Mengelola dan menganalisis data bisnis untuk mendukung
+                  pengambilan keputusan berbasis data di lingkungan ritel.
+                </span>
+                <span class="t-en">
+                  Interned as a Data Analyst at Amigo Group under the MBKM program. Managed
+                  and analyzed business data to support data-driven decision-making in a
+                  retail environment.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">
                 <span class="t-id">Juni 2024 — Juli 2025</span>
                 <span class="t-en">Jun 2024 — Jul 2025</span>
               </p>
@@ -627,6 +659,33 @@
           <span class="t-en">Volunteer</span>
         </h3>
         <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">
+                <span class="t-id">Event Organizer</span>
+                <span class="t-en">Event Organizer</span>
+              </p>
+              <h3>
+                <span class="t-id">Volunteer EO · Solo Japanese Festival #2</span>
+                <span class="t-en">Volunteer Event Organizer · Solo Japanese Festival #2</span>
+              </h3>
+              <p>
+                <span class="t-id">
+                  Berpartisipasi sebagai volunteer event organizer di Solo Japanese Festival #2,
+                  berkontribusi dalam koordinasi dan pelaksanaan event budaya skala kota
+                  yang melibatkan banyak peserta dan pengunjung.
+                </span>
+                <span class="t-en">
+                  Participated as a volunteer event organizer at Solo Japanese Festival #2,
+                  contributing to the coordination and execution of a city-scale cultural
+                  event with numerous participants and visitors.
+                </span>
+              </p>
+            </div>
+          </div>
+
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -725,7 +784,7 @@
 
           <div class="client-card">
             <div class="client-logo-area">
-              <span class="client-initial">W</span>
+              <img src="{{ url_for('static', filename='img/Wonderland.png') }}" alt="Wonderland" />
             </div>
             <div class="client-info">
               <h3>Wonderland</h3>
@@ -742,10 +801,10 @@
 
           <div class="client-card">
             <div class="client-logo-area">
-              <span class="client-initial">L</span>
+              <img src="{{ url_for('static', filename='img/Luwes Group.png') }}" alt="Luwes Group" />
             </div>
             <div class="client-info">
-              <h3>Luwes</h3>
+              <h3>Luwes Group</h3>
               <span class="client-tag">
                 <span class="t-id">Ritel & Supermarket</span>
                 <span class="t-en">Retail & Supermarket</span>
@@ -759,7 +818,7 @@
 
           <div class="client-card">
             <div class="client-logo-area">
-              <span class="client-initial">C</span>
+              <img src="{{ url_for('static', filename='img/Cardinal.png') }}" alt="Cardinal" />
             </div>
             <div class="client-info">
               <h3>Cardinal</h3>

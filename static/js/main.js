@@ -8,19 +8,15 @@
 
   function debounce(func, wait = 15) {
     let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
+    return function (...args) {
       clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      timeout = setTimeout(() => func(...args), wait);
     };
   }
 
   function throttle(func, limit = 100) {
     let inThrottle;
-    return function executedFunction(...args) {
+    return function (...args) {
       if (!inThrottle) {
         func.apply(this, args);
         inThrottle = true;
@@ -37,247 +33,235 @@
     return parent.querySelectorAll(selector);
   }
 
+  /* ── Smooth scroll ── */
   function initSmoothScroll() {
     const navLinks = qsAll('.nav-links a[href^="#"]');
-    const navbar = qs('.navbar');
-
+    const navbar   = qs('.navbar');
     if (!navLinks.length) return;
 
-    navLinks.forEach((link) => {
+    navLinks.forEach(link => {
       link.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href || href === '#') return;
-
-        const target = qs(href);
+        const href   = this.getAttribute('href');
+        const target = href && href !== '#' ? qs(href) : null;
         if (!target) return;
 
         e.preventDefault();
 
-        const headerHeight = navbar ? navbar.offsetHeight : 0;
-        const isMobile = window.innerWidth <= 768;
-        const extraOffset = isMobile ? 12 : 4;
-        const offset = headerHeight + extraOffset;
+        const offset = (navbar ? navbar.offsetHeight : 0) + (window.innerWidth <= 768 ? 12 : 4);
+        const top    = target.getBoundingClientRect().top + window.scrollY - offset;
 
-        const targetPosition =
-          target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
 
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth',
-        });
-
-        navLinks.forEach((l) => l.classList.remove('active'));
+        navLinks.forEach(l => l.classList.remove('active'));
         this.classList.add('active');
       });
     });
   }
 
+  /* ── Section fade-in ── */
   function initScrollAnimations() {
-    const animatedSections = qsAll('.section-animate');
-    if (!animatedSections.length) return;
+    const els = qsAll('.section-animate');
+    if (!els.length) return;
 
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    animatedSections.forEach((section) => observer.observe(section));
+    els.forEach(el => observer.observe(el));
   }
 
+  /* ── Staggered card animations ── */
+  function initCardStagger() {
+    const SELECTORS = '.skills-grid, .projects-grid, .clients-grid, .cert-grid';
+    const grids = qsAll(SELECTORS);
+
+    grids.forEach(grid => {
+      const cards = qsAll('.card, .client-card, .cert-card', grid);
+
+      cards.forEach((card, i) => {
+        card.style.opacity   = '0';
+        card.style.transform = 'translateY(22px)';
+        card.style.transition = `opacity 0.48s ease ${i * 0.07}s, transform 0.48s ease ${i * 0.07}s`;
+      });
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            qsAll('.card, .client-card, .cert-card', entry.target).forEach(card => {
+              card.style.opacity   = '1';
+              card.style.transform = 'translateY(0)';
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      observer.observe(grid);
+    });
+  }
+
+  /* ── Cursor glow ── */
+  function initCursorGlow() {
+    if (isTouchDevice) return;
+
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+
+    document.addEventListener('mousemove', throttle(e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    }, 16), { passive: true });
+  }
+
+  /* ── Scroll progress bar ── */
+  function initScrollProgress() {
+    const bar = document.createElement('div');
+    bar.id = 'scroll-progress-bar';
+    Object.assign(bar.style, {
+      position:       'fixed',
+      top:            '0',
+      left:           '0',
+      height:         '2px',
+      width:          '0%',
+      background:     'linear-gradient(90deg, #4f7fff, #8b7cf8)',
+      zIndex:         '60',
+      pointerEvents:  'none',
+      transition:     'width 0.1s ease-out',
+    });
+    document.body.appendChild(bar);
+
+    const update = throttle(() => {
+      const scrollTop  = window.scrollY;
+      const docHeight  = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      bar.style.width  = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) + '%' : '0%';
+    }, 50);
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', debounce(update, 100), { passive: true });
+    update();
+  }
+
+  /* ── Language toggle ── */
+  function initLanguageToggle() {
+    const langToggle = qs('#langToggle');
+    const langBtns   = qsAll('.lang-btn');
+    const body       = document.body;
+    if (!langToggle || !langBtns.length) return;
+
+    const saved = localStorage.getItem('preferredLanguage') || 'id';
+    body.setAttribute('data-lang', saved);
+    langBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === saved) btn.classList.add('active');
+    });
+
+    langToggle.addEventListener('click', e => {
+      const btn  = e.target.closest('.lang-btn');
+      if (!btn) return;
+      const lang = btn.getAttribute('data-lang') || 'id';
+      body.setAttribute('data-lang', lang);
+      langBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      try { localStorage.setItem('preferredLanguage', lang); } catch (_) {}
+    });
+  }
+
+  /* ── Active nav highlight on scroll ── */
+  function initActiveSectionHighlight() {
+    const sections = qsAll('section[id]');
+    const navLinks = qsAll('.nav-links a[href^="#"]');
+    if (!sections.length || !navLinks.length) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  }
+
+  /* ── Parallax hero avatar ── */
   function initParallax() {
     const heroAvatar = qs('.hero-avatar');
     if (!heroAvatar || isTouchDevice) return;
 
-    const handleParallax = debounce(() => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const offset = scrollY * 0.04;
-      heroAvatar.style.transform = `translateY(${offset}px)`;
-    }, 10);
-
-    window.addEventListener('scroll', handleParallax, { passive: true });
+    window.addEventListener('scroll', debounce(() => {
+      heroAvatar.style.transform = `translateY(${window.scrollY * 0.04}px)`;
+    }, 10), { passive: true });
   }
 
+  /* ── 3D tilt on avatar card ── */
   function init3DTilt() {
-    const avatarFrame = qs('.avatar-frame');
-    if (!avatarFrame || isTouchDevice) return;
+    const frame = qs('.avatar-frame');
+    if (!frame || isTouchDevice) return;
 
-    let isHovering = false;
+    let hovering = false;
 
-    avatarFrame.addEventListener('mouseenter', () => {
-      isHovering = true;
+    frame.addEventListener('mouseenter', () => { hovering = true; });
+
+    frame.addEventListener('mousemove', e => {
+      if (!hovering) return;
+      const rect   = frame.getBoundingClientRect();
+      const x      = (e.clientX - rect.left) / rect.width;
+      const y      = (e.clientY - rect.top)  / rect.height;
+      const rotX   = ((y - 0.5) *  10).toFixed(2);
+      const rotY   = ((x - 0.5) * -10).toFixed(2);
+      frame.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.015,1.015,1.015)`;
     });
 
-    avatarFrame.addEventListener('mousemove', (e) => {
-      if (!isHovering) return;
-
-      const rect = avatarFrame.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-
-      const rotateX = ((y - 0.5) * 12).toFixed(2);
-      const rotateY = ((x - 0.5) * -12).toFixed(2);
-
-      avatarFrame.style.transform = `
-        perspective(1000px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        scale3d(1.02, 1.02, 1.02)
-      `;
-    });
-
-    avatarFrame.addEventListener('mouseleave', () => {
-      isHovering = false;
-      avatarFrame.style.transition = 'transform 0.5s ease';
-      avatarFrame.style.transform =
-        'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      setTimeout(() => {
-        avatarFrame.style.transition = '';
-      }, 500);
+    frame.addEventListener('mouseleave', () => {
+      hovering = false;
+      frame.style.transition = 'transform 0.5s ease';
+      frame.style.transform  = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+      setTimeout(() => { frame.style.transition = ''; }, 500);
     });
   }
 
-  function initScrollProgress() {
-    const progressBar = document.createElement('div');
-    progressBar.id = 'scroll-progress-bar';
-
-    Object.assign(progressBar.style, {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      height: '3px',
-      width: '0%',
-      background: 'linear-gradient(90deg, #60a5fa, #93c5fd)',
-      zIndex: '60',
-      pointerEvents: 'none',
-      transition: 'width 0.1s ease-out',
-    });
-
-    document.body.appendChild(progressBar);
-
-    const updateProgress = throttle(() => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = `${Math.min(progress, 100)}%`;
-    }, 50);
-
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener(
-      'resize',
-      debounce(updateProgress, 100),
-      { passive: true }
-    );
-
-    updateProgress();
-  }
-
-  function initLanguageToggle() {
-    const langToggle = qs('#langToggle');
-    const langButtons = qsAll('.lang-btn');
-    const bodyEl = document.body;
-
-    if (!langToggle || !langButtons.length) return;
-
-    const savedLang = localStorage.getItem('preferredLanguage') || 'id';
-    bodyEl.setAttribute('data-lang', savedLang);
-
-    langButtons.forEach((btn) => {
-      if (btn.getAttribute('data-lang') === savedLang) {
-        btn.classList.add('active');
-      }
-    });
-
-    langToggle.addEventListener('click', (e) => {
-      const btn = e.target.closest('.lang-btn');
-      if (!btn) return;
-
-      const lang = btn.getAttribute('data-lang') || 'id';
-      bodyEl.setAttribute('data-lang', lang);
-      langButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      try {
-        localStorage.setItem('preferredLanguage', lang);
-      } catch (_) {}
-    });
-  }
-
-  function initActiveSectionHighlight() {
-    const sections = qsAll('section[id]');
-    const navLinks = qsAll('.nav-links a[href^="#"]');
-
-    if (!sections.length || !navLinks.length) return;
-
-    const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '-20% 0px -70% 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach((link) => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => observer.observe(section));
-  }
-
+  /* ── Keyboard nav ── */
   function initKeyboardNav() {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
-        document.body.classList.remove('nav-open');
-      }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.body.classList.remove('nav-open');
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
-        const firstNavLink = qs('.nav-links a');
-        if (firstNavLink) firstNavLink.focus();
+        const first = qs('.nav-links a');
+        if (first) first.focus();
       }
     });
   }
 
+  /* ── Reduced motion ── */
   function initReducedMotion() {
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    );
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    if (prefersReducedMotion.matches) {
-      document.documentElement.style.scrollBehavior = 'auto';
-
-      const style = document.createElement('style');
-      style.textContent = `
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      `;
-      document.head.appendChild(style);
-    }
+    document.documentElement.style.scrollBehavior = 'auto';
+    const style = document.createElement('style');
+    style.textContent = `
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    `;
+    document.head.appendChild(style);
   }
 
+  /* ── Boot ── */
   function init() {
     initSmoothScroll();
     initScrollAnimations();
+    initCardStagger();
+    initCursorGlow();
     initScrollProgress();
     initLanguageToggle();
     initParallax();
