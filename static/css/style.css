@@ -299,9 +299,10 @@ body[data-lang="en"] .t-en {
 }
 
 .avatar-orb span {
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 800;
   color: #020617;
+  letter-spacing: -0.03em;
 }
 
 .avatar-info {
@@ -534,7 +535,7 @@ body[data-lang="en"] .t-en {
 }
 
 .skills-grid {
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .projects-grid {
@@ -699,6 +700,130 @@ body[data-lang="en"] .t-en {
 .contact-label {
   font-weight: 600;
   color: #e5edff;
+}
+
+/* ===== CERTIFICATIONS ===== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.5rem;
+}
+
+.cert-card {
+  background: rgba(15, 23, 42, 0.97);
+  border-radius: 1rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border-strong);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.cert-card:hover {
+  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-3px);
+}
+
+.cert-award {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  background: rgba(250, 204, 21, 0.08);
+  color: #fbbf24;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.cert-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--fg);
+}
+
+.cert-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== CLIENTS ===== */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.client-card {
+  background: rgba(15, 23, 42, 0.97);
+  border-radius: 1.2rem;
+  padding: 1.8rem;
+  border: 1px solid var(--border-strong);
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+  border-color: #60a5fa;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.97), 0 0 0 1px rgba(59, 130, 246, 0.6);
+}
+
+.client-logo-area {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-initial {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #bfdbfe;
+  letter-spacing: -0.02em;
+}
+
+.client-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.client-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+  color: var(--fg);
+}
+
+.client-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #1d4ed8;
+  color: #bfdbfe;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.client-info p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ===== FOOTER ===== */
@@ -896,9 +1021,16 @@ body[data-lang="en"] .t-en {
   }
 
   .skills-grid,
-  .projects-grid {
+  .projects-grid,
+  .clients-grid,
+  .cert-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .client-card {
+    flex-direction: row;
+    gap: 1.2rem;
   }
 
   .card {

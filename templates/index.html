@@ -2,8 +2,9 @@
 <html lang="id">
   <head>
     <meta charset="utf-8" />
-    <title>Profile Pribadi - {{ name }}</title>
+    <title>{{ full_name }} — Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of {{ full_name }} — Data Science student, Data Analyst, and Graphic Designer." />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -38,6 +39,10 @@
           <span class="t-id">Timeline</span>
           <span class="t-en">Timeline</span>
         </a>
+        <a href="#clients">
+          <span class="t-id">Klien</span>
+          <span class="t-en">Clients</span>
+        </a>
         <a href="#contact">
           <span class="t-id">Kontak</span>
           <span class="t-en">Contact</span>
@@ -53,34 +58,35 @@
     <section id="home" class="section hero section-animate">
       <div class="hero-content">
         <p class="hero-tag">
-          <span class="t-id">DATA · WEB · VISUAL</span>
-          <span class="t-en">DATA · WEB · VISUAL</span>
+          <span class="t-id">DATA · ML · WEB · VISUAL</span>
+          <span class="t-en">DATA · ML · WEB · VISUAL</span>
         </p>
         <p class="hero-subtitle">
           <span class="t-id">Halo, saya</span>
-          <span class="t-en">Hi, I’m</span>
+          <span class="t-en">Hi, I'm</span>
         </p>
-        <h1 class="hero-title">{{ name }}</h1>
+        <h1 class="hero-title">{{ full_name }}</h1>
         <p class="hero-role">
           <span class="t-id">
-            Mahasiswa Sains Data · Data / Web Enthusiast
+            Mahasiswa Sains Data · Data Analyst · Graphic Designer
           </span>
           <span class="t-en">
-            Data Science Student · Data / Web Enthusiast
+            Data Science Student · Data Analyst · Graphic Designer
           </span>
         </p>
         <p class="hero-desc">
           <span class="t-id">
-            Saya suka membangun hal yang kelihatan sederhana di layar, tapi tertata rapi di balik layar. 
-            Berbekal latar Rekayasa Perangkat Lunak dan sekarang menempuh Sains Data, 
-            saya terbiasa berpindah antara terminal, editor kode, dan kanvas desain. 
-            Fokus saya: bikin solusi yang tenang dipakai, mudah dipahami, dan logis dari ujung ke ujung.
+            Mahasiswa Sains Data dengan keahlian rekayasa perangkat lunak dan pengalaman
+            magang sebagai Data Analyst. Terbiasa mengelola data dari pengumpulan,
+            pembersihan, hingga visualisasi yang informatif, sekaligus aktif di desain
+            grafis untuk kebutuhan event dan branding. Saya senang menggabungkan
+            kemampuan teknis dan kreativitas untuk membangun solusi yang rapi dari ujung ke ujung.
           </span>
           <span class="t-en">
-            I enjoy building things that look simple on the surface but stay well-structured underneath. 
-            With a Software Engineering background and now studying Data Science, 
-            I’m comfortable moving between the terminal, code editor, and design canvas. 
-            My focus is to create experiences that feel calm to use, easy to understand, and consistent end to end.
+            A Data Science student with software engineering expertise and Data Analyst
+            internship experience, skilled in data management, visualization, and graphic
+            design. I enjoy moving between the terminal, code editor, and design canvas
+            to build solutions that are clean, consistent, and effective end to end.
           </span>
         </p>
         <div class="hero-actions">
@@ -99,23 +105,18 @@
         <div class="avatar-frame">
           <div class="avatar-main">
             <div class="avatar-orb">
-              <span>{{ name[0] if name }}</span>
+              <span>KA</span>
             </div>
             <div class="avatar-info">
               <p class="avatar-name">{{ name }}</p>
               <p class="avatar-role">
-                <span class="t-id">Data · Web · Visual</span>
-                <span class="t-en">Data · Web · Visual</span>
+                <span class="t-id">Data · ML · Web · Visual</span>
+                <span class="t-en">Data · ML · Web · Visual</span>
               </p>
               <div class="avatar-tags">
-                <span class="tag-pill">
-                  <span class="t-id">Data-minded</span>
-                  <span class="t-en">Data-minded</span>
-                </span>
-                <span class="tag-pill">
-                  <span class="t-id">Code & Visual</span>
-                  <span class="t-en">Code & Visual</span>
-                </span>
+                <span class="tag-pill">Python</span>
+                <span class="tag-pill">Machine Learning</span>
+                <span class="tag-pill">Design</span>
               </div>
             </div>
           </div>
@@ -147,79 +148,69 @@
           <div class="about-text">
             <p>
               <span class="t-id">
-                Saya adalah mahasiswa Data Science dengan dasar yang kuat di bidang software engineering
-                dan pengalaman magang sebagai Data Analyst. Terbiasa mengelola data dari tahap
-                pengumpulan, pembersihan, hingga visualisasi yang informatif dan mudah dibaca.
-                Di sisi lain, saya juga aktif di desain grafis dan nyaman membuat konten visual
-                yang dinamis serta konsisten secara tema. Saya ingin berkontribusi di lingkungan
-                kerja kolaboratif dengan menggabungkan kemampuan teknis dan kreativitas untuk
-                menyelesaikan masalah secara menyeluruh.
+                Saya adalah mahasiswa Sains Data di Universitas Sebelas Maret dengan dasar
+                yang kuat di bidang rekayasa perangkat lunak (SMK Telkom Malang) dan
+                pengalaman magang sebagai Data Analyst di Telkom. Terbiasa mengelola data
+                dari tahap pengumpulan, pembersihan, hingga visualisasi yang informatif
+                dan mudah dibaca menggunakan Python, SQL, dan tools seperti Power BI.
               </span>
               <span class="t-en">
-                I am a Data Science student with a solid foundation in software engineering and
-                internship experience as a Data Analyst. I am used to working with data end to end:
-                from collection and cleaning to clear, informative visualizations. On the other side,
-                I stay active in graphic design and enjoy creating dynamic visuals with consistent
-                themes. I aim to contribute in collaborative teams by combining technical skills
-                and creativity to solve problems in a holistic way.
+                I am a Data Science student at Universitas Sebelas Maret with a strong
+                foundation in software engineering (SMK Telkom Malang) and hands-on
+                internship experience as a Data Analyst at Telkom. I'm used to working
+                with data end to end: from collection and cleaning to clear, informative
+                visualizations using Python, SQL, and tools like Power BI.
               </span>
             </p>
             <p>
               <span class="t-id">
-                Kombinasi ini bikin saya nyaman berpindah dari terminal, editor
-                kode, sampai ke kanvas desain. Saya suka menyusun struktur yang
-                rapi, alur data yang jelas, dan tampilan yang terasa konsisten
-                dari awal sampai akhir.
+                Di sisi lain, saya aktif di bidang desain grafis untuk kebutuhan event
+                dan branding, serta tertarik pada machine learning dan cloud computing
+                sebagai bagian dari studi Sains Data saya. Kombinasi ini membuat saya
+                nyaman berpindah antara analisis data, pengembangan web, dan kanvas desain.
               </span>
               <span class="t-en">
-                This mix makes me comfortable moving between the terminal, code
-                editor, and design canvas. I enjoy structuring things cleanly,
-                keeping data flow clear, and making interfaces feel consistent
-                from start to finish.
+                On the other side, I stay active in graphic design for events and branding,
+                and I'm deeply interested in machine learning and cloud computing as part
+                of my Data Science studies. This mix makes me comfortable moving between
+                data analysis, web development, and the design canvas.
               </span>
             </p>
           </div>
           <div class="about-highlights">
             <div class="badge-row">
-              <span class="badge-chip">
-                <span class="t-id">Data & Analytics</span>
-                <span class="t-en">Data & Analytics</span>
-              </span>
-              <span class="badge-chip">
-                <span class="t-id">Web & Backend</span>
-                <span class="t-en">Web & Backend</span>
-              </span>
-              <span class="badge-chip">
-                <span class="t-id">Graphic Design</span>
-                <span class="t-en">Graphic Design</span>
-              </span>
+              <span class="badge-chip">Data & Analytics</span>
+              <span class="badge-chip">Machine Learning</span>
+              <span class="badge-chip">Web & Backend</span>
+              <span class="badge-chip">Cloud Computing</span>
+              <span class="badge-chip">Graphic Design</span>
             </div>
             <div class="about-meta">
               <div class="meta-item">
-                <span class="meta-label t-id">Fokus</span>
-                <span class="meta-label t-en">Focus</span>
+                <span class="meta-label t-id">Lokasi</span>
+                <span class="meta-label t-en">Location</span>
                 <span class="meta-value">
-                  <span class="t-id">
-                    Alur data yang rapi, API yang jelas, dan tampilan yang
-                    nyaman dilihat dalam jangka panjang.
-                  </span>
-                  <span class="t-en">
-                    Clear data flow, well-defined APIs, and interfaces that stay
-                    comfortable to look at over time.
-                  </span>
+                  <span class="t-id">Kab. Sukoharjo, Jawa Tengah, Indonesia</span>
+                  <span class="t-en">Sukoharjo, Central Java, Indonesia</span>
                 </span>
               </div>
               <div class="meta-item">
-                <span class="meta-label t-id">Style</span>
-                <span class="meta-label t-en">Style</span>
+                <span class="meta-label t-id">Bahasa</span>
+                <span class="meta-label t-en">Languages</span>
+                <span class="meta-value">
+                  <span class="t-id">Indonesia (Native) · Inggris (TOEFL 513)</span>
+                  <span class="t-en">Indonesian (Native) · English (TOEFL 513)</span>
+                </span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label t-id">Fokus Saat Ini</span>
+                <span class="meta-label t-en">Current Focus</span>
                 <span class="meta-value">
                   <span class="t-id">
-                    Calm tech aesthetic: layout bersih, warna tenang, dan
-                    motion seperlunya.
+                    Analisis data, machine learning, visualisasi, dan pengembangan web berbasis data.
                   </span>
                   <span class="t-en">
-                    Calm tech aesthetic: clean layouts, quiet colors, and motion
-                    only where it helps.
+                    Data analysis, machine learning, visualization, and data-driven web development.
                   </span>
                 </span>
               </div>
@@ -245,50 +236,83 @@
         <div class="skills-grid">
           <div class="card">
             <h3>
-              <span class="t-id">Data & Backend</span>
-              <span class="t-en">Data & Backend</span>
+              <span class="t-id">Data & Analytics</span>
+              <span class="t-en">Data & Analytics</span>
             </h3>
             <p>
               <span class="t-id">
-                Terbiasa mengolah data dari tahap pengumpulan, pembersihan,
-                hingga visualisasi sederhana, serta membangun service backend
-                kecil untuk menghubungkan data dengan antarmuka.
+                Mengelola siklus data secara penuh: pengumpulan, pembersihan, eksplorasi,
+                dan visualisasi informatif. Terbiasa menggunakan Python ecosystem dan SQL
+                untuk analisis berbasis data.
               </span>
               <span class="t-en">
-                Used to handling data from collection and cleaning to basic
-                visualization, and building small backend services to connect
-                data with interfaces.
+                Managing the full data lifecycle: collection, cleaning, exploration,
+                and informative visualization. Proficient with the Python ecosystem
+                and SQL for data-driven analysis.
               </span>
             </p>
             <ul class="pill-list">
               <li>Python</li>
               <li>SQL</li>
-              <li>FastAPI / Flask</li>
+              <li>Pandas / NumPy</li>
               <li>Matplotlib / Seaborn</li>
+              <li>Power BI</li>
+              <li>EDA</li>
             </ul>
           </div>
+
           <div class="card">
             <h3>
-              <span class="t-id">Web & Frontend</span>
-              <span class="t-en">Web & Frontend</span>
+              <span class="t-id">Machine Learning</span>
+              <span class="t-en">Machine Learning</span>
             </h3>
             <p>
               <span class="t-id">
-                Membuat halaman web yang responsif dengan struktur yang rapi,
-                fokus ke keterbacaan dan pengalaman pengguna yang tenang.
+                Membangun model prediktif dan analisis sentimen menggunakan teknik
+                statistik dan deep learning. Berpengalaman dalam evaluasi model dan
+                interpretasi hasil.
               </span>
               <span class="t-en">
-                Building responsive web pages with a clean structure, focusing
-                on readability and a calm user experience.
+                Building predictive models and sentiment analysis using statistical
+                techniques and deep learning. Experienced in model evaluation and
+                result interpretation.
+              </span>
+            </p>
+            <ul class="pill-list">
+              <li>Scikit-learn</li>
+              <li>Deep Learning</li>
+              <li>Predictive Modeling</li>
+              <li>Statistical Analysis</li>
+              <li>Model Evaluation</li>
+              <li>NLP (basic)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>
+              <span class="t-id">Web & Cloud</span>
+              <span class="t-en">Web & Cloud</span>
+            </h3>
+            <p>
+              <span class="t-id">
+                Membangun halaman web responsif dan backend ringan, serta memanfaatkan
+                platform cloud untuk pemrosesan dan deployment data yang skalabel.
+              </span>
+              <span class="t-en">
+                Building responsive web pages and lightweight backends, and leveraging
+                cloud platforms for scalable data processing and deployment workflows.
               </span>
             </p>
             <ul class="pill-list">
               <li>HTML / CSS</li>
               <li>JavaScript</li>
-              <li>PHP (basic)</li>
-              <li>RESTful patterns</li>
+              <li>Flask / FastAPI</li>
+              <li>Node.js / React.js</li>
+              <li>AWS / Azure / GCP</li>
+              <li>RESTful API</li>
             </ul>
           </div>
+
           <div class="card">
             <h3>
               <span class="t-id">Desain & Visual</span>
@@ -296,19 +320,22 @@
             </h3>
             <p>
               <span class="t-id">
-                Mendesain materi visual untuk acara dan branding, dengan
-                perhatian ke konsistensi tema dan hierarki informasi.
+                Mendesain materi visual untuk event dan branding dengan konsistensi tema
+                dan hierarki informasi yang kuat: poster, feeds, backdrop, hingga konten
+                digital.
               </span>
               <span class="t-en">
-                Designing visual materials for events and branding, with
-                attention to consistent themes and information hierarchy.
+                Designing visual materials for events and branding with strong thematic
+                consistency: posters, social media feeds, backdrops, and digital content.
               </span>
             </p>
             <ul class="pill-list">
               <li>Figma</li>
               <li>Adobe Illustrator</li>
               <li>Canva</li>
-              <li>Social media assets</li>
+              <li>Social Media Assets</li>
+              <li>Event Branding</li>
+              <li>Print Media</li>
             </ul>
           </div>
         </div>
@@ -329,61 +356,125 @@
           </h2>
         </div>
         <div class="projects-grid">
+
           <div class="card project-card">
             <div class="project-tag-row">
               <span class="project-tag">Data</span>
-              <span class="project-tag">Monitoring</span>
+              <span class="project-tag">Analytics</span>
             </div>
-            <h3>BTS Performance Monitoring</h3>
+            <h3>BTS Performance Monitoring & Analysis</h3>
             <p>
               <span class="t-id">
-                Contoh project analisis data performa BTS: pengolahan data
-                sinyal, penyusunan metrik sederhana, serta visualisasi dasar
-                untuk membantu pemantauan kualitas jaringan.
+                Analisis performa BTS untuk mengevaluasi kekuatan sinyal, stabilitas jaringan,
+                dan kualitas layanan di Jawa Timur dan Madura menggunakan analisis data
+                dan laporan visual untuk mendukung keputusan operasional.
               </span>
               <span class="t-en">
-                Example of a BTS performance monitoring project: processing
-                signal data, building simple metrics, and basic visualizations
-                to help monitor network quality.
+                Analyzed BTS performance data to evaluate signal strength, network stability,
+                and service quality in East Java and Madura using data analysis and visual
+                reporting to support operational decision-making.
               </span>
             </p>
           </div>
+
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">Data</span>
+              <span class="project-tag">Web</span>
+            </div>
+            <h3>Web-Based Data Visualization Dashboard</h3>
+            <p>
+              <span class="t-id">
+                Mengembangkan dashboard berbasis web untuk menyajikan hasil analitik melalui
+                visualisasi data yang jelas dan interaktif menggunakan Python, SQL,
+                dan teknologi web.
+              </span>
+              <span class="t-en">
+                Developed web-based dashboards to present analytical results through clear,
+                interactive data visualizations using Python, SQL, and web technologies.
+              </span>
+            </p>
+          </div>
+
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">ML</span>
+              <span class="project-tag">NLP</span>
+            </div>
+            <h3>Sentiment Analysis Using Deep Learning</h3>
+            <p>
+              <span class="t-id">
+                Mengembangkan model analisis sentimen menggunakan teknik deep learning untuk
+                mengklasifikasikan dan menginterpretasikan data teks, memungkinkan ekstraksi
+                insight bermakna dari data tidak terstruktur.
+              </span>
+              <span class="t-en">
+                Developed sentiment analysis models using deep learning techniques to classify
+                and interpret textual data, enabling extraction of meaningful insights from
+                unstructured text.
+              </span>
+            </p>
+          </div>
+
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">ML</span>
+              <span class="project-tag">Data Science</span>
+            </div>
+            <h3>Data Prediction & Machine Learning</h3>
+            <p>
+              <span class="t-id">
+                Membangun model prediktif menggunakan analisis statistik, machine learning,
+                dan deep learning untuk mengekstrak insight dari dataset terstruktur dan
+                mendukung pengambilan keputusan berbasis data.
+              </span>
+              <span class="t-en">
+                Built predictive models using statistical analysis, machine learning, and
+                deep learning techniques to extract insights from structured datasets and
+                support data-driven conclusions.
+              </span>
+            </p>
+          </div>
+
+          <div class="card project-card">
+            <div class="project-tag-row">
+              <span class="project-tag">Cloud</span>
+              <span class="project-tag">Data</span>
+            </div>
+            <h3>Cloud-Based Data Analytics</h3>
+            <p>
+              <span class="t-id">
+                Mengimplementasikan workflow pemrosesan dan analitik data menggunakan
+                Amazon Web Services, Microsoft Azure, dan Google Cloud Platform untuk
+                analisis data yang skalabel dan efisien.
+              </span>
+              <span class="t-en">
+                Implemented data processing and analytical workflows using Amazon Web
+                Services, Microsoft Azure, and Google Cloud Platform to enable scalable
+                and efficient data analysis.
+              </span>
+            </p>
+          </div>
+
           <div class="card project-card">
             <div class="project-tag-row">
               <span class="project-tag">Web</span>
               <span class="project-tag">Portfolio</span>
             </div>
-            <h3>Personal Web Profile</h3>
+            <h3>Personal Web Portfolio</h3>
             <p>
               <span class="t-id">
-                Halaman profil pribadi yang menggabungkan stack backend ringan
-                dan tampilan yang bersih, dipakai sebagai tempat eksperimen
-                layout dan struktur konten.
+                Halaman portofolio pribadi yang menggabungkan Flask backend dengan tampilan
+                bersih dan responsif, dilengkapi bilingual support dan animasi scroll yang
+                ringan.
               </span>
               <span class="t-en">
-                Personal profile page combining a lightweight backend stack with
-                a clean layout, used as a playground for layout and content
-                structure.
+                Personal portfolio page combining a Flask backend with a clean, responsive
+                layout, featuring bilingual support and lightweight scroll animations.
               </span>
             </p>
           </div>
-          <div class="card project-card">
-            <div class="project-tag-row">
-              <span class="project-tag">Design</span>
-              <span class="project-tag">Event</span>
-            </div>
-            <h3>Event Visual Package</h3>
-            <p>
-              <span class="t-id">
-                Paket desain untuk kebutuhan acara: poster, konten sosial media,
-                dan media cetak dengan tema visual yang konsisten.
-              </span>
-              <span class="t-en">
-                Visual package for events: posters, social media content, and
-                print materials with consistent visual themes.
-              </span>
-            </p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -412,21 +503,26 @@
             <div class="timeline-dot"></div>
             <div class="timeline-line"></div>
             <div class="timeline-content">
-              <p class="timeline-year">2023 — Sekarang</p>
+              <p class="timeline-year">
+                <span class="t-id">Agustus 2023 — Sekarang</span>
+                <span class="t-en">Aug 2023 — Present</span>
+              </p>
               <h3>
-                <span class="t-id">Sarjana Sains Data · UNS</span>
-                <span class="t-en">Data Science · UNS</span>
+                <span class="t-id">Sarjana Sains Data · Universitas Sebelas Maret</span>
+                <span class="t-en">Bachelor of Data Science · Universitas Sebelas Maret</span>
               </h3>
               <p>
                 <span class="t-id">
-                  Memperdalam analisis data, pemrograman, statistik, dan machine
-                  learning, serta terlibat dalam project akademik berbasis data
-                  dan web.
+                  Fokus studi pada analisis data, pemrograman, statistik, machine learning,
+                  dan deep learning. Aktif dalam project akademik prediksi data, visualisasi,
+                  dan analisis data berbasis web dengan dukungan platform cloud
+                  (AWS, Azure, GCP).
                 </span>
                 <span class="t-en">
-                  Deepening data analysis, programming, statistics, and machine
-                  learning, while working on data-driven and web-based academic
-                  projects.
+                  Focused on data analysis, programming, statistics, machine learning, and
+                  deep learning. Actively involved in academic projects on data prediction,
+                  visualization, and web-based data analysis, leveraging cloud platforms
+                  (AWS, Azure, GCP).
                 </span>
               </p>
             </div>
@@ -435,25 +531,26 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <p class="timeline-year">2020 — 2023</p>
+              <p class="timeline-year">
+                <span class="t-id">Juli 2020 — Juni 2023</span>
+                <span class="t-en">Jul 2020 — Jun 2023</span>
+              </p>
               <h3>
-                <span class="t-id">
-                  Rekayasa Perangkat Lunak · SMK Telkom Malang
-                </span>
-                <span class="t-en">
-                  Software Engineering · SMK Telkom Malang
-                </span>
+                <span class="t-id">Rekayasa Perangkat Lunak · SMK Telkom Malang</span>
+                <span class="t-en">Software Engineering · SMK Telkom Malang</span>
               </h3>
               <p>
                 <span class="t-id">
-                  Mempelajari dasar pemrograman, pengembangan web, dan konsep
-                  UI/UX. Mengembangkan beberapa situs web sebagai bagian dari
-                  tugas individu maupun tim.
+                  Mempelajari prinsip pemrograman, UI/UX fundamental, dan pengembangan web
+                  dengan penekanan pada solusi digital yang terstruktur dan berpusat pada
+                  pengguna. Mengembangkan dan memelihara website sebagai bagian dari
+                  project tim maupun individu.
                 </span>
                 <span class="t-en">
-                  Learned programming fundamentals, web development, and basic
-                  UI/UX concepts. Built several websites as part of individual
-                  and team projects.
+                  Studied core programming principles, UI/UX fundamentals, and web
+                  development with emphasis on structured, user-centered digital solutions.
+                  Developed and maintained websites as part of both team-based and
+                  individual projects.
                 </span>
               </p>
             </div>
@@ -470,20 +567,25 @@
             <div class="timeline-dot"></div>
             <div class="timeline-line"></div>
             <div class="timeline-content">
-              <p class="timeline-year">2024 — 2025</p>
+              <p class="timeline-year">
+                <span class="t-id">Juni 2024 — Juli 2025</span>
+                <span class="t-en">Jun 2024 — Jul 2025</span>
+              </p>
               <h3>
-                <span class="t-id">Freelance Graphic Designer</span>
-                <span class="t-en">Freelance Graphic Designer</span>
+                <span class="t-id">Freelance Graphic Designer · CV. Dharma Syafa Kreasi</span>
+                <span class="t-en">Freelance Graphic Designer · CV. Dharma Syafa Kreasi</span>
               </h3>
               <p>
                 <span class="t-id">
-                  Mendesain kebutuhan visual untuk acara dan brand: mulai dari
-                  poster, feeds, spanduk, hingga backdrop, dengan fokus pada
-                  tema yang konsisten.
+                  Bertanggung jawab mendesain berbagai aset visual untuk event: poster,
+                  Instagram feed, banner, backdrop, dan materi promosi. Mengembangkan tema
+                  visual yang konsisten dan efisien untuk memperkuat branding di setiap event.
                 </span>
                 <span class="t-en">
-                  Designing visuals for events and brands: posters, feeds,
-                  banners, and backdrops with consistent visual themes.
+                  Responsible for designing various visual assets for events: posters,
+                  Instagram feed content, banners, backdrops, and promotional materials.
+                  Developed consistent and efficient visual themes to strengthen branding
+                  across events.
                 </span>
               </p>
             </div>
@@ -492,40 +594,197 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <p class="timeline-year">Juli 2022 — Desember 2022</p>
+              <p class="timeline-year">
+                <span class="t-id">Juli 2022 — Desember 2022</span>
+                <span class="t-en">Jul 2022 — Dec 2022</span>
+              </p>
               <h3>
-                <span class="t-id">
-                  Intern Telecommunication Data Analyst · Telkom
-                </span>
-                <span class="t-en">
-                  Telecommunication Data Analyst Intern · Telkom
-                </span>
+                <span class="t-id">Telecom Data Analyst Intern · Telkom Landmark SBY</span>
+                <span class="t-en">Telecom Data Analyst Intern · Telkom Landmark SBY</span>
               </h3>
               <p>
                 <span class="t-id">
-                  Mengolah dan menganalisis data performa BTS di Jawa Timur dan
-                  Madura, memantau kualitas sinyal, serta membuat laporan visual
-                  untuk mendukung keputusan operasional.
+                  Mengumpulkan dan menganalisis data performa BTS di Jawa Timur dan Madura.
+                  Memantau kekuatan sinyal dan stabilitas untuk memastikan performa internet
+                  optimal, terutama saat event khusus. Menyediakan laporan real-time dan
+                  analisis visual untuk mendukung pengambilan keputusan tim operasional.
                 </span>
                 <span class="t-en">
-                  Processed and analyzed BTS performance data in East Java and
-                  Madura, monitored signal quality, and created visual reports
-                  to support operational decisions.
+                  Conducted data collection and performance analysis of BTS across East Java
+                  and Madura regions. Monitored signal strength and stability to ensure
+                  optimal internet performance, particularly during special events.
+                  Provided real-time reports and visual analyses to support accurate
+                  decision-making for the operations team.
                 </span>
               </p>
             </div>
           </div>
         </div>
+
+        <!-- Volunteer -->
+        <h3 class="section-subtitle" style="margin-top:2.5rem;">
+          <span class="t-id">Volunteer</span>
+          <span class="t-en">Volunteer</span>
+        </h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">
+                <span class="t-id">Pengalaman Mengajar</span>
+                <span class="t-en">Teaching Experience</span>
+              </p>
+              <h3>
+                <span class="t-id">Asisten Pengajar Sukarela · SD</span>
+                <span class="t-en">Volunteer Teaching Assistant · Elementary School</span>
+              </h3>
+              <p>
+                <span class="t-id">
+                  Sukarela sebagai asisten pengajar di sekolah dasar, menyampaikan mata
+                  pelajaran umum dan mendukung kegiatan belajar siswa, sekaligus mengasah
+                  kemampuan komunikasi, tanggung jawab, dan interpersonal.
+                </span>
+                <span class="t-en">
+                  Volunteered as a teaching assistant in an elementary school, delivering
+                  general subjects and supporting students' learning activities while
+                  strengthening communication, responsibility, and interpersonal skills.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sertifikasi -->
+        <h3 class="section-subtitle" style="margin-top:2.5rem;">
+          <span class="t-id">Sertifikasi & Penghargaan</span>
+          <span class="t-en">Certifications & Awards</span>
+        </h3>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <span class="cert-award">
+              <span class="t-id">Best Project Award</span>
+              <span class="t-en">Best Project Award</span>
+            </span>
+            <h4>Python–Flask Development</h4>
+            <p>
+              <span class="t-id">Penghargaan atas implementasi project, fungsionalitas aplikasi, dan kualitas project secara keseluruhan.</span>
+              <span class="t-en">Award granted for outstanding project implementation, application functionality, and overall project quality.</span>
+            </p>
+          </div>
+          <div class="cert-card">
+            <span class="cert-award">
+              <span class="t-id">Best Project Award</span>
+              <span class="t-en">Best Project Award</span>
+            </span>
+            <h4>Python-Flask for Web Applications</h4>
+            <p>
+              <span class="t-id">Penghargaan atas implementasi project, fungsionalitas aplikasi, dan kualitas project secara keseluruhan.</span>
+              <span class="t-en">Award granted for outstanding project implementation, application functionality, and overall project quality.</span>
+            </p>
+          </div>
+          <div class="cert-card">
+            <span class="cert-award">
+              <span class="t-id">Best Project Award</span>
+              <span class="t-en">Best Project Award</span>
+            </span>
+            <h4>Python-Flask & Machine Learning Fundamentals</h4>
+            <p>
+              <span class="t-id">Penghargaan atas implementasi project, fungsionalitas aplikasi, dan kualitas project secara keseluruhan.</span>
+              <span class="t-en">Award granted for outstanding project implementation, application functionality, and overall project quality.</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section id="clients" class="section section-alt section-animate">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">
+            <span class="t-id">Klien yang Pernah Ditangani</span>
+            <span class="t-en">Clients Worked With</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-id">Klien</span>
+            <span class="t-en">Clients</span>
+          </h2>
+        </div>
+        <p class="section-text" style="margin-bottom:2.5rem;">
+          <span class="t-id">
+            Berikut beberapa klien yang telah saya tangani dalam kapasitas sebagai
+            Freelance Graphic Designer untuk kebutuhan event dan branding.
+          </span>
+          <span class="t-en">
+            Some of the clients I have handled as a Freelance Graphic Designer
+            for event and branding needs.
+          </span>
+        </p>
+        <div class="clients-grid">
+
+          <div class="client-card">
+            <div class="client-logo-area">
+              <span class="client-initial">W</span>
+            </div>
+            <div class="client-info">
+              <h3>Wonderland</h3>
+              <span class="client-tag">
+                <span class="t-id">Hiburan & Event</span>
+                <span class="t-en">Entertainment & Events</span>
+              </span>
+              <p>
+                <span class="t-id">Desain aset visual event: poster, banner, backdrop, dan konten promosi digital.</span>
+                <span class="t-en">Visual asset design for events: posters, banners, backdrops, and digital promotional content.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="client-card">
+            <div class="client-logo-area">
+              <span class="client-initial">L</span>
+            </div>
+            <div class="client-info">
+              <h3>Luwes</h3>
+              <span class="client-tag">
+                <span class="t-id">Ritel & Supermarket</span>
+                <span class="t-en">Retail & Supermarket</span>
+              </span>
+              <p>
+                <span class="t-id">Desain materi promosi dan visual branding untuk kebutuhan event retail.</span>
+                <span class="t-en">Promotional material and visual branding design for retail event needs.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="client-card">
+            <div class="client-logo-area">
+              <span class="client-initial">C</span>
+            </div>
+            <div class="client-info">
+              <h3>Cardinal</h3>
+              <span class="client-tag">
+                <span class="t-id">Fashion & Apparel</span>
+                <span class="t-en">Fashion & Apparel</span>
+              </span>
+              <p>
+                <span class="t-id">Desain konten visual dan materi promosi untuk branding produk apparel.</span>
+                <span class="t-en">Visual content and promotional material design for apparel product branding.</span>
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section section-alt section-animate">
+    <section id="contact" class="section section-animate">
       <div class="container">
         <div class="section-header">
           <p class="section-kicker">
             <span class="t-id">Mari Terhubung</span>
-            <span class="t-en">Let’s Connect</span>
+            <span class="t-en">Let's Connect</span>
           </p>
           <h2 class="section-title">
             <span class="t-id">Kontak</span>
@@ -535,40 +794,43 @@
 
         <p class="section-text">
           <span class="t-id">
-            Kalau kamu tertarik diskusi soal data, backend, web, atau materi
-            visual untuk event, silakan hubungi saya lewat salah satu kontak
-            di bawah.
+            Kalau kamu tertarik diskusi soal data, machine learning, web, atau kebutuhan
+            visual untuk event dan branding, silakan hubungi saya lewat salah satu
+            kontak di bawah.
           </span>
           <span class="t-en">
-            If you’d like to talk about data, backend, web, or visual materials
-            for events, feel free to reach out through any of the contacts
+            If you'd like to talk about data, machine learning, web, or visual materials
+            for events and branding, feel free to reach out through any of the contacts
             below.
           </span>
         </p>
 
         <div class="contact-info">
           <p>
-            <span class="contact-label t-id">Email</span>
-            <span class="contact-label t-en">Email</span>:
-            <a href="mailto:kenzaathallah.wijaya@gmail.com"
-              >kenzaathallah.wijaya@gmail.com</a
-            >
+            <span class="contact-label">
+              <span class="t-id">Lokasi</span>
+              <span class="t-en">Location</span>
+            </span>:
+            <span style="color: var(--muted);">
+              <span class="t-id">Kab. Sukoharjo, Jawa Tengah, Indonesia</span>
+              <span class="t-en">Sukoharjo, Central Java, Indonesia</span>
+            </span>
           </p>
           <p>
-            <span class="contact-label t-id">LinkedIn</span>
-            <span class="contact-label t-en">LinkedIn</span>:
-            <a
-              href="https://linkedin.com/in/kenzaathallah"
-              target="_blank"
-              >linkedin.com/in/kenzaathallah</a
-            >
+            <span class="contact-label">Email</span>:
+            <a href="mailto:kenzaathallah.wijaya@gmail.com">kenzaathallah.wijaya@gmail.com</a>
           </p>
           <p>
-            <span class="contact-label t-id">GitHub</span>
-            <span class="contact-label t-en">GitHub</span>:
-            <a href="https://github.com/K4ZED" target="_blank"
-              >github.com/K4ZED</a
-            >
+            <span class="contact-label">LinkedIn</span>:
+            <a href="https://linkedin.com/in/kenzaathallah" target="_blank" rel="noopener">linkedin.com/in/kenzaathallah</a>
+          </p>
+          <p>
+            <span class="contact-label">GitHub</span>:
+            <a href="https://github.com/K4ZED" target="_blank" rel="noopener">github.com/K4ZED</a>
+          </p>
+          <p>
+            <span class="contact-label">Portfolio</span>:
+            <a href="https://portfolio-kazed.vercel.app" target="_blank" rel="noopener">portfolio-kazed.vercel.app</a>
           </p>
         </div>
       </div>
@@ -576,7 +838,7 @@
 
     <footer class="footer">
       <p>
-        © {{ name }} 2025 ·
+        © {{ full_name }} 2025 ·
         <span class="t-id">Dibuat dengan Flask dan sedikit JavaScript</span>
         <span class="t-en">Built with Flask and a bit of JavaScript</span>
       </p>
