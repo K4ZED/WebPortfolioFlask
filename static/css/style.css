@@ -126,22 +126,70 @@ body[data-lang="en"] .t-en { display: inline; }
 
 .nav-end { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
 
-/* Mobile link strip */
+/* Hamburger button */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .3rem;
+  width: 2rem;
+  height: 2rem;
+}
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--on-surface);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .2s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile dropdown menu */
 .nav-mobile {
   display: none;
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
-  padding: 0 1.5rem .75rem;
-  gap: 1.5rem; align-items: center;
-  font-size: .75rem; font-weight: 500;
-  color: var(--on-dim);
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .35s ease;
+  background: rgba(18,18,17,0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-mobile.open { max-height: 540px; }
+.nav-mobile .nav-link {
+  padding: .9rem 1.25rem;
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--on-variant);
   border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: block;
+  transition: color .2s, background .2s;
+}
+.nav-mobile .nav-link:hover,
+.nav-mobile .nav-link.active { color: var(--primary); background: rgba(240,107,21,0.05); }
+.nav-mobile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: .25rem;
 }
 
 @media (max-width: 767px) {
   .nav-inner { padding: 0 1.25rem; }
   .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
   .nav-mobile { display: flex; }
-  .nav-end .btn-hire { display: none; }
+  .nav-hire-desktop { display: none; }
 }
 
 /* ══════════════ LANG TOGGLE ══════════════ */

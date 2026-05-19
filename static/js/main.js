@@ -189,6 +189,29 @@
     document.head.appendChild(style);
   }
 
+  /* ── Mobile hamburger menu ── */
+  function initMobileMenu() {
+    const hamburger = qs('#navHamburger');
+    const menu      = qs('#navMobile');
+    if (!hamburger || !menu) return;
+
+    const close = () => {
+      menu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    };
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    qsAll('.nav-link, .btn-hire', menu).forEach(el => {
+      el.addEventListener('click', close);
+    });
+  }
+
   /* ── Certificate modal ── */
   function initCertModal() {
     const modal    = qs('#certModal');
@@ -248,6 +271,7 @@
     initActiveSectionHighlight();
     initKeyboardNav();
     initReducedMotion();
+    initMobileMenu();
     initHireBtn();
     initCertModal();
   }
