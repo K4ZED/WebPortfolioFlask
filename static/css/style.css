@@ -146,7 +146,7 @@
 
 
 /* ── Base ── */
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -305,7 +305,8 @@ body[data-lang="en"] .t-en { display: inline; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .nav-mobile { display: flex; }
-  .nav-hire-desktop { display: none; }
+  .nav-hire-desktop { display: none !important; }
+  #langToggle, #themeToggle { display: none; }
 }
 
 /* ══════════════ LANG TOGGLE ══════════════ */
