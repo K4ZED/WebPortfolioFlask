@@ -2,10 +2,27 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <title>{{ full_name }} — Portfolio</title>
+  <title>{{ full_name }} | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of {{ full_name }} — Data Science student, Data Analyst, and Graphic Designer." />
+  <meta name="description" content="Portfolio of {{ full_name }}: Data Analyst, Data Science, Backend Developer, and Graphic Designer." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://portfolio-kazed.my.id/" />
+  <meta property="og:title"       content="{{ full_name }} | Portfolio" />
+  <meta property="og:description" content="Data Analyst · Data Science · Backend Developer · Graphic Designer" />
+  <meta property="og:image"       content="https://portfolio-kazed.my.id/static/img/Ken.png" />
+  <meta property="og:locale"      content="id_ID" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="{{ full_name }} | Portfolio" />
+  <meta name="twitter:description" content="Data Analyst · Data Science · Backend Developer · Graphic Designer" />
+  <meta name="twitter:image"       content="https://portfolio-kazed.my.id/static/img/Ken.png" />
+
   <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/favicon.jpg') }}" />
+  <script>try{var t=localStorage.getItem('preferredTheme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 </head>
@@ -17,7 +34,7 @@
 <!-- ════════════════ NAVBAR ════════════════ -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="#home" class="nav-brand"><span class="accent">K</span>azed<span class="accent">.</span></a>
+    <a href="#home" class="nav-brand">Kazed.</a>
 
     <ul class="nav-links">
       <li><a href="#home"     class="nav-link active"><span class="t-id">Beranda</span><span class="t-en">Home</span></a></li>
@@ -33,6 +50,10 @@
       <div class="lang-toggle" id="langToggle">
         <button class="lang-btn active" data-lang="id">ID</button>
         <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="lang-toggle" id="themeToggle">
+        <button class="lang-btn active" data-theme-btn="dark"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">dark_mode</span></button>
+        <button class="lang-btn" data-theme-btn="light"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">light_mode</span></button>
       </div>
       <a href="#contact" class="btn-primary sm btn-hire nav-hire-desktop"><span class="t-id">Rekrut Saya</span><span class="t-en">Hire Me</span></a>
       <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
@@ -54,6 +75,10 @@
       <div class="lang-toggle" id="langToggleMobile">
         <button class="lang-btn active" data-lang="id">ID</button>
         <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="lang-toggle" id="themeToggleMobile">
+        <button class="lang-btn active" data-theme-btn="dark"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">dark_mode</span></button>
+        <button class="lang-btn" data-theme-btn="light"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">light_mode</span></button>
       </div>
       <a href="#contact" class="btn-primary sm btn-hire"><span class="t-id">Rekrut Saya</span><span class="t-en">Hire Me</span></a>
     </div>
@@ -91,14 +116,15 @@
           </div>
 
           <div class="chip-row">
-            <span class="chip-orange">Data Science</span>
             <span class="chip-orange">Data Analyst</span>
+            <span class="chip-orange">Data Science</span>
+            <span class="chip-neutral">Backend Dev</span>
             <span class="chip-neutral">Graphic Designer</span>
           </div>
 
           <p class="hero-desc">
-            <span class="t-id">Mahasiswa Sains Data di UNS yang sudah berkecimpung di dunia teknologi sejak SMK. Menyelesaikan magang sebagai Data Analyst dan mengelola data dari awal hingga visualisasi — sekaligus aktif di desain grafis untuk event dan branding.</span>
-            <span class="t-en">Data Science student at UNS with a background in tech since vocational school. Completed a Data Analyst internship handling data end to end — while actively doing graphic design for events and branding.</span>
+            <span class="t-id">Lebih dari 5 tahun berkecimpung di dunia teknologi: dari Data Analytics dan Backend Development hingga Desain Grafis. Berpengalaman mengelola data dari awal hingga visualisasi menggunakan Python, SQL, dan Power BI, sekaligus aktif merancang visual untuk event dan branding.</span>
+            <span class="t-en">5+ years across tech: data analytics, backend development, and graphic design. Experienced in managing data end to end with Python, SQL, and Power BI, while actively creating visual designs for events and branding.</span>
           </p>
 
           <div class="btn-row">
@@ -107,6 +133,14 @@
             </a>
             <a href="#contact" class="btn-secondary">
               <span class="t-id">Hubungi Saya</span><span class="t-en">Contact Me</span>
+            </a>
+            <a href="{{ url_for('static', filename='cv/CV_Kenza_ID.pdf') }}" class="btn-secondary cv-id" download>
+              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">download</span>
+              Download CV
+            </a>
+            <a href="{{ url_for('static', filename='cv/CV_Kenza_ENG.pdf') }}" class="btn-secondary cv-en" download>
+              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">download</span>
+              Download CV
             </a>
           </div>
 
@@ -137,7 +171,7 @@
               <p class="stat-lbl"><span class="t-id">Magang</span><span class="t-en">Internships</span></p>
             </div>
             <div class="stat-item">
-              <p class="stat-val">6+</p>
+              <p class="stat-val">8+</p>
               <p class="stat-lbl">Projects</p>
             </div>
             <div class="stat-item">
@@ -161,7 +195,7 @@
           <div class="avatar-tag card">
             <span class="avatar-tag-name">{{ name }}</span>
             <div class="chip-row">
-              <span class="chip-neutral">Data Science</span>
+              <span class="chip-neutral">Data & Backend</span>
               <span class="chip-neutral">Design</span>
             </div>
           </div>
@@ -189,22 +223,22 @@
             </div>
             <div>
               <p class="bio-name">{{ full_name }}</p>
-              <p class="bio-role">Data Science Student · Universitas Sebelas Maret</p>
+              <p class="bio-role">Data Analyst & Graphic Designer</p>
             </div>
           </div>
           <p class="bio-text">
-            <span class="t-id">Mahasiswa Sains Data di <strong>Universitas Sebelas Maret</strong> dengan latar belakang Rekayasa Perangkat Lunak dari SMK Telkom Malang. Menyelesaikan magang sebagai Data Analyst di Telkom dengan pengalaman mengelola data secara menyeluruh menggunakan Python, SQL, dan Power BI.</span>
-            <span class="t-en">Data Science student at <strong>Universitas Sebelas Maret</strong> with a software engineering background from SMK Telkom Malang. Completed a Data Analyst internship at Telkom handling the full data workflow using Python, SQL, and Power BI.</span>
+            <span class="t-id">Berlatar belakang Rekayasa Perangkat Lunak dari SMK Telkom Malang dengan pengalaman lebih dari 5 tahun di dunia teknologi. Berpengalaman sebagai Data Analyst di Telkom dan Amigo Group, mengelola data dari pengumpulan hingga visualisasi menggunakan Python, SQL, dan Power BI, keduanya dijalani secara hybrid.</span>
+            <span class="t-en">Software engineering background from SMK Telkom Malang with over 5 years in tech. Experienced as a Data Analyst at Telkom and Amigo Group, handling data from collection to visualization using Python, SQL, and Power BI, both carried out in a hybrid setup.</span>
           </p>
           <p class="bio-text">
-            <span class="t-id">Sudah lebih dari 5 tahun berkecimpung di dunia teknologi sejak 2020 — mulai dari coding, desain, hingga analisis data. Di samping itu, aktif mendesain untuk kebutuhan event dan branding, serta tengah mendalami machine learning dan cloud computing dalam studi.</span>
-            <span class="t-en">Over 5 years immersed in technology since 2020 — spanning coding, design, and data analysis. Also actively creating designs for events and branding, with a current focus on machine learning and cloud computing through academic study.</span>
+            <span class="t-id">Lebih dari 5 tahun berkecimpung di dunia teknologi sejak 2020: dari coding, desain, hingga analisis data. Di samping itu, aktif mendesain untuk kebutuhan event dan branding, serta terus mendalami machine learning dan cloud computing.</span>
+            <span class="t-en">Over 5 years immersed in technology since 2020, spanning coding, design, and data analysis. Also actively creating designs for events and branding, with a continuing focus on machine learning and cloud computing.</span>
           </p>
           <div class="chip-row" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,.06);margin-top:auto;">
-            <span class="chip-orange">Data &amp; Analytics</span>
-            <span class="chip-orange">Machine Learning</span>
-            <span class="chip-neutral">Web &amp; Backend</span>
-            <span class="chip-neutral">Cloud</span>
+            <span class="chip-orange">Data Analyst</span>
+            <span class="chip-orange">Data Science</span>
+            <span class="chip-neutral">Data Engineering</span>
+            <span class="chip-neutral">Backend Dev</span>
             <span class="chip-cream">Graphic Design</span>
           </div>
         </div>
@@ -218,7 +252,7 @@
           </div>
           <div class="stat-card card card-hover">
             <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">code_blocks</span></div>
-            <p class="stat-val">6+</p>
+            <p class="stat-val">8+</p>
             <p class="stat-lbl"><span class="t-id">Project Selesai</span><span class="t-en">Projects Done</span></p>
           </div>
           <div class="stat-card card card-hover">
@@ -253,7 +287,7 @@
             <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">target</span></div>
             <div>
               <p class="info-lbl"><span class="t-id">Fokus Saat Ini</span><span class="t-en">Current Focus</span></p>
-              <p class="info-val">ML · Data viz · Cloud deploy</p>
+              <p class="info-val">ML · Backend Dev · Data viz · Cloud</p>
             </div>
           </div>
         </div>
@@ -275,61 +309,80 @@
         <div class="skill-card card card-hover">
           <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">table_chart</span></div>
           <div>
-            <h3 class="skill-title">Data &amp; Analytics</h3>
+            <h3 class="skill-title">Data Analyst</h3>
             <p class="skill-desc">
-              <span class="t-id">Mengelola siklus data secara menyeluruh — pengumpulan, pembersihan, eksplorasi, hingga visualisasi. Python, SQL, dan Power BI menjadi alat utama dalam pekerjaan sehari-hari.</span>
-              <span class="t-en">Managing the full data lifecycle — collection, cleaning, exploration, and visualization. Python, SQL, and Power BI are the primary tools of day-to-day work.</span>
+              <span class="t-id">Mengelola siklus data secara menyeluruh: dari pengumpulan, pembersihan, dan EDA hingga visualisasi serta pelaporan bisnis menggunakan dashboard interaktif.</span>
+              <span class="t-en">Managing the full data lifecycle: from collection, cleaning, and EDA to business reporting through interactive dashboards.</span>
             </p>
           </div>
           <div class="skill-tags">
             <span class="chip-orange">Python</span><span class="chip-orange">SQL</span>
             <span class="chip-neutral">Pandas / NumPy</span><span class="chip-neutral">Matplotlib</span>
-            <span class="chip-neutral">Power BI</span><span class="chip-neutral">EDA</span>
+            <span class="chip-neutral">Power BI</span><span class="chip-neutral">Excel</span><span class="chip-neutral">EDA</span>
           </div>
         </div>
 
         <div class="skill-card card card-hover">
           <div class="icon-box icon-box-cream"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">model_training</span></div>
           <div>
-            <h3 class="skill-title">Machine Learning</h3>
+            <h3 class="skill-title">Data Science &amp; ML</h3>
             <p class="skill-desc">
-              <span class="t-id">Membangun model prediktif dan analisis sentimen menggunakan pendekatan statistik dan deep learning, termasuk evaluasi serta interpretasi hasil model.</span>
-              <span class="t-en">Building predictive models and sentiment analysis using statistical and deep learning approaches, including model evaluation and interpretation of results.</span>
+              <span class="t-id">Membangun model prediktif dan analisis sentimen menggunakan pendekatan statistik dan deep learning, termasuk evaluasi dan interpretasi hasil model.</span>
+              <span class="t-en">Building predictive models and sentiment analysis using statistical and deep learning approaches, including model evaluation and interpretation.</span>
             </p>
           </div>
           <div class="skill-tags">
             <span class="chip-cream">Scikit-learn</span><span class="chip-cream">Deep Learning</span>
             <span class="chip-neutral">NLP</span><span class="chip-neutral">Predictive Modeling</span>
+            <span class="chip-neutral">Feature Engineering</span><span class="chip-neutral">Jupyter</span>
           </div>
         </div>
 
         <div class="skill-card card card-hover">
-          <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">cloud</span></div>
+          <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">hub</span></div>
           <div>
-            <h3 class="skill-title">Web &amp; Cloud</h3>
+            <h3 class="skill-title">Data Engineering</h3>
             <p class="skill-desc">
-              <span class="t-id">Membangun antarmuka web dan backend ringan untuk menyajikan hasil analitik, lalu mendeploy ke platform cloud agar dapat diakses dan diskalakan dengan mudah.</span>
-              <span class="t-en">Building web interfaces and lightweight backends to serve analytical results, then deploying to cloud platforms for accessible and scalable delivery.</span>
+              <span class="t-id">Merancang dan mengelola pipeline data: mulai dari pengumpulan, transformasi, hingga pengiriman data ke platform cloud yang skalabel.</span>
+              <span class="t-en">Designing and managing data pipelines: from collection and transformation to delivery across scalable cloud platforms.</span>
             </p>
           </div>
           <div class="skill-tags">
-            <span class="chip-neutral">Flask / FastAPI</span><span class="chip-neutral">React.js</span>
-            <span class="chip-neutral">AWS</span><span class="chip-neutral">Azure</span><span class="chip-neutral">GCP</span>
+            <span class="chip-neutral">Python</span><span class="chip-neutral">SQL</span>
+            <span class="chip-neutral">ETL</span><span class="chip-neutral">AWS</span>
+            <span class="chip-neutral">Azure</span><span class="chip-neutral">GCP</span>
+          </div>
+        </div>
+
+        <div class="skill-card card card-hover">
+          <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">terminal</span></div>
+          <div>
+            <h3 class="skill-title">Backend Development</h3>
+            <p class="skill-desc">
+              <span class="t-id">Membangun API dan backend ringan untuk menyajikan data dan hasil analitik, lalu mendeploy ke platform cloud agar dapat diakses secara andal.</span>
+              <span class="t-en">Building APIs and lightweight backends to serve data and analytical results, deployed to cloud platforms for reliable access.</span>
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="chip-orange">Python</span><span class="chip-orange">Flask</span>
+            <span class="chip-neutral">FastAPI</span><span class="chip-neutral">REST API</span>
+            <span class="chip-neutral">Git</span>
           </div>
         </div>
 
         <div class="skill-card card card-hover">
           <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">palette</span></div>
           <div>
-            <h3 class="skill-title"><span class="t-id">Desain &amp; Visual</span><span class="t-en">Design &amp; Visual</span></h3>
+            <h3 class="skill-title"><span class="t-id">Desain Grafis</span><span class="t-en">Graphic Design</span></h3>
             <p class="skill-desc">
-              <span class="t-id">Mendesain materi visual untuk event dan branding dengan konsistensi tema yang terjaga — poster, feed Instagram, backdrop, dan konten digital.</span>
-              <span class="t-en">Designing visual materials for events and branding with consistent thematic direction — posters, Instagram feeds, backdrops, and digital content.</span>
+              <span class="t-id">Mendesain materi visual untuk event dan branding. Canva sebagai alat utama, dengan kemampuan dasar di Figma dan Adobe Illustrator untuk kebutuhan lebih teknis.</span>
+              <span class="t-en">Designing visual materials for events and branding. Canva as the primary tool, with foundational skills in Figma and Adobe Illustrator when needed.</span>
             </p>
           </div>
           <div class="skill-tags">
+            <span class="chip-orange">Canva</span>
             <span class="chip-neutral">Figma</span><span class="chip-neutral">Adobe Illustrator</span>
-            <span class="chip-neutral">Canva</span><span class="chip-neutral">Event Branding</span>
+            <span class="chip-neutral">Event Branding</span><span class="chip-neutral">Digital Content</span>
           </div>
         </div>
 
@@ -377,6 +430,42 @@
               </p>
             </div>
           </div>
+
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-grey"></div>
+            <div class="proj-body">
+              <div class="proj-tag-row">
+                <div class="chip-row"><span class="chip-orange">Web</span><span class="chip-neutral">Backend</span></div>
+                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">language</span>
+              </div>
+              <h3 class="proj-title">P!NGFEST · Pekan Teknologi UNS</h3>
+              <p class="proj-desc">
+                <span class="t-id">Website resmi P!NGFEST, menampilkan profil acara, pendaftaran lomba dan seminar, serta sistem ticketing untuk peserta.</span>
+                <span class="t-en">Official P!NGFEST website, featuring event introduction, competition and seminar registration, and a participant ticketing system.</span>
+              </p>
+              <div class="chip-row" style="margin-top:auto;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);">
+                <span class="chip-neutral">PHP</span><span class="chip-neutral">Laravel</span><span class="chip-neutral">Blade</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-orange"></div>
+            <div class="proj-body">
+              <div class="proj-tag-row">
+                <div class="chip-row"><span class="chip-orange">Web</span><span class="chip-neutral">Company Profile</span></div>
+                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">business</span>
+              </div>
+              <h3 class="proj-title">Pemoela Lab</h3>
+              <p class="proj-desc">
+                <span class="t-id">Website company profile untuk Pemoela Lab, digital solution agency yang menyediakan layanan pengembangan website dan solusi teknologi untuk bisnis.</span>
+                <span class="t-en">Company profile website for Pemoela Lab, a digital solution agency offering website development and technology solutions for businesses.</span>
+              </p>
+              <div class="chip-row" style="margin-top:auto;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);">
+                <span class="chip-neutral">PHP</span><span class="chip-neutral">Laravel</span><span class="chip-neutral">Blade</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="proj-three">
@@ -422,10 +511,10 @@
               <div class="chip-row" style="margin-bottom:.75rem;">
                 <span class="chip-orange">Web</span><span class="chip-neutral">Portfolio</span>
               </div>
-              <h3 class="proj-title" style="margin-bottom:.5rem;">Personal Web Portfolio — <span class="accent">Ini Project Ini!</span></h3>
+              <h3 class="proj-title" style="margin-bottom:.5rem;">Personal Web Portfolio · <span class="accent"><span class="t-id">Halaman Ini</span><span class="t-en">This Very Page</span></span></h3>
               <p class="proj-desc">
-                <span class="t-id">Portofolio pribadi ini — dibangun dengan Flask, tampilan warm glassmorphism, dukungan dua bahasa, dan animasi scroll.</span>
-                <span class="t-en">This personal portfolio — built with Flask, featuring a warm glassmorphism aesthetic, bilingual support, and scroll animations.</span>
+                <span class="t-id">Portofolio pribadi ini, dibangun dengan Flask: tampilan warm glassmorphism, dukungan dua bahasa, dan animasi scroll.</span>
+                <span class="t-en">This personal portfolio, built with Flask: warm glassmorphism aesthetic, bilingual support, and scroll animations.</span>
               </p>
             </div>
             <div class="proj-full-chips">
@@ -453,15 +542,15 @@
           <div class="tl-track tl-entries">
             <div class="tl-entry">
               <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Agustus 2023 — Sekarang</span><span class="t-en">Aug 2023 — Present</span></p>
+              <p class="tl-date"><span class="t-id">Agustus 2023 · Sekarang</span><span class="t-en">Aug 2023 · Present</span></p>
               <h4 class="tl-title"><span class="t-id">Sarjana Sains Data · Universitas Sebelas Maret</span><span class="t-en">Bachelor of Data Science · Universitas Sebelas Maret</span></h4>
-              <p class="tl-desc"><span class="t-id">Mempelajari analisis data, machine learning, deep learning, dan platform cloud — AWS, Azure, serta GCP — sebagai bagian dari kurikulum.</span><span class="t-en">Studying data analysis, machine learning, deep learning, and cloud platforms — AWS, Azure, and GCP — as part of the curriculum.</span></p>
+              <p class="tl-desc"><span class="t-id">Mempelajari analisis data, machine learning, deep learning, dan platform cloud (AWS, Azure, serta GCP) sebagai bagian dari kurikulum.</span><span class="t-en">Studying data analysis, machine learning, deep learning, and cloud platforms (AWS, Azure, and GCP) as part of the curriculum.</span></p>
             </div>
             <div class="tl-entry">
               <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Juli 2020 — Juni 2023</span><span class="t-en">Jul 2020 — Jun 2023</span></p>
+              <p class="tl-date"><span class="t-id">Juli 2020 · Juni 2023</span><span class="t-en">Jul 2020 · Jun 2023</span></p>
               <h4 class="tl-title"><span class="t-id">Rekayasa Perangkat Lunak · SMK Telkom Malang</span><span class="t-en">Software Engineering · SMK Telkom Malang</span></h4>
-              <p class="tl-desc"><span class="t-id">Tempat perjalanan di dunia teknologi dimulai — mempelajari pemrograman, dasar-dasar UI/UX, dan pengembangan web yang terstruktur.</span><span class="t-en">Where the tech journey began — learning programming, UI/UX fundamentals, and structured web development.</span></p>
+              <p class="tl-desc"><span class="t-id">Tempat perjalanan di dunia teknologi dimulai: mempelajari pemrograman, dasar-dasar UI/UX, dan pengembangan web yang terstruktur.</span><span class="t-en">Where the tech journey began: learning programming, UI/UX fundamentals, and structured web development.</span></p>
             </div>
           </div>
         </div>
@@ -471,9 +560,9 @@
           <div class="tl-track tl-entries">
             <div class="tl-entry">
               <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Februari 2026 — Mei 2026</span><span class="t-en">Feb 2026 — May 2026</span></p>
+              <p class="tl-date"><span class="t-id">Februari 2026 · Mei 2026</span><span class="t-en">Feb 2026 · May 2026</span></p>
               <h4 class="tl-title">Campus Ambassador · <span class="accent">MySkill</span></h4>
-              <p class="tl-desc"><span class="t-id">Menyelesaikan program MySkill Campus Ambassador Batch 1 — platform edukasi karir yang didukung AWS EdStart dan LinkedIn Top Startups.</span><span class="t-en">Completed the MySkill Campus Ambassador Batch 1 program — a career education platform backed by AWS EdStart and LinkedIn Top Startups.</span></p>
+              <p class="tl-desc"><span class="t-id">Menyelesaikan program MySkill Campus Ambassador Batch 1, platform edukasi karir yang didukung AWS EdStart dan LinkedIn Top Startups.</span><span class="t-en">Completed the MySkill Campus Ambassador Batch 1 program, a career education platform backed by AWS EdStart and LinkedIn Top Startups.</span></p>
               <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_MySkill_Campus_Ambassador_Kenza_Athallah_Nandana_Wijaya.png') }}" class="cert-link">
                 <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
                 <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
@@ -481,19 +570,19 @@
             </div>
             <div class="tl-entry">
               <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">2026 — Sekarang</span><span class="t-en">2026 — Present</span></p>
+              <p class="tl-date"><span class="t-id">2026 · Sekarang</span><span class="t-en">2026 · Present</span></p>
               <h4 class="tl-title">Data Analyst Intern · <span class="accent">Amigo Group</span></h4>
               <p class="tl-desc"><span class="t-id">Magang dalam program MBKM. Mengelola dan menganalisis data bisnis untuk mendukung pengambilan keputusan berbasis data di lingkungan ritel.</span><span class="t-en">Interned through the MBKM program. Managed and analyzed business data to support data-driven decision-making in a retail environment.</span></p>
             </div>
             <div class="tl-entry">
               <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Juni 2024 — Juli 2025</span><span class="t-en">Jun 2024 — Jul 2025</span></p>
+              <p class="tl-date"><span class="t-id">Juni 2024 · Juli 2025</span><span class="t-en">Jun 2024 · Jul 2025</span></p>
               <h4 class="tl-title">Freelance Graphic Designer · <span class="accent">CV. Dharma Syafa Kreasi</span></h4>
               <p class="tl-desc"><span class="t-id">Mendesain poster, feed Instagram, banner, backdrop, dan materi promosi untuk berbagai kebutuhan event klien.</span><span class="t-en">Designed posters, Instagram feeds, banners, backdrops, and promotional materials for various client events.</span></p>
             </div>
             <div class="tl-entry">
               <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Juli 2022 — Desember 2022</span><span class="t-en">Jul 2022 — Dec 2022</span></p>
+              <p class="tl-date"><span class="t-id">Juli 2022 · Desember 2022</span><span class="t-en">Jul 2022 · Dec 2022</span></p>
               <h4 class="tl-title">Telecom Data Analyst Intern · <span class="accent">Telkom Landmark SBY</span></h4>
               <p class="tl-desc"><span class="t-id">Mengumpulkan dan menganalisis data performa BTS di Jawa Timur dan Madura untuk mendukung pengambilan keputusan operasional.</span><span class="t-en">Collected and analyzed BTS performance data across East Java and Madura to support operational decision-making.</span></p>
             </div>
@@ -561,7 +650,7 @@
       <div class="clients-grid card-grid">
         <div class="client-card card card-hover">
           <div class="client-logo">
-            <img src="{{ url_for('static', filename='img/Wonderland.png') }}" alt="Wonderland" />
+            <img src="{{ url_for('static', filename='img/Wonderland.png') }}" alt="Wonderland" loading="lazy" />
           </div>
           <div>
             <h3 class="client-name">Wonderland</h3>
@@ -571,7 +660,7 @@
         </div>
         <div class="client-card card card-hover">
           <div class="client-logo">
-            <img src="{{ url_for('static', filename='img/Luwes Group.png') }}" alt="Luwes Group" />
+            <img src="{{ url_for('static', filename='img/Luwes Group.png') }}" alt="Luwes Group" loading="lazy" />
           </div>
           <div>
             <h3 class="client-name">Luwes Group</h3>
@@ -581,7 +670,7 @@
         </div>
         <div class="client-card card card-hover">
           <div class="client-logo">
-            <img src="{{ url_for('static', filename='img/Cardinal.png') }}" alt="Cardinal" />
+            <img src="{{ url_for('static', filename='img/Cardinal.png') }}" alt="Cardinal" loading="lazy" />
           </div>
           <div>
             <h3 class="client-name">Cardinal</h3>
@@ -649,7 +738,7 @@
     <div class="footer-inner">
       <a href="#home" class="footer-brand"><span class="accent">K</span>azed<span class="accent">.</span></a>
       <p class="footer-copy">
-        © {{ full_name }} 2025 ·
+        © {{ full_name }} {{ year }} ·
         <span class="t-id">Dibuat dengan Flask &amp; CSS</span>
         <span class="t-en">Built with Flask &amp; CSS</span>
       </p>

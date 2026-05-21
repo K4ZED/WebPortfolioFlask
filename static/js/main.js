@@ -30,9 +30,8 @@
 
   /* ── Smooth scroll ── */
   function initSmoothScroll() {
-    const links    = qsAll('a.nav-link[href^="#"]');
-    const allLinks = qsAll('a.nav-link[href^="#"]');
-    const navbar   = qs('nav');
+    const links  = qsAll('a.nav-link[href^="#"]');
+    const navbar = qs('nav');
     if (!links.length) return;
 
     links.forEach(link => {
@@ -43,7 +42,7 @@
         e.preventDefault();
         const offset = (navbar ? navbar.offsetHeight : 0) + 8;
         window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
-        allLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === href));
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === href));
       });
     });
   }
@@ -121,23 +120,28 @@
   /* ── Language toggle (handles both desktop + mobile toggles) ── */
   function initLanguageToggle() {
     const toggles = qsAll('#langToggle, #langToggleMobile');
-    const allBtns = qsAll('.lang-btn');
     const body    = document.body;
     if (!toggles.length) return;
 
+    const langBtns = () => {
+      const btns = [];
+      toggles.forEach(t => t.querySelectorAll('.lang-btn[data-lang]').forEach(b => btns.push(b)));
+      return btns;
+    };
+
     const saved = localStorage.getItem('preferredLanguage') || 'id';
     body.setAttribute('data-lang', saved);
-    allBtns.forEach(btn => {
+    langBtns().forEach(btn => {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === saved);
     });
 
     toggles.forEach(toggle => {
       toggle.addEventListener('click', e => {
-        const btn  = e.target.closest('.lang-btn');
+        const btn  = e.target.closest('.lang-btn[data-lang]');
         if (!btn) return;
         const lang = btn.getAttribute('data-lang') || 'id';
         body.setAttribute('data-lang', lang);
-        allBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+        langBtns().forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
         try { localStorage.setItem('preferredLanguage', lang); } catch (_) {}
       });
     });
@@ -243,6 +247,31 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
+  /* ── Theme toggle (dark / light) ── */
+  function initThemeToggle() {
+    const toggles = qsAll('#themeToggle, #themeToggleMobile');
+    const allBtns = qsAll('[data-theme-btn]');
+    if (!toggles.length) return;
+
+    const apply = theme => {
+      document.documentElement.setAttribute('data-theme', theme);
+      allBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-theme-btn') === theme));
+      try { localStorage.setItem('preferredTheme', theme); } catch (_) {}
+    };
+
+    const saved = localStorage.getItem('preferredTheme') ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    apply(saved);
+
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', e => {
+        const btn = e.target.closest('[data-theme-btn]');
+        if (!btn) return;
+        apply(btn.getAttribute('data-theme-btn'));
+      });
+    });
+  }
+
   /* ── Hire Me button → scroll to #contact + activate Kontak nav ── */
   function initHireBtn() {
     const btn = qs('.btn-hire');
@@ -272,6 +301,7 @@
     initKeyboardNav();
     initReducedMotion();
     initMobileMenu();
+    initThemeToggle();
     initHireBtn();
     initCertModal();
   }
