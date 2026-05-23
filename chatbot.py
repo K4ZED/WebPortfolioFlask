@@ -10,7 +10,7 @@ INTENTS = [
             "apa kabar", "halo kak", "hi there", "good morning", "good afternoon", "good evening",
             "hei", "haloo", "hellow"
         ],
-        "response": "Halo! Saya asisten virtual Kenza. Ada yang ingin kamu tanyakan tentang portofolionya? 😊"
+        "response": "Halo! Saya Byte, asisten virtual Kenza. Ada yang ingin kamu tanyakan tentang portofolionya?"
     },
     {
         "tag": "farewell",
@@ -19,7 +19,7 @@ INTENTS = [
             "thank you", "oke thanks", "ok bye", "ok makasih", "sudah cukup", "itu saja", "cukup",
             "ok terima kasih", "terimakasih"
         ],
-        "response": "Terima kasih sudah berkunjung! Semoga informasinya bermanfaat. 👋"
+        "response": "Terima kasih sudah berkunjung! Semoga informasinya bermanfaat."
     },
     {
         "tag": "about",
@@ -31,9 +31,9 @@ INTENTS = [
         "response": (
             "Kenza Athallah Nandana Wijaya (alias Kazed) adalah profesional teknologi dengan pengalaman "
             "lebih dari 5 tahun sejak 2020. Spesialisasinya mencakup:\n"
-            "• Data Analytics & Data Science\n"
-            "• Backend Development\n"
-            "• Graphic Design\n\n"
+            "- Data Analytics & Data Science\n"
+            "- Backend Development\n"
+            "- Graphic Design\n\n"
             "Ia pernah magang sebagai Data Analyst di Telkom dan Amigo Group, keduanya secara hybrid."
         )
     },
@@ -46,11 +46,11 @@ INTENTS = [
         ],
         "response": (
             "Kenza memiliki keahlian di 5 bidang utama:\n"
-            "• Data Analyst: Python, SQL, Power BI, Excel\n"
-            "• Data Science: TensorFlow, Scikit-learn, Pandas, NumPy\n"
-            "• Data Engineering: ETL, PostgreSQL, pipeline data\n"
-            "• Backend Dev: Go, FastAPI, Node.js, Flask\n"
-            "• Graphic Design: Canva, Figma, Adobe Illustrator"
+            "- Data Analyst: Python, SQL, Power BI, Excel\n"
+            "- Data Science: TensorFlow, Scikit-learn, Pandas, NumPy\n"
+            "- Data Engineering: ETL, PostgreSQL, pipeline data\n"
+            "- Backend Dev: Go, FastAPI, Node.js, Flask\n"
+            "- Graphic Design: Canva, Figma, Adobe Illustrator"
         )
     },
     {
@@ -114,11 +114,11 @@ INTENTS = [
         ],
         "response": (
             "Beberapa project Kenza:\n"
-            "• BTS Performance Analysis — analisis performa jaringan dengan Python & Power BI\n"
-            "• Web Dashboard — dashboard interaktif visualisasi data\n"
-            "• P!NGFEST — website event dengan Next.js & Tailwind CSS\n"
-            "• Pemoela Lab — company profile digital solution\n\n"
-            "Cek bagian Projects di website untuk detail lebih lanjut!"
+            "- BTS Performance Analysis: analisis performa jaringan dengan Python & Power BI\n"
+            "- Web Dashboard: dashboard interaktif visualisasi data\n"
+            "- P!NGFEST: website event dengan Next.js & Tailwind CSS\n"
+            "- Pemoela Lab: company profile digital solution\n\n"
+            "Cek bagian Projects di website untuk detail lebih lanjut."
         )
     },
     {
@@ -152,8 +152,8 @@ INTENTS = [
         ],
         "response": (
             "Kenza memiliki pengalaman magang di:\n"
-            "• Telkom Indonesia — Data Analyst (hybrid)\n"
-            "• Amigo Group — Data Analyst (hybrid)\n\n"
+            "- Telkom Indonesia: Data Analyst (hybrid)\n"
+            "- Amigo Group: Data Analyst (hybrid)\n\n"
             "Keduanya fokus pada pengelolaan dan visualisasi data menggunakan Python, SQL, dan Power BI."
         )
     },
@@ -201,10 +201,10 @@ INTENTS = [
         ],
         "response": (
             "Kamu bisa menghubungi Kenza melalui:\n"
-            "• Email: kenzaathallah.wijaya@gmail.com\n"
-            "• LinkedIn: linkedin.com/in/kenzaathallah\n"
-            "• GitHub: github.com/K4ZED\n\n"
-            "Atau scroll ke bagian Kontak di website ini!"
+            "- Email: kenzaathallah.wijaya@gmail.com\n"
+            "- LinkedIn: linkedin.com/in/kenzaathallah\n"
+            "- GitHub: github.com/K4ZED\n\n"
+            "Atau scroll ke bagian Kontak di website ini."
         )
     },
     {
@@ -215,10 +215,10 @@ INTENTS = [
             "apakah menerima tawaran", "freelance"
         ],
         "response": (
-            "Ya! Kenza saat ini terbuka untuk peluang kerja dan magang, "
+            "Ya, Kenza saat ini terbuka untuk peluang kerja dan magang, "
             "baik full-time maupun part-time, di bidang:\n"
             "Data Analytics, Data Science, Backend Development, maupun Graphic Design.\n\n"
-            "Hubungi langsung via email atau LinkedIn ya!"
+            "Hubungi langsung via email atau LinkedIn."
         )
     },
     {
@@ -235,8 +235,8 @@ INTENTS = [
 ]
 
 FALLBACK = (
-    "Maaf, saya kurang memahami pertanyaanmu. 😊\n"
-    "Coba tanyakan seputar: skill, project, pengalaman kerja, pendidikan, atau kontak Kenza!"
+    "Maaf, saya kurang memahami pertanyaanmu.\n"
+    "Coba tanyakan seputar: skill, project, pengalaman kerja, pendidikan, atau kontak Kenza."
 )
 
 _model = None
