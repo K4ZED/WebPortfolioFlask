@@ -289,6 +289,92 @@
     });
   }
 
+  /* ── Chat widget ── */
+  function initChatWidget() {
+    const toggle = qs('#chatToggle');
+    const panel  = qs('#chatPanel');
+    const closeBtn = qs('#chatClose');
+    const input  = qs('#chatInput');
+    const send   = qs('#chatSend');
+    const msgs   = qs('#chatMessages');
+    const icon   = qs('#chatToggleIcon');
+    if (!toggle || !panel) return;
+
+    let isOpen = false;
+
+    const openChat = () => {
+      isOpen = true;
+      panel.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      icon.textContent = 'close';
+      setTimeout(() => input.focus(), 260);
+    };
+
+    const closeChat = () => {
+      isOpen = false;
+      panel.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      icon.textContent = 'chat';
+    };
+
+    toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    closeBtn.addEventListener('click', closeChat);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closeChat(); });
+
+    const scrollBottom = () => { msgs.scrollTop = msgs.scrollHeight; };
+
+    const appendMsg = (text, type) => {
+      const div = document.createElement('div');
+      div.className = `chat-msg ${type}`;
+      div.textContent = text;
+      msgs.appendChild(div);
+      scrollBottom();
+    };
+
+    const showTyping = () => {
+      const div = document.createElement('div');
+      div.className = 'chat-typing';
+      div.id = 'chatTyping';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(div);
+      scrollBottom();
+    };
+
+    const hideTyping = () => { const t = qs('#chatTyping'); if (t) t.remove(); };
+
+    const sendMsg = async () => {
+      const text = input.value.trim();
+      if (!text || send.disabled) return;
+      input.value = '';
+      appendMsg(text, 'user');
+      showTyping();
+      send.disabled = true;
+      input.disabled = true;
+      try {
+        const res  = await fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text }),
+        });
+        const data = await res.json();
+        hideTyping();
+        appendMsg(data.response || 'Terjadi kesalahan.', 'bot');
+      } catch {
+        hideTyping();
+        appendMsg('Maaf, gagal terhubung ke server. Coba lagi ya!', 'bot');
+      } finally {
+        send.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    };
+
+    send.addEventListener('click', sendMsg);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+    });
+  }
+
   /* ── Boot ── */
   function init() {
     initSmoothScroll();
@@ -304,6 +390,7 @@
     initThemeToggle();
     initHireBtn();
     initCertModal();
+    initChatWidget();
   }
 
   if (document.readyState === 'loading') {

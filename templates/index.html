@@ -762,6 +762,40 @@
   </div>
 </div>
 
+<!-- ════════════ CHAT WIDGET ════════════ -->
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat asisten virtual">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">K</div>
+        <div>
+          <p class="chat-title">Kazed AI</p>
+          <p class="chat-subtitle"><span class="t-id">Asisten Virtual</span><span class="t-en">Virtual Assistant</span></p>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Tutup chat">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <span class="t-id">Halo! Saya asisten virtual Kenza. Tanyakan apa saja tentang skill, project, atau pengalamannya 😊</span>
+        <span class="t-en">Hello! I'm Kenza's virtual assistant. Ask me anything about his skills, projects, or experience 😊</span>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" maxlength="300" autocomplete="off"
+        placeholder="Ketik pesan..." aria-label="Pesan" />
+      <button class="chat-send" id="chatSend" aria-label="Kirim">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">send</span>
+      </button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggle" aria-label="Buka chat" aria-expanded="false">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1" id="chatToggleIcon">chat</span>
+  </button>
+</div>
+
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
