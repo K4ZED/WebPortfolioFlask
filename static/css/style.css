@@ -710,11 +710,36 @@ body[data-lang="en"] .cv-en { display: inline-flex; }
 }
 .info-val { font-size: .875rem; font-weight: 500; color: var(--on-surface); }
 
+.gh-graph-card {
+  grid-column: 1 / -1;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+}
+.gh-graph-header {
+  display: flex; align-items: center; gap: .875rem;
+  margin-bottom: 1rem;
+}
+.gh-graph-link {
+  font-size: .775rem; color: var(--primary);
+  text-decoration: none; font-weight: 500;
+  transition: opacity .2s;
+}
+.gh-graph-link:hover { opacity: .72; }
+.gh-graph-wrap {
+  border-radius: .5rem;
+  padding: .25rem .25rem 0;
+  overflow: hidden;
+}
+.gh-graph-img {
+  width: 100%; height: auto; display: block;
+}
+
 @media (max-width: 767px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-bio { padding: 1.5rem; }
   .stats-2x2 { grid-template-columns: 1fr 1fr; }
   .info-strip { grid-template-columns: 1fr; }
+  .gh-graph-wrap { padding: .5rem .5rem .125rem; }
 }
 
 /* ── SKILLS ── */
@@ -802,27 +827,182 @@ body[data-lang="en"] .cv-en { display: inline-flex; }
 .proj-sub-note {
   font-size: .775rem; color: var(--on-dim); font-style: italic;
 }
-.portfolio-grid {
+/* Porto bento grid */
+.porto-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-rows: auto auto;
+  gap: .875rem;
 }
-.best-proj-grid {
+.porto-card {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.porto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.35);
+  border-color: rgba(240,107,21,.3);
+}
+.porto-card--featured {
+  grid-row: span 2;
+}
+.porto-thumb {
+  position: relative;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.porto-card--featured .porto-thumb { height: 160px; }
+.porto-thumb-icon {
+  font-size: 2.75rem;
+  opacity: .45;
+}
+.porto-num {
+  position: absolute;
+  bottom: .25rem;
+  right: .875rem;
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,.07);
+  letter-spacing: -.05em;
+  user-select: none;
+}
+.porto-thumb-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+.porto-info {
+  padding: 1rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  flex: 1;
+}
+.porto-title {
+  font-size: .925rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  line-height: 1.3;
+}
+.porto-desc {
+  font-size: .775rem;
+  color: var(--on-variant);
+  line-height: 1.55;
+  flex: 1;
+}
+.porto-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .625rem 0 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: .25rem;
+  font-size: .775rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+.porto-cta .material-symbols-outlined {
+  font-size: 1rem;
+  transition: transform .2s ease;
+}
+.porto-card:hover .porto-cta .material-symbols-outlined {
+  transform: translate(3px, -3px);
+}
+
+/* Best bento */
+.best-bento {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: .875rem;
 }
-.proj-live-btn {
-  display: inline-flex; align-items: center; gap: .3rem;
-  font-size: .75rem; font-weight: 600;
-  color: var(--primary); text-decoration: none;
-  margin-top: .75rem;
-  transition: opacity .2s;
+.best-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
-.proj-live-btn:hover { opacity: .72; }
-.proj-live-btn .material-symbols-outlined { font-size: .85rem; }
+.best-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.35);
+  border-color: rgba(240,107,21,.3);
+}
+.best-card-bg {
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.best-card-inner {
+  position: relative;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+.best-card-top { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.best-icon-wrap {
+  width: 2.5rem; height: 2.5rem;
+  border-radius: .625rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.best-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--on-surface);
+  line-height: 1.25;
+}
+.best-desc {
+  font-size: .8rem;
+  color: var(--on-variant);
+  line-height: 1.6;
+}
+.best-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: .875rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+  gap: .75rem;
+}
+.best-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .775rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.best-cta .material-symbols-outlined {
+  font-size: 1rem;
+  transition: transform .2s ease;
+}
+.best-card:hover .best-cta .material-symbols-outlined {
+  transform: translate(3px, -3px);
+}
 
 [data-theme="light"] .proj-subsection { border-top-color: rgba(45,43,39,.1); }
+[data-theme="light"] .porto-card,
+[data-theme="light"] .best-card { border-color: rgba(45,43,39,.1); }
+[data-theme="light"] .porto-num { color: rgba(0,0,0,.05); }
 
 @media (max-width: 767px) {
   .proj-featured { grid-template-columns: 1fr; }
@@ -830,13 +1010,15 @@ body[data-lang="en"] .cv-en { display: inline-flex; }
   .proj-full { flex-direction: column; }
   .proj-full-stripe { width: auto; height: 3px; }
   .proj-full-body { flex-direction: column; align-items: flex-start; }
-  .portfolio-grid { grid-template-columns: 1fr; }
-  .best-proj-grid { grid-template-columns: 1fr; }
+  .porto-bento { grid-template-columns: 1fr; }
+  .porto-card--featured { grid-row: span 1; }
+  .best-bento { grid-template-columns: 1fr; }
 }
 @media (min-width: 480px) and (max-width: 767px) {
   .proj-three    { grid-template-columns: repeat(2, 1fr); }
   .proj-featured { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .porto-bento { grid-template-columns: repeat(2, 1fr); }
+  .best-bento { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── TIMELINE ── */
