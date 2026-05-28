@@ -2,3 +2,4 @@
 __pycache__
 .gitignore
 .claude
+chatbot.py
