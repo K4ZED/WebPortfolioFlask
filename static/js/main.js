@@ -289,6 +289,97 @@
     });
   }
 
+  /* ── GitHub contribution calendar ── */
+  function initGithubChart() {
+    const grid = qs('#ghCalGrid');
+    if (!grid) return;
+    const monthsEl = qs('#ghCalMonths');
+    const wdEl     = qs('#ghCalWeekdays');
+    const totalEl  = qs('#ghCalTotal');
+    const cal      = qs('#ghCal');
+
+    const MONTHS_ID = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+    const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    /* weekday labels: GitHub shows Mon / Wed / Fri only */
+    ['', 'Mon', '', 'Wed', '', 'Fri', ''].forEach(lbl => {
+      const s = document.createElement('div');
+      s.className = 'gh-wd';
+      s.textContent = lbl;
+      wdEl.appendChild(s);
+    });
+
+    const fail = () => {
+      cal.classList.add('gh-cal-failed');
+      totalEl.innerHTML =
+        '<span class="t-id">Tidak dapat memuat aktivitas GitHub.</span>' +
+        '<span class="t-en">Could not load GitHub activity.</span>';
+    };
+
+    fetch('/gh-data')
+      .then(r => r.json())
+      .then(data => {
+        const days = (data && data.contributions) || [];
+        if (!days.length) { fail(); return; }
+        build(days);
+      })
+      .catch(fail);
+
+    function build(days) {
+      /* group days into week columns (row 0 = Sunday) */
+      const weeks = [];
+      let col = new Array(7).fill(null);
+      days.forEach(d => {
+        const wd = new Date(d.date + 'T00:00:00').getDay();
+        if (wd === 0 && col.some(x => x)) { weeks.push(col); col = new Array(7).fill(null); }
+        col[wd] = d;
+      });
+      if (col.some(x => x)) weeks.push(col);
+
+      /* render the week columns */
+      weeks.forEach(week => {
+        const colEl = document.createElement('div');
+        colEl.className = 'gh-week';
+        week.forEach(day => {
+          const cell = document.createElement('div');
+          if (!day) {
+            cell.className = 'gh-day gh-day--pad';
+          } else {
+            cell.className = 'gh-day';
+            cell.dataset.level = String(day.level);
+            cell.title = `${day.count} kontribusi · ${day.date}`;
+          }
+          colEl.appendChild(cell);
+        });
+        grid.appendChild(colEl);
+      });
+
+      /* month labels above the column where each month first appears */
+      const colEls = grid.children;
+      let lastMonth = -1, lastLeft = -100;
+      for (let i = 0; i < weeks.length; i++) {
+        const firstDay = weeks[i].find(d => d);
+        if (!firstDay) continue;
+        const m = new Date(firstDay.date + 'T00:00:00').getMonth();
+        if (m === lastMonth) continue;
+        const left = colEls[i].offsetLeft;
+        if (left - lastLeft < 28) { lastMonth = m; continue; }
+        lastMonth = m; lastLeft = left;
+        const lbl = document.createElement('span');
+        lbl.className = 'gh-month';
+        lbl.style.left = left + 'px';
+        lbl.innerHTML = `<span class="t-id">${MONTHS_ID[m]}</span><span class="t-en">${MONTHS_EN[m]}</span>`;
+        monthsEl.appendChild(lbl);
+      }
+
+      /* total header */
+      const total = days.reduce((a, d) => a + (d.count || 0), 0);
+      totalEl.innerHTML =
+        `<span class="t-id"><strong>${total}</strong> kontribusi dalam setahun terakhir</span>` +
+        `<span class="t-en"><strong>${total}</strong> contributions in the last year</span>`;
+    }
+  }
+
   /* ── Chat widget ── */
   function initChatWidget() {
     const toggle = qs('#chatToggle');
@@ -390,6 +481,7 @@
     initThemeToggle();
     initHireBtn();
     initCertModal();
+    initGithubChart();
     initChatWidget();
   }
 

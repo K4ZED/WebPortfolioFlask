@@ -725,21 +725,65 @@ body[data-lang="en"] .cv-en { display: inline-flex; }
   transition: opacity .2s;
 }
 .gh-graph-link:hover { opacity: .72; }
-.gh-graph-wrap {
-  border-radius: .5rem;
-  padding: .25rem .25rem 0;
-  overflow: hidden;
+
+/* GitHub-style contribution calendar (client-side, theme-aware, full width) */
+.gh-cal {
+  --gh-g: 3px;    /* cell gap */
+  --gh-wd: 26px;  /* weekday label column width */
+  --gh-l0: #161b22; --gh-l1: #0e4429; --gh-l2: #006d32; --gh-l3: #26a641; --gh-l4: #39d353;
+  --gh-text: #7d8590;
 }
-.gh-graph-img {
-  width: 100%; height: auto; display: block;
+.gh-cal-total {
+  font-size: .8rem; color: var(--on-variant);
+  margin-bottom: .85rem; min-height: 1.1em;
 }
+.gh-cal-total strong { color: var(--on-surface); font-weight: 700; }
+.gh-cal-inner { width: 100%; }
+.gh-cal-months {
+  position: relative;
+  height: 14px; margin-bottom: 4px;
+  margin-left: calc(var(--gh-wd) + var(--gh-g));
+}
+.gh-month {
+  position: absolute; top: 0;
+  font-size: .65rem; line-height: 1;
+  color: var(--gh-text); white-space: nowrap;
+}
+.gh-cal-grid-row { display: flex; gap: var(--gh-g); }
+.gh-weekdays {
+  width: var(--gh-wd); flex-shrink: 0;
+  display: flex; flex-direction: column; gap: var(--gh-g);
+}
+.gh-wd {
+  flex: 1; display: flex; align-items: center;
+  font-size: .6rem; color: var(--gh-text);
+}
+.gh-weeks { position: relative; flex: 1; display: flex; gap: var(--gh-g); }
+.gh-week { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--gh-g); }
+.gh-day {
+  width: 100%; aspect-ratio: 1 / 1;
+  border-radius: 2px; background: var(--gh-l0);
+  outline: 1px solid rgba(255,255,255,.04); outline-offset: -1px;
+}
+.gh-day[data-level="1"] { background: var(--gh-l1); }
+.gh-day[data-level="2"] { background: var(--gh-l2); }
+.gh-day[data-level="3"] { background: var(--gh-l3); }
+.gh-day[data-level="4"] { background: var(--gh-l4); }
+.gh-day--pad { background: transparent; outline: none; }
+.gh-cal-failed { opacity: .65; }
+
+/* Light theme: GitHub's light contribution palette */
+[data-theme="light"] .gh-cal {
+  --gh-l0: #ebedf0; --gh-l1: #9be9a8; --gh-l2: #40c463; --gh-l3: #30a14e; --gh-l4: #216e39;
+  --gh-text: #57606a;
+}
+[data-theme="light"] .gh-day { outline-color: rgba(0,0,0,.05); }
 
 @media (max-width: 767px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-bio { padding: 1.5rem; }
   .stats-2x2 { grid-template-columns: 1fr 1fr; }
   .info-strip { grid-template-columns: 1fr; }
-  .gh-graph-wrap { padding: .5rem .5rem .125rem; }
 }
 
 /* ── SKILLS ── */

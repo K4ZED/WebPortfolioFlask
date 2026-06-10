@@ -1,9 +1,14 @@
 import os
+import time
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify, Response
 import urllib.request
 
 app = Flask(__name__)
+
+GH_USER = "K4ZED"
+_gh_cache = {"data": None, "ts": 0.0}
+_GH_TTL = 1800  # 30 min
 
 
 @app.route("/")
@@ -11,25 +16,32 @@ def home():
     return render_template("index.html", name="Kazed", full_name="Kenza Athallah Nandana Wijaya", year=datetime.now().year)
 
 
-@app.route("/gh-chart")
-def gh_chart():
+@app.route("/gh-data")
+def gh_data():
+    """Proxy GitHub contribution data (date/count/level per day) as JSON, cached in-memory.
+
+    Rendering happens client-side so the calendar can follow the dark/light theme.
+    """
+    now = time.time()
+    if _gh_cache["data"] and now - _gh_cache["ts"] < _GH_TTL:
+        return Response(_gh_cache["data"], mimetype="application/json",
+                        headers={"Cache-Control": "public, max-age=1800"})
     try:
         req = urllib.request.Request(
-            "https://ghchart.rshah.org/39d353/K4ZED",
+            f"https://github-contributions-api.jogruber.de/v4/{GH_USER}?y=last",
             headers={"User-Agent": "Mozilla/5.0"}
         )
         with urllib.request.urlopen(req, timeout=6) as r:
-            svg = r.read().decode("utf-8")
-
-        # dark mode: dark empty cells + lighter text
-        svg = svg.replace("#EEEEEE", "#1e2a1e")
-        svg = svg.replace("#767676", "#8b949e")
-
-        return Response(svg, mimetype="image/svg+xml",
+            data = r.read().decode("utf-8")
+        _gh_cache["data"] = data
+        _gh_cache["ts"] = now
+        return Response(data, mimetype="application/json",
                         headers={"Cache-Control": "public, max-age=1800"})
     except Exception:
-        return Response('<svg xmlns="http://www.w3.org/2000/svg"/>',
-                        mimetype="image/svg+xml")
+        # serve stale data on failure, else an empty payload the client can handle
+        if _gh_cache["data"]:
+            return Response(_gh_cache["data"], mimetype="application/json")
+        return Response('{"total":{},"contributions":[]}', mimetype="application/json")
 
 
 @app.route("/chat", methods=["POST"])

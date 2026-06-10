@@ -2,4 +2,4 @@
 __pycache__
 .gitignore
 .claude
-chatbot.py
+_test_bot.py
