@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ full_name }} | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of {{ full_name }}: Data Analyst, Data Science, Backend Developer, and Graphic Designer." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://portfolio-kazed.my.id/" />
+  <meta property="og:title"       content="{{ full_name }} | Portfolio" />
+  <meta property="og:description" content="Data Analyst · Data Science · Backend Developer · Graphic Designer" />
+  <meta property="og:image"       content="https://portfolio-kazed.my.id/static/img/Ken.png" />
+  <meta property="og:locale"      content="id_ID" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="{{ full_name }} | Portfolio" />
+  <meta name="twitter:description" content="Data Analyst · Data Science · Backend Developer · Graphic Designer" />
+  <meta name="twitter:image"       content="https://portfolio-kazed.my.id/static/img/Ken.png" />
+
+  <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/favicon.jpg') }}" />
+  <script>try{var t=localStorage.getItem('preferredTheme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+</head>
+<body data-lang="id">
+
+<div id="scroll-progress-bar"></div>
+<div class="dot-grid"></div>
+
+<!-- ════════════════ NAVBAR ════════════════ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">Kazed.</a>
+
+    <ul class="nav-links">
+      <li><a href="#home"     class="nav-link active"><span class="t-id">Beranda</span><span class="t-en">Home</span></a></li>
+      <li><a href="#about"   class="nav-link"><span class="t-id">Tentang</span><span class="t-en">About</span></a></li>
+      <li><a href="#skills"  class="nav-link"><span class="t-id">Skill</span><span class="t-en">Skills</span></a></li>
+      <li><a href="#projects"class="nav-link"><span class="t-id">Project</span><span class="t-en">Projects</span></a></li>
+      <li><a href="#timeline"class="nav-link">Timeline</a></li>
+      <li><a href="#clients" class="nav-link"><span class="t-id">Klien</span><span class="t-en">Clients</span></a></li>
+      <li><a href="#contact" class="nav-link"><span class="t-id">Kontak</span><span class="t-en">Contact</span></a></li>
+    </ul>
+
+    <div class="nav-end">
+      <div class="lang-toggle" id="langToggle">
+        <button class="lang-btn active" data-lang="id">ID</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="lang-toggle" id="themeToggle">
+        <button class="lang-btn active" data-theme-btn="dark"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">dark_mode</span></button>
+        <button class="lang-btn" data-theme-btn="light"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">light_mode</span></button>
+      </div>
+      <a href="#contact" class="btn-primary sm btn-hire nav-hire-desktop"><span class="t-id">Rekrut Saya</span><span class="t-en">Hire Me</span></a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="#home"     class="nav-link"><span class="t-id">Beranda</span><span class="t-en">Home</span></a>
+    <a href="#about"   class="nav-link"><span class="t-id">Tentang</span><span class="t-en">About</span></a>
+    <a href="#skills"  class="nav-link"><span class="t-id">Skill</span><span class="t-en">Skills</span></a>
+    <a href="#projects"class="nav-link"><span class="t-id">Project</span><span class="t-en">Projects</span></a>
+    <a href="#timeline"class="nav-link">Timeline</a>
+    <a href="#clients" class="nav-link"><span class="t-id">Klien</span><span class="t-en">Clients</span></a>
+    <a href="#contact" class="nav-link"><span class="t-id">Kontak</span><span class="t-en">Contact</span></a>
+    <div class="nav-mobile-footer">
+      <div class="lang-toggle" id="langToggleMobile">
+        <button class="lang-btn active" data-lang="id">ID</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="lang-toggle" id="themeToggleMobile">
+        <button class="lang-btn active" data-theme-btn="dark"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">dark_mode</span></button>
+        <button class="lang-btn" data-theme-btn="light"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">light_mode</span></button>
+      </div>
+      <a href="#contact" class="btn-primary sm btn-hire"><span class="t-id">Rekrut Saya</span><span class="t-en">Hire Me</span></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section id="home" class="section-animate">
+    <!-- Ambient blobs -->
+    <div class="glow glow-orange" style="width:460px;height:460px;top:-14%;right:-8%;opacity:.85;"></div>
+    <div class="glow glow-grey"   style="width:340px;height:340px;bottom:5%;left:38%;opacity:.7;"></div>
+
+    <div class="container">
+      <div class="hero-wrap">
+
+        <!-- Left: glass card -->
+        <div class="hero-card card">
+
+          <div class="hero-status">
+            <span class="status-dot"></span>
+            <span class="t-id">Terbuka untuk peluang kerja &amp; magang</span>
+            <span class="t-en">Open to work &amp; internship opportunities</span>
+          </div>
+
+          <div>
+            <p style="font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--on-dim);margin-bottom:.75rem;">
+              <span class="t-id">Perkenalkan, nama saya</span><span class="t-en">Hello, I'm</span>
+            </p>
+            <h1 class="hero-name">
+              <span class="line1">{{ full_name.split()[0] }} {{ full_name.split()[1] }}</span>
+              <span class="line2">{{ full_name.split()[2] }} {{ full_name.split()[3] }}.</span>
+            </h1>
+          </div>
+
+          <div class="chip-row">
+            <span class="chip-orange">Data Analyst</span>
+            <span class="chip-orange">Data Science</span>
+            <span class="chip-neutral">Backend Dev</span>
+            <span class="chip-neutral">Graphic Designer</span>
+          </div>
+
+          <p class="hero-desc">
+            <span class="t-id">Lebih dari 5 tahun berkecimpung di dunia teknologi: dari Data Analytics dan Backend Development hingga Desain Grafis. Berpengalaman mengelola data dari awal hingga visualisasi menggunakan Python, SQL, dan Power BI, sekaligus aktif merancang visual untuk event dan branding.</span>
+            <span class="t-en">5+ years across tech: data analytics, backend development, and graphic design. Experienced in managing data end to end with Python, SQL, and Power BI, while actively creating visual designs for events and branding.</span>
+          </p>
+
+          <div class="btn-row">
+            <a href="#projects" class="btn-primary">
+              <span class="t-id">Lihat Project</span><span class="t-en">View Projects</span>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <span class="t-id">Hubungi Saya</span><span class="t-en">Contact Me</span>
+            </a>
+            <a href="{{ url_for('static', filename='cv/CV_Kenza_ID.pdf') }}" class="btn-secondary cv-id" download>
+              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">download</span>
+              Download CV
+            </a>
+            <a href="{{ url_for('static', filename='cv/CV_Kenza_ENG.pdf') }}" class="btn-secondary cv-en" download>
+              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">download</span>
+              Download CV
+            </a>
+          </div>
+
+          <div class="social-row">
+            <a href="https://github.com/K4ZED" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon card">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/kenzaathallah" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon card">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:kenzaathallah.wijaya@gmail.com" aria-label="Email" class="social-icon card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://portfolio-kazed.my.id/" target="_blank" rel="noopener" aria-label="Website" class="social-icon card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </a>
+            <span class="social-divider"></span>
+            <span class="social-email">kenzaathallah.wijaya@gmail.com</span>
+          </div>
+
+          <div class="stats-strip">
+            <div class="stat-item">
+              <p class="stat-val">5+</p>
+              <p class="stat-lbl"><span class="t-id">Tahun di Teknologi</span><span class="t-en">Years in Tech</span></p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-val">2</p>
+              <p class="stat-lbl"><span class="t-id">Magang</span><span class="t-en">Internships</span></p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-val">8+</p>
+              <p class="stat-lbl">Projects</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-val">3</p>
+              <p class="stat-lbl">Awards</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-val">3</p>
+              <p class="stat-lbl"><span class="t-id">Klien</span><span class="t-en">Clients</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: circle avatar -->
+        <div class="hero-avatar">
+          <span class="avatar-deco-dot orange animate-float"></span>
+          <span class="avatar-deco-dot grey"></span>
+          <div class="avatar-ring">
+            <img src="{{ url_for('static', filename='img/Ken.png') }}" alt="{{ full_name }}" />
+          </div>
+          <div class="avatar-tag card">
+            <span class="avatar-tag-name">{{ name }}</span>
+            <div class="chip-row">
+              <span class="chip-neutral">Data & Backend</span>
+              <span class="chip-neutral">Design</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ ABOUT ════════════════ -->
+  <section id="about" class="section section-animate">
+    <div class="container">
+      <h2 class="section-heading">
+        <span class="t-id">Tentang <span class="accent">Saya</span></span>
+        <span class="t-en">About <span class="accent">Me</span></span>
+      </h2>
+
+      <div class="about-grid">
+
+        <!-- Bio card -->
+        <div class="about-bio card card-hover">
+          <div class="bio-header">
+            <div class="icon-box">
+              <span class="material-symbols-outlined" style="font-size:1.125rem;font-variation-settings:'FILL' 1">person</span>
+            </div>
+            <div>
+              <p class="bio-name">{{ full_name }}</p>
+              <p class="bio-role">Data Analyst & Graphic Designer</p>
+            </div>
+          </div>
+          <p class="bio-text">
+            <span class="t-id">Berlatar belakang Rekayasa Perangkat Lunak dari SMK Telkom Malang dengan pengalaman lebih dari 5 tahun di dunia teknologi. Berpengalaman sebagai Data Analyst di Telkom dan Amigo Group, mengelola data dari pengumpulan hingga visualisasi menggunakan Python, SQL, dan Power BI, keduanya dijalani secara hybrid.</span>
+            <span class="t-en">Software engineering background from SMK Telkom Malang with over 5 years in tech. Experienced as a Data Analyst at Telkom and Amigo Group, handling data from collection to visualization using Python, SQL, and Power BI, both carried out in a hybrid setup.</span>
+          </p>
+          <p class="bio-text">
+            <span class="t-id">Lebih dari 5 tahun berkecimpung di dunia teknologi sejak 2020: dari coding, desain, hingga analisis data. Di samping itu, aktif mendesain untuk kebutuhan event dan branding, serta terus mendalami machine learning dan cloud computing.</span>
+            <span class="t-en">Over 5 years immersed in technology since 2020, spanning coding, design, and data analysis. Also actively creating designs for events and branding, with a continuing focus on machine learning and cloud computing.</span>
+          </p>
+          <div class="chip-row" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,.06);margin-top:auto;">
+            <span class="chip-orange">Data Analyst</span>
+            <span class="chip-orange">Data Science</span>
+            <span class="chip-neutral">Data Engineering</span>
+            <span class="chip-neutral">Backend Dev</span>
+            <span class="chip-cream">Graphic Design</span>
+          </div>
+        </div>
+
+        <!-- Stats 2×2 -->
+        <div class="stats-2x2">
+          <div class="stat-card card card-hover">
+            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">terminal</span></div>
+            <p class="stat-val">5+</p>
+            <p class="stat-lbl"><span class="t-id">Tahun di Teknologi</span><span class="t-en">Years in Tech</span></p>
+          </div>
+          <div class="stat-card card card-hover">
+            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">code_blocks</span></div>
+            <p class="stat-val">8+</p>
+            <p class="stat-lbl"><span class="t-id">Project Selesai</span><span class="t-en">Projects Done</span></p>
+          </div>
+          <div class="stat-card card card-hover">
+            <div class="icon-box icon-box-cream"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">emoji_events</span></div>
+            <p class="stat-val" style="color:var(--secondary);">3</p>
+            <p class="stat-lbl">Awards</p>
+          </div>
+          <div class="stat-card card card-hover">
+            <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">handshake</span></div>
+            <p class="stat-val" style="color:var(--tertiary);">2</p>
+            <p class="stat-lbl"><span class="t-id">Pengalaman Magang</span><span class="t-en">Internships</span></p>
+          </div>
+        </div>
+
+        <!-- Info strip -->
+        <div class="info-strip">
+          <div class="info-card card card-hover">
+            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">location_on</span></div>
+            <div>
+              <p class="info-lbl"><span class="t-id">Lokasi</span><span class="t-en">Location</span></p>
+              <p class="info-val"><span class="t-id">Sukoharjo, Jawa Tengah</span><span class="t-en">Sukoharjo, Central Java</span></p>
+            </div>
+          </div>
+          <div class="info-card card card-hover">
+            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">translate</span></div>
+            <div>
+              <p class="info-lbl"><span class="t-id">Bahasa</span><span class="t-en">Languages</span></p>
+              <p class="info-val"><span class="t-id">Indonesia · Inggris (TOEFL 513)</span><span class="t-en">Indonesian · English (TOEFL 513)</span></p>
+            </div>
+          </div>
+          <div class="info-card card card-hover">
+            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">target</span></div>
+            <div>
+              <p class="info-lbl"><span class="t-id">Fokus Saat Ini</span><span class="t-en">Current Focus</span></p>
+              <p class="info-val">ML · Backend Dev · Data viz · Cloud</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GitHub Contribution Graph -->
+        <div class="gh-graph-card card">
+          <div class="gh-graph-header">
+            <div class="icon-box" style="width:1.75rem;height:1.75rem;">
+              <span class="material-symbols-outlined" style="font-size:.9rem;font-variation-settings:'FILL' 1">commit</span>
+            </div>
+            <div>
+              <p class="info-lbl"><span class="t-id">Aktivitas GitHub</span><span class="t-en">GitHub Activity</span></p>
+              <a href="https://github.com/K4ZED" target="_blank" rel="noopener" class="gh-graph-link">github.com/K4ZED</a>
+            </div>
+          </div>
+          <div class="gh-cal" id="ghCal">
+            <p class="gh-cal-total" id="ghCalTotal"></p>
+            <div class="gh-cal-scroll">
+              <div class="gh-cal-inner">
+                <div class="gh-cal-months" id="ghCalMonths"></div>
+                <div class="gh-cal-grid-row">
+                  <div class="gh-weekdays" id="ghCalWeekdays"></div>
+                  <div class="gh-weeks" id="ghCalGrid"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ SKILLS ════════════════ -->
+  <section id="skills" class="section section-animate">
+    <div class="container">
+      <h2 class="section-heading">
+        <span class="t-id">Yang Bisa Saya <span class="accent">Lakukan</span></span>
+        <span class="t-en">What I Can <span class="accent">Do</span></span>
+      </h2>
+
+      <div class="skills-grid card-grid">
+
+        <div class="skill-card card card-hover">
+          <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">table_chart</span></div>
+          <div>
+            <h3 class="skill-title">Data Analyst</h3>
+            <p class="skill-desc">
+              <span class="t-id">Mengelola siklus data secara menyeluruh: dari pengumpulan, pembersihan, dan EDA hingga visualisasi serta pelaporan bisnis menggunakan dashboard interaktif.</span>
+              <span class="t-en">Managing the full data lifecycle: from collection, cleaning, and EDA to business reporting through interactive dashboards.</span>
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="chip-orange">Python</span><span class="chip-orange">SQL</span>
+            <span class="chip-neutral">Pandas / NumPy</span><span class="chip-neutral">Matplotlib</span>
+            <span class="chip-neutral">Power BI</span><span class="chip-neutral">Excel</span><span class="chip-neutral">EDA</span>
+          </div>
+        </div>
+
+        <div class="skill-card card card-hover">
+          <div class="icon-box icon-box-cream"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">model_training</span></div>
+          <div>
+            <h3 class="skill-title">Data Science &amp; ML</h3>
+            <p class="skill-desc">
+              <span class="t-id">Membangun model prediktif dan analisis sentimen menggunakan pendekatan statistik dan deep learning, termasuk evaluasi dan interpretasi hasil model.</span>
+              <span class="t-en">Building predictive models and sentiment analysis using statistical and deep learning approaches, including model evaluation and interpretation.</span>
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="chip-cream">Scikit-learn</span><span class="chip-cream">Deep Learning</span>
+            <span class="chip-neutral">NLP</span><span class="chip-neutral">Predictive Modeling</span>
+            <span class="chip-neutral">Feature Engineering</span><span class="chip-neutral">Jupyter</span>
+          </div>
+        </div>
+
+        <div class="skill-card card card-hover">
+          <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">hub</span></div>
+          <div>
+            <h3 class="skill-title">Data Engineering</h3>
+            <p class="skill-desc">
+              <span class="t-id">Merancang dan mengelola pipeline data: mulai dari pengumpulan, transformasi, hingga pengiriman data ke platform cloud yang skalabel.</span>
+              <span class="t-en">Designing and managing data pipelines: from collection and transformation to delivery across scalable cloud platforms.</span>
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="chip-neutral">Python</span><span class="chip-neutral">SQL</span>
+            <span class="chip-neutral">ETL</span><span class="chip-neutral">AWS</span>
+            <span class="chip-neutral">Azure</span><span class="chip-neutral">GCP</span>
+          </div>
+        </div>
+
+        <div class="skill-card card card-hover">
+          <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">terminal</span></div>
+          <div>
+            <h3 class="skill-title">Backend Development</h3>
+            <p class="skill-desc">
+              <span class="t-id">Membangun API dan backend ringan untuk menyajikan data dan hasil analitik, lalu mendeploy ke platform cloud agar dapat diakses secara andal.</span>
+              <span class="t-en">Building APIs and lightweight backends to serve data and analytical results, deployed to cloud platforms for reliable access.</span>
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="chip-orange">Python</span><span class="chip-orange">Flask</span>
+            <span class="chip-neutral">FastAPI</span><span class="chip-neutral">REST API</span>
+            <span class="chip-neutral">Git</span>
+          </div>
+        </div>
+
+        <div class="skill-card card card-hover">
+          <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">palette</span></div>
+          <div>
+            <h3 class="skill-title"><span class="t-id">Desain Grafis</span><span class="t-en">Graphic Design</span></h3>
+            <p class="skill-desc">
+              <span class="t-id">Mendesain materi visual untuk event dan branding. Canva sebagai alat utama, dengan kemampuan dasar di Figma dan Adobe Illustrator untuk kebutuhan lebih teknis.</span>
+              <span class="t-en">Designing visual materials for events and branding. Canva as the primary tool, with foundational skills in Figma and Adobe Illustrator when needed.</span>
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="chip-orange">Canva</span>
+            <span class="chip-neutral">Figma</span><span class="chip-neutral">Adobe Illustrator</span>
+            <span class="chip-neutral">Event Branding</span><span class="chip-neutral">Digital Content</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ PROJECTS ════════════════ -->
+  <section id="projects" class="section section-animate">
+    <div class="container">
+      <h2 class="section-heading">
+        <span class="t-id">Project <span class="accent">Pilihan</span></span>
+        <span class="t-en">Selected <span class="accent">Projects</span></span>
+      </h2>
+
+      <div class="projects-grid card-grid">
+
+        <div class="proj-featured">
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-orange"></div>
+            <div class="proj-body">
+              <div class="proj-tag-row">
+                <div class="chip-row"><span class="chip-orange">Data</span><span class="chip-neutral">Analytics</span></div>
+                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">cell_tower</span>
+              </div>
+              <h3 class="proj-title">BTS Performance Monitoring &amp; Analysis</h3>
+              <p class="proj-desc">
+                <span class="t-id">Menganalisis data performa BTS untuk mengevaluasi kekuatan sinyal, stabilitas jaringan, dan kualitas layanan di Jawa Timur dan Madura.</span>
+                <span class="t-en">Analyzed BTS performance data to evaluate signal strength, network stability, and service quality across East Java and Madura.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-cream"></div>
+            <div class="proj-body">
+              <div class="proj-tag-row">
+                <div class="chip-row"><span class="chip-neutral">Data</span><span class="chip-neutral">Web</span></div>
+                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">dashboard</span>
+              </div>
+              <h3 class="proj-title">Web-Based Data Visualization Dashboard</h3>
+              <p class="proj-desc">
+                <span class="t-id">Dashboard berbasis web yang menyajikan hasil analitik melalui visualisasi data yang jelas dan interaktif.</span>
+                <span class="t-en">Web-based dashboards presenting analytical results through clear, interactive data visualizations.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-grey"></div>
+            <div class="proj-body">
+              <div class="proj-tag-row">
+                <div class="chip-row"><span class="chip-orange">Web</span><span class="chip-neutral">Backend</span></div>
+                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">language</span>
+              </div>
+              <h3 class="proj-title">P!NGFEST · Pekan Teknologi UNS</h3>
+              <p class="proj-desc">
+                <span class="t-id">Website resmi P!NGFEST, menampilkan profil acara, pendaftaran lomba dan seminar, serta sistem ticketing untuk peserta.</span>
+                <span class="t-en">Official P!NGFEST website, featuring event introduction, competition and seminar registration, and a participant ticketing system.</span>
+              </p>
+              <div class="chip-row" style="margin-top:auto;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);">
+                <span class="chip-neutral">PHP</span><span class="chip-neutral">Laravel</span><span class="chip-neutral">Blade</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-orange"></div>
+            <div class="proj-body">
+              <div class="proj-tag-row">
+                <div class="chip-row"><span class="chip-orange">Web</span><span class="chip-neutral">Company Profile</span></div>
+                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">business</span>
+              </div>
+              <h3 class="proj-title">Pemoela Lab</h3>
+              <p class="proj-desc">
+                <span class="t-id">Website company profile untuk Pemoela Lab, digital solution agency yang menyediakan layanan pengembangan website dan solusi teknologi untuk bisnis.</span>
+                <span class="t-en">Company profile website for Pemoela Lab, a digital solution agency offering website development and technology solutions for businesses.</span>
+              </p>
+              <div class="chip-row" style="margin-top:auto;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);">
+                <span class="chip-neutral">PHP</span><span class="chip-neutral">Laravel</span><span class="chip-neutral">Blade</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-three">
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-grey"></div>
+            <div class="proj-body-sm">
+              <div class="chip-row"><span class="chip-neutral">ML</span><span class="chip-neutral">NLP</span></div>
+              <h3 class="proj-title-sm">Sentiment Analysis Using Deep Learning</h3>
+              <p class="proj-desc-sm">
+                <span class="t-id">Model analisis sentimen berbasis deep learning untuk mengklasifikasikan data teks ke dalam kategori positif, negatif, atau netral.</span>
+                <span class="t-en">Deep learning-based sentiment analysis model classifying text data into positive, negative, or neutral categories.</span>
+              </p>
+            </div>
+          </div>
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-grey"></div>
+            <div class="proj-body-sm">
+              <div class="chip-row"><span class="chip-neutral">ML</span><span class="chip-neutral">Data Science</span></div>
+              <h3 class="proj-title-sm">Data Prediction &amp; Machine Learning</h3>
+              <p class="proj-desc-sm">
+                <span class="t-id">Model prediktif yang mengekstrak insight dari dataset menggunakan kombinasi analisis statistik dan deep learning.</span>
+                <span class="t-en">Predictive models extracting insights from datasets through a combination of statistical analysis and deep learning.</span>
+              </p>
+            </div>
+          </div>
+          <div class="proj-card card card-hover">
+            <div class="stripe stripe-cream"></div>
+            <div class="proj-body-sm">
+              <div class="chip-row"><span class="chip-neutral">Cloud</span><span class="chip-neutral">Data</span></div>
+              <h3 class="proj-title-sm">Cloud-Based Data Analytics</h3>
+              <p class="proj-desc-sm">
+                <span class="t-id">Workflow analitik data di platform AWS, Azure, dan GCP untuk pemrosesan dan analisis yang skalabel.</span>
+                <span class="t-en">Data analytics workflows across AWS, Azure, and GCP for scalable processing and analysis.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-full card card-hover">
+          <div class="proj-full-stripe"></div>
+          <div class="proj-full-body">
+            <div class="proj-full-text">
+              <div class="chip-row" style="margin-bottom:.75rem;">
+                <span class="chip-orange">Web</span><span class="chip-neutral">Portfolio</span>
+              </div>
+              <h3 class="proj-title" style="margin-bottom:.5rem;">Personal Web Portfolio · <span class="accent"><span class="t-id">Halaman Ini</span><span class="t-en">This Very Page</span></span></h3>
+              <p class="proj-desc">
+                <span class="t-id">Portofolio pribadi ini, dibangun dengan Flask: tampilan warm glassmorphism, dukungan dua bahasa, dan animasi scroll.</span>
+                <span class="t-en">This personal portfolio, built with Flask: warm glassmorphism aesthetic, bilingual support, and scroll animations.</span>
+              </p>
+            </div>
+            <div class="proj-full-chips">
+              <span class="chip-orange">Flask</span><span class="chip-neutral">CSS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio Websites -->
+        <div class="proj-subsection">
+          <div class="proj-sub-header">
+            <h3 class="proj-sub-heading">
+              <span class="t-id">Portfolio <span class="accent">Website</span></span>
+              <span class="t-en">Portfolio <span class="accent">Websites</span></span>
+            </h3>
+            <p class="proj-sub-note">
+              <span class="t-id">Seluruh website berikut merupakan dummy atau tampilan saja, bukan hasil produksi asli.</span>
+              <span class="t-en">All websites below are dummy or display-only, not actual production builds.</span>
+            </p>
+          </div>
+          <div class="porto-bento">
+
+            <a href="https://wedding-dummy.vercel.app/" target="_blank" rel="noopener" class="porto-card porto-card--featured">
+              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(218,195,161,.22) 0%,rgba(240,107,21,.12) 100%);">
+                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">favorite</span>
+                <span class="porto-num">01</span>
+                <div class="porto-thumb-dots"></div>
+              </div>
+              <div class="porto-info">
+                <div class="chip-row"><span class="chip-cream">Wedding</span><span class="chip-neutral">Web</span></div>
+                <h3 class="porto-title">Wedding Website</h3>
+                <p class="porto-desc">
+                  <span class="t-id">Template undangan pernikahan digital yang elegan dengan desain responsif dan animasi halus.</span>
+                  <span class="t-en">Elegant digital wedding invitation template with smooth animations and responsive design.</span>
+                </p>
+                <div class="porto-cta">
+                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                  <span class="material-symbols-outlined">arrow_outward</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://kazed-body-fat-calc.vercel.app/" target="_blank" rel="noopener" class="porto-card">
+              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(96,165,250,.2) 0%,rgba(96,165,250,.05) 100%);">
+                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">monitor_weight</span>
+                <span class="porto-num">02</span>
+              </div>
+              <div class="porto-info">
+                <div class="chip-row"><span class="chip-neutral">Tools</span><span class="chip-neutral">Web</span></div>
+                <h3 class="porto-title">Body Fat Calculator</h3>
+                <p class="porto-desc">
+                  <span class="t-id">Kalkulator persentase lemak tubuh berbasis web dengan antarmuka bersih.</span>
+                  <span class="t-en">Web-based body fat percentage calculator with a clean interface.</span>
+                </p>
+                <div class="porto-cta">
+                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                  <span class="material-symbols-outlined">arrow_outward</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://pemoela-lab.vercel.app/" target="_blank" rel="noopener" class="porto-card">
+              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(240,107,21,.25) 0%,rgba(240,107,21,.06) 100%);">
+                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">business</span>
+                <span class="porto-num">03</span>
+              </div>
+              <div class="porto-info">
+                <div class="chip-row"><span class="chip-orange">Pemoela Lab</span><span class="chip-neutral">Web</span></div>
+                <h3 class="porto-title">Pemoela Lab</h3>
+                <p class="porto-desc">
+                  <span class="t-id">Demo company profile Pemoela Lab, digital solution agency.</span>
+                  <span class="t-en">Demo company profile for Pemoela Lab, a digital solution agency.</span>
+                </p>
+                <div class="porto-cta">
+                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                  <span class="material-symbols-outlined">arrow_outward</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://test-company-website.vercel.app/" target="_blank" rel="noopener" class="porto-card">
+              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.02) 100%);">
+                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">corporate_fare</span>
+                <span class="porto-num">04</span>
+              </div>
+              <div class="porto-info">
+                <div class="chip-row"><span class="chip-neutral">Company Profile</span><span class="chip-neutral">Web</span></div>
+                <h3 class="porto-title">Semesta Group</h3>
+                <p class="porto-desc">
+                  <span class="t-id">Company profile Semesta Group. Proyek pribadi, tidak berafiliasi dengan perusahaan terkait.</span>
+                  <span class="t-en">Semesta Group profile. Personal project, not affiliated with the actual company.</span>
+                </p>
+                <div class="porto-cta">
+                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                  <span class="material-symbols-outlined">arrow_outward</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://simulasi-bencana-kzd.vercel.app/" target="_blank" rel="noopener" class="porto-card">
+              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(74,222,128,.18) 0%,rgba(74,222,128,.04) 100%);">
+                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">storm</span>
+                <span class="porto-num">05</span>
+              </div>
+              <div class="porto-info">
+                <div class="chip-row"><span class="chip-neutral">Interaktif</span><span class="chip-neutral">Edukasi</span></div>
+                <h3 class="porto-title">Simulasi Bencana Alam</h3>
+                <p class="porto-desc">
+                  <span class="t-id">Media interaktif berbasis web untuk simulasi skenario bencana alam sebagai edukasi.</span>
+                  <span class="t-en">Web-based interactive media simulating natural disaster scenarios for education.</span>
+                </p>
+                <div class="porto-cta">
+                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                  <span class="material-symbols-outlined">arrow_outward</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Best Projects -->
+        <div class="proj-subsection">
+          <div class="proj-sub-header">
+            <h3 class="proj-sub-heading">
+              <span class="t-id">Project <span class="accent">Terbaik</span></span>
+              <span class="t-en"><span class="accent">Best</span> Projects</span>
+            </h3>
+            <p class="proj-sub-note">
+              <span class="t-id">Tampilan demo saja, bukan hasil produksi asli.</span>
+              <span class="t-en">Display/demo only, not actual production builds.</span>
+            </p>
+          </div>
+          <div class="best-bento">
+
+            <a href="https://waows-6-ken-day2.vercel.app/" target="_blank" rel="noopener" class="best-card">
+              <div class="best-card-bg" style="background:linear-gradient(135deg,rgba(240,107,21,.18) 0%,transparent 60%);"></div>
+              <div class="best-card-inner">
+                <div class="best-card-top">
+                  <div class="best-icon-wrap" style="background:rgba(240,107,21,.15);color:var(--primary);">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:1.25rem;">model_training</span>
+                  </div>
+                  <div class="chip-row"><span class="chip-orange">ML</span><span class="chip-neutral">Flask</span><span class="chip-neutral">Python</span></div>
+                </div>
+                <h3 class="best-title">Machine Learning with Flask</h3>
+                <p class="best-desc">
+                  <span class="t-id">Model machine learning yang diintegrasikan dengan Flask, menampilkan prediksi real-time melalui antarmuka web yang interaktif.</span>
+                  <span class="t-en">Machine learning model integrated with Flask, delivering real-time predictions through an interactive web interface.</span>
+                </p>
+                <div class="best-footer">
+                  <div class="chip-row"><span class="chip-neutral">Scikit-learn</span><span class="chip-neutral">Jinja2</span></div>
+                  <span class="best-cta">
+                    <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                    <span class="material-symbols-outlined">arrow_outward</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://waows-6-ken-day1.vercel.app/" target="_blank" rel="noopener" class="best-card">
+              <div class="best-card-bg" style="background:linear-gradient(135deg,rgba(218,195,161,.15) 0%,transparent 60%);"></div>
+              <div class="best-card-inner">
+                <div class="best-card-top">
+                  <div class="best-icon-wrap" style="background:rgba(218,195,161,.15);color:var(--secondary);">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:1.25rem;">storage</span>
+                  </div>
+                  <div class="chip-row"><span class="chip-cream">Flask</span><span class="chip-neutral">MySQL</span><span class="chip-neutral">Python</span></div>
+                </div>
+                <h3 class="best-title">Flask + MySQL Full Stack</h3>
+                <p class="best-desc">
+                  <span class="t-id">Aplikasi web full stack menggunakan Flask sebagai backend dan MySQL sebagai database, lengkap dengan operasi CRUD dan manajemen data.</span>
+                  <span class="t-en">Full stack web application using Flask as the backend and MySQL as the database, featuring CRUD operations and data management.</span>
+                </p>
+                <div class="best-footer">
+                  <div class="chip-row"><span class="chip-neutral">SQLAlchemy</span><span class="chip-neutral">Jinja2</span></div>
+                  <span class="best-cta">
+                    <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
+                    <span class="material-symbols-outlined">arrow_outward</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ TIMELINE ════════════════ -->
+  <section id="timeline" class="section section-animate">
+    <div class="container">
+      <h2 class="section-heading">
+        <span class="t-id">Perjalanan <span class="accent">Saya</span></span>
+        <span class="t-en">My <span class="accent">Journey</span></span>
+      </h2>
+
+      <div class="tl-grid">
+
+        <div>
+          <p class="tl-col-label"><span class="t-id">Pendidikan</span><span class="t-en">Education</span></p>
+          <div class="tl-track tl-entries">
+            <div class="tl-entry">
+              <span class="tl-dot"></span>
+              <p class="tl-date"><span class="t-id">Agustus 2023 · Sekarang</span><span class="t-en">Aug 2023 · Present</span></p>
+              <h4 class="tl-title"><span class="t-id">Sarjana Sains Data · Universitas Sebelas Maret</span><span class="t-en">Bachelor of Data Science · Universitas Sebelas Maret</span></h4>
+              <p class="tl-desc"><span class="t-id">Mempelajari analisis data, machine learning, deep learning, dan platform cloud (AWS, Azure, serta GCP) sebagai bagian dari kurikulum.</span><span class="t-en">Studying data analysis, machine learning, deep learning, and cloud platforms (AWS, Azure, and GCP) as part of the curriculum.</span></p>
+            </div>
+            <div class="tl-entry">
+              <span class="tl-dot"></span>
+              <p class="tl-date"><span class="t-id">Juli 2020 · Juni 2023</span><span class="t-en">Jul 2020 · Jun 2023</span></p>
+              <h4 class="tl-title"><span class="t-id">Rekayasa Perangkat Lunak · SMK Telkom Malang</span><span class="t-en">Software Engineering · SMK Telkom Malang</span></h4>
+              <p class="tl-desc"><span class="t-id">Tempat perjalanan di dunia teknologi dimulai: mempelajari pemrograman, dasar-dasar UI/UX, dan pengembangan web yang terstruktur.</span><span class="t-en">Where the tech journey began: learning programming, UI/UX fundamentals, and structured web development.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="tl-col-label"><span class="t-id">Pengalaman</span><span class="t-en">Experience</span></p>
+          <div class="tl-track tl-entries">
+            <div class="tl-entry">
+              <span class="tl-dot"></span>
+              <p class="tl-date"><span class="t-id">Februari 2026 · Mei 2026</span><span class="t-en">Feb 2026 · May 2026</span></p>
+              <h4 class="tl-title">Campus Ambassador · <span class="accent">MySkill</span></h4>
+              <p class="tl-desc"><span class="t-id">Menyelesaikan program MySkill Campus Ambassador Batch 1, platform edukasi karir yang didukung AWS EdStart dan LinkedIn Top Startups.</span><span class="t-en">Completed the MySkill Campus Ambassador Batch 1 program, a career education platform backed by AWS EdStart and LinkedIn Top Startups.</span></p>
+              <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_MySkill_Campus_Ambassador_Kenza_Athallah_Nandana_Wijaya.png') }}" class="cert-link">
+                <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
+                <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
+              </a>
+            </div>
+            <div class="tl-entry">
+              <span class="tl-dot"></span>
+              <p class="tl-date"><span class="t-id">2026 · Sekarang</span><span class="t-en">2026 · Present</span></p>
+              <h4 class="tl-title">Data Analyst Intern · <span class="accent">Amigo Group</span></h4>
+              <p class="tl-desc"><span class="t-id">Magang dalam program MBKM. Mengelola dan menganalisis data bisnis untuk mendukung pengambilan keputusan berbasis data di lingkungan ritel.</span><span class="t-en">Interned through the MBKM program. Managed and analyzed business data to support data-driven decision-making in a retail environment.</span></p>
+            </div>
+            <div class="tl-entry">
+              <span class="tl-dot"></span>
+              <p class="tl-date"><span class="t-id">Juni 2024 · Juli 2025</span><span class="t-en">Jun 2024 · Jul 2025</span></p>
+              <h4 class="tl-title">Freelance Graphic Designer · <span class="accent">CV. Dharma Syafa Kreasi</span></h4>
+              <p class="tl-desc"><span class="t-id">Mendesain poster, feed Instagram, banner, backdrop, dan materi promosi untuk berbagai kebutuhan event klien.</span><span class="t-en">Designed posters, Instagram feeds, banners, backdrops, and promotional materials for various client events.</span></p>
+            </div>
+            <div class="tl-entry">
+              <span class="tl-dot"></span>
+              <p class="tl-date"><span class="t-id">Juli 2022 · Desember 2022</span><span class="t-en">Jul 2022 · Dec 2022</span></p>
+              <h4 class="tl-title">Telecom Data Analyst Intern · <span class="accent">Telkom Landmark SBY</span></h4>
+              <p class="tl-desc"><span class="t-id">Mengumpulkan dan menganalisis data performa BTS di Jawa Timur dan Madura untuk mendukung pengambilan keputusan operasional.</span><span class="t-en">Collected and analyzed BTS performance data across East Java and Madura to support operational decision-making.</span></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Awards -->
+      <p class="awards-label"><span class="t-id">Penghargaan</span><span class="t-en">Awards</span></p>
+      <div class="awards-grid card-grid">
+        <div class="award-card card card-hover">
+          <span class="material-symbols-outlined award-icon" style="font-variation-settings:'FILL' 1">emoji_events</span>
+          <div>
+            <p class="award-badge">Best Project Award</p>
+            <h4 class="award-title">Python–Flask Development</h4>
+            <p class="award-desc"><span class="t-id">Penghargaan atas kualitas implementasi dan fungsionalitas project dalam program Python–Flask Development.</span><span class="t-en">Awarded for project implementation quality and functionality in the Python–Flask Development program.</span></p>
+            <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_Python_BestProject.pdf') }}" class="cert-link">
+              <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
+              <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
+            </a>
+          </div>
+        </div>
+        <div class="award-card card card-hover">
+          <span class="material-symbols-outlined award-icon" style="font-variation-settings:'FILL' 1">emoji_events</span>
+          <div>
+            <p class="award-badge">Best Project Award</p>
+            <h4 class="award-title">Python-Flask for Web Applications</h4>
+            <p class="award-desc"><span class="t-id">Penghargaan atas kualitas implementasi project web berbasis Python dan Flask.</span><span class="t-en">Awarded for the quality of the Python-Flask web application project.</span></p>
+            <a href="#" data-cert="{{ url_for('static', filename='img/Kenza Athallah Nandana Wijaya.pdf') }}" class="cert-link">
+              <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
+              <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
+            </a>
+          </div>
+        </div>
+        <div class="award-card card card-hover">
+          <span class="material-symbols-outlined award-icon" style="font-variation-settings:'FILL' 1">emoji_events</span>
+          <div>
+            <p class="award-badge">Best Project Award</p>
+            <h4 class="award-title">Flask &amp; Machine Learning Fundamentals</h4>
+            <p class="award-desc"><span class="t-id">Penghargaan atas keberhasilan mengintegrasikan Flask dengan machine learning secara efektif dalam satu project.</span><span class="t-en">Awarded for successfully integrating Flask with machine learning in a cohesive project.</span></p>
+            <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_Python_BestProject.pdf') }}" class="cert-link">
+              <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
+              <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════ CLIENTS ════════════════ -->
+  <section id="clients" class="section section-animate">
+    <div class="container">
+      <h2 class="section-heading">
+        <span class="t-id">Klien yang Pernah Saya <span class="accent">Tangani</span></span>
+        <span class="t-en">Clients I've <span class="accent">Worked With</span></span>
+      </h2>
+      <p class="clients-desc">
+        <span class="t-id">Sebagai Freelance Graphic Designer untuk kebutuhan visual event dan branding.</span>
+        <span class="t-en">As a Freelance Graphic Designer for visual event and branding needs.</span>
+      </p>
+
+      <div class="clients-grid card-grid">
+        <div class="client-card card card-hover">
+          <div class="client-logo">
+            <img src="{{ url_for('static', filename='img/Wonderland.png') }}" alt="Wonderland" loading="lazy" />
+          </div>
+          <div>
+            <h3 class="client-name">Wonderland</h3>
+            <span class="chip-neutral"><span class="t-id">Hiburan &amp; Event</span><span class="t-en">Entertainment &amp; Events</span></span>
+            <p class="client-desc"><span class="t-id">Desain aset visual event: poster, banner, backdrop, dan konten promosi digital.</span><span class="t-en">Visual asset design for events: posters, banners, backdrops, and digital promotional content.</span></p>
+          </div>
+        </div>
+        <div class="client-card card card-hover">
+          <div class="client-logo">
+            <img src="{{ url_for('static', filename='img/Luwes Group.png') }}" alt="Luwes Group" loading="lazy" />
+          </div>
+          <div>
+            <h3 class="client-name">Luwes Group</h3>
+            <span class="chip-neutral"><span class="t-id">Ritel &amp; Supermarket</span><span class="t-en">Retail &amp; Supermarket</span></span>
+            <p class="client-desc"><span class="t-id">Desain materi promosi dan visual branding untuk keperluan event retail.</span><span class="t-en">Promotional material and visual branding design for retail event needs.</span></p>
+          </div>
+        </div>
+        <div class="client-card card card-hover">
+          <div class="client-logo">
+            <img src="{{ url_for('static', filename='img/Cardinal.png') }}" alt="Cardinal" loading="lazy" />
+          </div>
+          <div>
+            <h3 class="client-name">Cardinal</h3>
+            <span class="chip-neutral"><span class="t-id">Fashion &amp; Apparel</span><span class="t-en">Fashion &amp; Apparel</span></span>
+            <p class="client-desc"><span class="t-id">Desain konten visual dan materi promosi untuk branding produk apparel.</span><span class="t-en">Visual content and promotional material design for apparel product branding.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ CONTACT ════════════════ -->
+  <section id="contact" class="section section-animate">
+    <div class="container">
+      <div class="contact-card card">
+        <div class="glow glow-orange" style="width:320px;height:320px;top:-80px;right:-60px;opacity:.55;"></div>
+        <div class="glow glow-grey"   style="width:260px;height:260px;bottom:-60px;left:-40px;opacity:.45;"></div>
+
+        <div class="contact-inner">
+          <div class="contact-left">
+            <h2 class="contact-heading">
+              <span class="t-id">Ayo <span class="accent">Ngobrol!</span></span>
+              <span class="t-en">Let's <span class="accent">Talk!</span></span>
+            </h2>
+            <p class="contact-desc">
+              <span class="t-id">Tertarik berdiskusi tentang data, machine learning, web, atau kebutuhan desain visual? Saya terbuka untuk diajak bicara.</span>
+              <span class="t-en">Interested in discussing data, machine learning, web development, or visual design needs? Feel free to reach out.</span>
+            </p>
+            <a href="mailto:kenzaathallah.wijaya@gmail.com" class="btn-primary">
+              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">mail</span>
+              <span class="t-id">Kirim Email</span><span class="t-en">Send Email</span>
+            </a>
+          </div>
+
+          <div class="contact-links">
+            <a href="mailto:kenzaathallah.wijaya@gmail.com" class="contact-link">
+              <div class="contact-link-icon card">
+                <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">mail</span>
+              </div>
+              <span class="contact-link-text">kenzaathallah.wijaya@gmail.com</span>
+            </a>
+            <a href="https://linkedin.com/in/kenzaathallah" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon card">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <span class="contact-link-text">linkedin.com/in/kenzaathallah</span>
+            </a>
+            <a href="https://github.com/K4ZED" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon card">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </div>
+              <span class="contact-link-text">github.com/K4ZED</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#home" class="footer-brand"><span class="accent">K</span>azed<span class="accent">.</span></a>
+      <p class="footer-copy">
+        © {{ full_name }} {{ year }} ·
+        <span class="t-id">Dibuat dengan Flask &amp; CSS</span>
+        <span class="t-en">Built with Flask &amp; CSS</span>
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/K4ZED"              target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/kenzaathallah"  target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:kenzaathallah.wijaya@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Certificate modal -->
+<div class="cert-modal" id="certModal" role="dialog" aria-modal="true">
+  <div class="cert-modal-backdrop"></div>
+  <div class="cert-modal-box">
+    <button class="cert-modal-close" aria-label="Tutup">
+      <span class="material-symbols-outlined" style="font-size:1rem">close</span>
+    </button>
+    <div class="cert-modal-body" id="certModalBody"></div>
+  </div>
+</div>
+
+<!-- Chat widget (Byte) -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">B</div>
+        <div>
+          <p class="chat-title">Byte</p>
+          <p class="chat-subtitle"><span class="t-id">Asisten virtual Kenza</span><span class="t-en">Kenza's virtual assistant</span></p>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Tutup chat">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot"><span class="t-id">Halo! Aku Byte, asisten virtual Kenza. Mau tanya soal skill, project, atau pengalamannya?</span><span class="t-en">Hi! I'm Byte, Kenza's virtual assistant. Ask me about his skills, projects, or experience.</span></div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" maxlength="300" autocomplete="off"
+             placeholder="Tanya soal Kenza..." aria-label="Tulis pesan" />
+      <button class="chat-send" id="chatSend" aria-label="Kirim pesan">
+        <span class="material-symbols-outlined">send</span>
+      </button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggle" aria-label="Buka chat" aria-expanded="false">
+    <span class="material-symbols-outlined" id="chatToggleIcon">chat</span>
+  </button>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -46,12 +46,13 @@ def gh_data():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    from chatbot import get_response
+    from chatbot import get_reply
     data = request.get_json(silent=True) or {}
     message = str(data.get("message", "")).strip()
     if not message or len(message) > 300:
-        return jsonify({"response": "Pesan tidak valid."})
-    return jsonify({"response": get_response(message)})
+        return jsonify({"response": "Pesan tidak valid.", "suggestions": []})
+    # {"response": str, "suggestions": [{"label", "message"}]} (suggestions = quick-reply buttons)
+    return jsonify(get_reply(message))
 
 
 if __name__ == "__main__":

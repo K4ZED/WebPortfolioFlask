@@ -1,1001 +1,1932 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>{{ full_name }} | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of {{ full_name }}: Data Analyst, Data Science, Backend Developer, and Graphic Designer." />
+  <title>Kenza Athallah | Portfolio</title>
+  <meta name="description" content="Portfolio of Kenza Athallah: AI Specialist, Systems Engineer, Fullstack Developer and Data Analyst." />
+  <meta name="theme-color" content="#08080a" />
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://portfolio-kazed.my.id/" />
-  <meta property="og:title"       content="{{ full_name }} | Portfolio" />
-  <meta property="og:description" content="Data Analyst · Data Science · Backend Developer · Graphic Designer" />
-  <meta property="og:image"       content="https://portfolio-kazed.my.id/static/img/Ken.png" />
-  <meta property="og:locale"      content="id_ID" />
-  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://portfolio-kazed.my.id/" />
+  <meta property="og:title" content="Kenza Athallah | Portfolio" />
+  <meta property="og:description" content="AI Specialist · Systems Engineer · Fullstack Developer · Data Analyst" />
+  <meta property="og:image" content="https://portfolio-kazed.my.id/static/img/Ken.png" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter / X Card -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="{{ full_name }} | Portfolio" />
-  <meta name="twitter:description" content="Data Analyst · Data Science · Backend Developer · Graphic Designer" />
-  <meta name="twitter:image"       content="https://portfolio-kazed.my.id/static/img/Ken.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kenza Athallah | Portfolio" />
+  <meta name="twitter:description" content="AI Specialist · Systems Engineer · Fullstack Developer · Data Analyst" />
+  <meta name="twitter:image" content="https://portfolio-kazed.my.id/static/img/Ken.png" />
 
-  <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/favicon.jpg') }}" />
-  <script>try{var t=localStorage.getItem('preferredTheme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/favicon-64.jpg') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
+
+{% raw %}
+  <style>
+    /* ───────────── Tokens ───────────── */
+    :root {
+      --background: #08080a;
+      --foreground: #f3f1ea;
+      --surface: #111114;
+      --surface-2: #17171b;
+      --muted: #807f78;
+      --line: rgba(243, 241, 234, 0.1);
+      --line-strong: rgba(243, 241, 234, 0.22);
+      --accent: #ff3b1d;
+      --accent-2: #ff6a3d;
+      --gutter: 2.5rem;
+      --section: 9rem;
+
+      --font-display: "Anton", sans-serif;
+      --font-sans: "Onest", sans-serif;
+
+      --fs-hero: 28rem;     --lh-hero: 0.78;
+      --fs-mega: 13rem;     --lh-mega: 0.86;
+      --fs-display: 7.5rem; --lh-display: 0.9;
+      --fs-h1: 5rem;        --lh-h1: 0.95;
+      --fs-h2: 3.25rem;     --lh-h2: 1;
+      --fs-h3: 1.75rem;     --lh-h3: 1.15;
+      --fs-lead: 1.375rem;  --lh-lead: 1.45;
+      --fs-body: 1.0625rem; --lh-body: 1.6;
+      --fs-eyebrow: 0.8125rem; --lh-eyebrow: 1.2;
+
+      --expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+      --wipe: cubic-bezier(0.22, 1, 0.36, 1);
+      --out: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    /* ───────────── Adaptive rem grid ───────────── */
+    html { font-size: 16px; background: #08080a; }
+    @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
+    @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
+    @media (max-width: 1024px) { html { font-size: 1.5625vw; } }
+    @media (max-width: 640px) {
+      html { font-size: 4.444444vw; }
+      :root { --gutter: 16px; }
+    }
+
+    /* ───────────── Reset ───────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    img, video { display: block; max-width: 100%; }
+    ul, ol { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; color: inherit; background: none; border: 0; appearance: none; -webkit-appearance: none; }
+    button { cursor: pointer; }
+
+    body {
+      background: #08080a;
+      color: #f3f1ea;
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    ::selection { background: #ff3b1d; color: #08080a; }
+
+    /* Lenis */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    html.is-loading { overflow: hidden; }
+
+    main { position: relative; width: 100%; overflow-x: hidden; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    /* ───────────── Shared bits ───────────── */
+    .eyebrow {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      font-weight: 500; text-transform: uppercase; letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+    .eyebrow::before {
+      content: ""; flex: none; width: 0.5rem; height: 0.5rem;
+      border-radius: 9999px; background: var(--accent);
+    }
+    .label {
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted);
+    }
+    .section { padding: var(--section) var(--gutter); }
+    .section-head {
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    @media (min-width: 640px) {
+      .section-head { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    }
+    .heading {
+      margin-top: 1.5rem;
+      font-family: var(--font-display); font-weight: 400;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      font-size: var(--fs-h2); line-height: 0.95;
+    }
+    @media (min-width: 640px) { .heading--grow { font-size: var(--fs-h1); } }
+    .heading--tight { line-height: 1; }
+
+    /* ───────────── Text reveals ───────────── */
+    .split-line {
+      display: block; overflow: hidden;
+      padding: 0.1em 0.04em; margin: -0.1em -0.04em;
+    }
+    .split-unit {
+      display: inline-block;
+      transform: translate3d(0, 110%, 0); opacity: 0;
+      transition:
+        transform var(--dur, 900ms) var(--expo) var(--delay, 0ms),
+        opacity var(--dur, 900ms) var(--expo) var(--delay, 0ms);
+    }
+    .is-played .split-unit { transform: none; opacity: 1; }
+    [data-split]:not(.is-split) { visibility: hidden; }
+
+    .fade-up {
+      opacity: 0;
+      transform: translate3d(0, var(--fy, 16px), 0);
+      transition:
+        opacity var(--dur, 520ms) var(--expo) var(--delay, 0ms),
+        transform var(--dur, 520ms) var(--expo) var(--delay, 0ms);
+    }
+    .fade-up.in-view { opacity: 1; transform: none; }
+
+    /* ───────────── 1) Preloader ───────────── */
+    .preloader {
+      position: fixed; inset: 0; z-index: 100;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 0.75rem;
+      padding: var(--gutter);
+      transition: transform 650ms var(--wipe);
+      will-change: transform;
+    }
+    .preloader::before {
+      content: ""; position: absolute; inset: 0; z-index: -10; background: var(--background);
+    }
+    @media (min-width: 640px) {
+      .preloader { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+    }
+    .preloader__brand {
+      font-family: var(--font-display); font-size: var(--fs-h3);
+      text-transform: uppercase; line-height: 1; letter-spacing: -0.01em;
+      color: var(--foreground);
+    }
+    .preloader__count {
+      font-family: var(--font-display); font-size: var(--fs-display);
+      line-height: 1; font-variant-numeric: tabular-nums; color: var(--foreground);
+    }
+    .preloader__count span:last-child { color: var(--accent); }
+    .preloader__brand, .preloader__count { transition: opacity 300ms var(--out); }
+    .preloader.is-fading .preloader__brand,
+    .preloader.is-fading .preloader__count { opacity: 0; }
+    .preloader.is-wiping { transform: translate3d(0, -100%, 0); }
+    .preloader.is-done { pointer-events: none; visibility: hidden; }
+
+    /* ───────────── 2) Nav ───────────── */
+    .site-header {
+      position: fixed; inset-inline: 0; top: 0; z-index: 50; pointer-events: none;
+    }
+    .site-nav {
+      position: relative; z-index: 2; pointer-events: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem var(--gutter);
+    }
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo__mark {
+      display: grid; place-items: center;
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+      border: 1px solid var(--line-strong);
+      font-weight: 600; letter-spacing: -0.01em; font-size: 0.9375rem;
+      overflow: hidden; background: var(--surface);
+    }
+    .logo__mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo__name {
+      display: none;
+      font-size: var(--fs-eyebrow); font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.22em; color: var(--muted);
+    }
+    @media (min-width: 640px) { .logo__name { display: inline; } }
+
+    .nav-links { display: none; gap: 2.5rem; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-link {
+      position: relative;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+      transition: color 340ms var(--out);
+    }
+    .nav-link::after {
+      content: ""; position: absolute; bottom: -0.25rem; left: 0;
+      height: 1px; width: 0; background: var(--accent);
+      transition: width 340ms var(--out);
+    }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--foreground); }
+    .nav-link:hover::after, .nav-link:focus-visible::after { width: 100%; }
+
+    .burger {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.375rem;
+      width: 2.5rem; height: 2.5rem;
+    }
+    @media (min-width: 768px) { .burger { display: none; } }
+    .burger span {
+      display: block; height: 0.125rem; width: 1.5rem; background: var(--foreground);
+      transition: transform 420ms var(--expo), opacity 300ms var(--out);
+    }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(0.5rem) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-0.5rem) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-inline: var(--gutter);
+      background: var(--background);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 450ms var(--out), visibility 0s linear 450ms;
+    }
+    .mobile-menu.is-open {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transition: opacity 450ms var(--out), visibility 0s;
+    }
+    .mobile-menu ul { display: flex; flex-direction: column; gap: 1rem; }
+    .mobile-menu a {
+      display: inline-block;
+      font-family: var(--font-display); font-size: var(--fs-h2);
+      text-transform: uppercase; line-height: 1; letter-spacing: -0.01em;
+      opacity: 0; transform: translate3d(0, 48px, 0);
+      transition: opacity 420ms var(--out), transform 420ms var(--out);
+    }
+    .mobile-menu.is-open a {
+      opacity: 1; transform: none;
+      transition-delay: calc(120ms + var(--i) * 60ms);
+    }
+    .mobile-menu a:active { color: var(--accent); }
+    @media (min-width: 768px) { .mobile-menu { display: none; } }
+
+    /* ───────────── 3) Hero ───────────── */
+    .hero {
+      position: relative; display: flex; flex-direction: column;
+      min-height: 100vh; min-height: 100svh; overflow: hidden;
+    }
+    .hero__top {
+      position: relative; z-index: 30;
+      display: flex; flex-direction: column; gap: 2rem;
+      padding: 7rem var(--gutter) 0;
+    }
+    @media (min-width: 640px) {
+      .hero__top { flex-direction: row; align-items: flex-start; justify-content: space-between; padding-top: 8rem; }
+    }
+    .hero__roles {
+      font-family: var(--font-display); font-weight: 400;
+      text-transform: uppercase; line-height: 1.05; letter-spacing: -0.01em;
+      color: var(--foreground); font-size: var(--fs-h3);
+    }
+    @media (min-width: 640px) { .hero__roles { font-size: var(--fs-h2); } }
+    .hero__roles .split-unit { --dur: 760ms; }
+    .hero__desc { max-width: 26rem; font-size: var(--fs-body); color: var(--muted); }
+    @media (min-width: 640px) { .hero__desc { text-align: right; } }
+
+    .hero__portrait {
+      position: absolute; bottom: 0; left: 50%; z-index: 20;
+      transform: translateX(-50%);
+      height: 86vh; width: 80vw; pointer-events: none;
+    }
+    @media (min-width: 640px) { .hero__portrait { width: 48vw; } }
+    @media (min-width: 1024px) { .hero__portrait { width: 36vw; } }
+    .hero__portrait .liquid {
+      position: absolute; inset: 0; pointer-events: auto;
+      /* Ken.png is a full photo, not a cutout: fade the sky out so the name shows around the figure */
+      -webkit-mask-image: radial-gradient(ellipse 50% 72% at 50% 68%, #000 38%, transparent 100%);
+      mask-image: radial-gradient(ellipse 50% 72% at 50% 68%, #000 38%, transparent 100%);
+    }
+    @media (max-width: 639px) {
+      .hero__portrait { height: 64svh; }
+    }
+    .hero__portrait img { object-position: center bottom; }
+
+    .hero__base {
+      position: absolute; inset-inline: 0; bottom: 0; z-index: 20;
+      height: 26vh; pointer-events: none;
+      background: linear-gradient(to bottom, transparent, #08080a);
+    }
+    .hero__name {
+      position: absolute; inset-inline: 0; bottom: 0; z-index: 10;
+      transform: translateY(6%);
+      display: flex; flex-direction: column; align-items: center;
+      font-family: var(--font-display); font-weight: 400;
+      text-transform: uppercase; line-height: var(--lh-hero); letter-spacing: -0.01em;
+      color: var(--accent);
+      /* "Athallah" is long: cap the size so it always fits the viewport */
+      font-size: min(var(--fs-mega), 23vw);
+    }
+    @media (min-width: 640px) { .hero__name { font-size: min(var(--fs-hero), 23vw); } }
+    /* Phones: the photo is as wide as the name, so the name sits in front of it */
+    @media (max-width: 639px) {
+      .hero__name { z-index: 25; bottom: 4.75rem; transform: none; }
+      .hero__base { height: 18vh; }
+    }
+    .hero__line { display: block; white-space: nowrap; }
+    .hero__line .ch {
+      display: inline-block;
+      transform: translate3d(0, 100%, 0); opacity: 0;
+      transition:
+        transform 900ms var(--expo) calc(var(--i) * 52ms),
+        opacity 900ms var(--expo) calc(var(--i) * 52ms);
+    }
+    .hero__line.is-played .ch { transform: none; opacity: 1; }
+
+    .hero__cue {
+      position: absolute; bottom: 2rem; left: var(--gutter); z-index: 30;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted);
+      opacity: 0; transition: opacity 700ms var(--out);
+    }
+    .hero__cue::before { content: ""; width: 2.5rem; height: 1px; background: var(--accent); }
+    .hero__cue.in-view { opacity: 1; }
+
+    /* ───────────── LiquidImage ───────────── */
+    .liquid { position: relative; overflow: hidden; background: var(--surface); container-type: inline-size; }
+    .liquid[data-bare] { background: transparent; }
+    .liquid-svg { position: absolute; width: 0; height: 0; }
+    .liquid-media { position: absolute; inset: 0; }
+    .liquid-media img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .liquid--contain .liquid-media img { object-fit: contain; padding: 14%; }
+    .liquid-placeholder {
+      position: absolute; inset: 0;
+      display: grid; place-items: center; padding: 1.5rem;
+      background: radial-gradient(130% 130% at 30% 15%, var(--surface-2), var(--background));
+    }
+    .liquid-placeholder span {
+      font-family: var(--font-display); text-transform: uppercase;
+      font-size: min(var(--fs-h1), 14cqi); line-height: 0.95; letter-spacing: -0.01em;
+      text-align: center; color: var(--foreground); opacity: 0.9;
+    }
+    .liquid-vignette, .liquid-veil, .liquid-glow { position: absolute; inset: 0; pointer-events: none; }
+    .liquid-vignette {
+      background: radial-gradient(120% 120% at 50% 120%, color-mix(in srgb, #08080a 70%, transparent), transparent 60%);
+    }
+    .liquid-veil {
+      background: var(--background); mix-blend-mode: color; opacity: 0.88;
+      transition: opacity 380ms var(--out);
+    }
+    .liquid-glow {
+      background: linear-gradient(120deg, transparent 30%, color-mix(in srgb, var(--accent) 35%, transparent) 50%, transparent 70%);
+      opacity: 0; transition: opacity 340ms var(--out);
+    }
+    .liquid.is-hover .liquid-veil { opacity: 0; }
+    .liquid.is-hover .liquid-glow { opacity: 1; }
+
+    /* ───────────── 4) Marquee ───────────── */
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      padding-block: 2rem;
+    }
+    .marquee__track {
+      display: flex; flex-wrap: nowrap; width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee__item {
+      display: flex; align-items: center; flex: none;
+      font-family: var(--font-display); font-size: var(--fs-h2); line-height: 1;
+      text-transform: uppercase; letter-spacing: -0.01em; white-space: nowrap;
+    }
+    .marquee__item::after {
+      content: ""; flex: none; margin-inline: 2rem;
+      width: 0.625rem; height: 0.625rem; border-radius: 9999px; background: var(--accent);
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ───────────── 5) About / Story ───────────── */
+    .story { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 1024px) {
+      .story { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gutter); }
+      .story__left { grid-column: span 6; }
+      .story__right { grid-column: span 6; padding-top: 0.5rem; }
+    }
+    .story .heading { max-width: 16ch; }
+    .story__body { margin-top: 2rem; max-width: 46ch; font-size: var(--fs-lead); line-height: var(--lh-lead); color: var(--muted); }
+    .principle {
+      display: grid; grid-template-columns: auto 1fr; column-gap: 1.5rem;
+      border-top: 1px solid var(--line); padding: 2rem 0;
+      --fy: 24px; --dur: 560ms;
+    }
+    .principle:last-child { border-bottom: 1px solid var(--line); }
+    .principle__num {
+      font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600;
+      font-variant-numeric: tabular-nums; color: var(--accent);
+    }
+    .principle__title { font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600; letter-spacing: -0.01em; }
+    .principle__text { margin-top: 0.75rem; max-width: 44ch; color: var(--muted); }
+    .principle__when {
+      margin-top: 0.75rem; font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+    }
+
+    /* ───────────── 6) Projects / Ventures ───────────── */
+    .ventures .heading { max-width: 14ch; }
+    .ventures__grid {
+      margin-top: 4rem;
+      display: grid; grid-template-columns: 1fr; column-gap: var(--gutter); row-gap: 4rem;
+    }
+    @media (min-width: 768px) {
+      .ventures__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ventures__grid > li:nth-child(even) { margin-top: 6rem; --delay: 120ms; }
+    }
+    .ventures__grid > li { --fy: 60px; --dur: 620ms; }
+    .venture .liquid { aspect-ratio: 16 / 11; width: 100%; border-radius: 0.125rem; }
+    .venture__row {
+      margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.25rem;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem;
+    }
+    .venture__name {
+      font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600; letter-spacing: -0.01em;
+      transition: color 340ms var(--out);
+    }
+    .venture:hover .venture__name { color: var(--accent); }
+    .venture__blurb { margin-top: 0.5rem; max-width: 42ch; color: var(--muted); }
+    .venture__meta { flex: none; text-align: right; max-width: 45%; }
+    .venture__tech, .venture__tag {
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.18em;
+    }
+    .venture__tech { color: var(--muted); }
+    .venture__tag { display: inline-block; margin-top: 0.5rem; font-weight: 500; color: var(--accent); }
+    .venture__tag--muted { color: var(--muted); }
+    a.venture__tag { transition: color 340ms var(--out); }
+    a.venture__tag:hover, a.venture__tag:focus-visible { color: var(--accent-2); }
+    .venture__cat { margin-top: 0.75rem; }
+    .ventures__grid > li[hidden] { display: none; }
+    .ventures__more { margin-top: 5rem; display: flex; justify-content: center; }
+    .more-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 1rem 1.75rem; border: 1px solid var(--line-strong); border-radius: 9999px;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--foreground);
+      transition: border-color 340ms var(--out), color 340ms var(--out);
+    }
+    .more-btn span { color: var(--accent); }
+    .more-btn:hover, .more-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
+
+    /* ───────────── 7) Impact ───────────── */
+    .impact .heading { margin-top: 1.5rem; }
+    .stats {
+      margin-top: 4rem;
+      display: grid; grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+    }
+    .stat {
+      display: flex; flex-direction: column; gap: 1rem;
+      border-bottom: 1px solid var(--line); padding: 2.5rem 0;
+      --fy: 24px; --dur: 560ms;
+    }
+    .stat dd {
+      order: 1;
+      font-family: var(--font-display); font-size: var(--fs-display);
+      line-height: 1; letter-spacing: -0.01em;
+      transition: color 340ms var(--out);
+    }
+    .stat:hover dd { color: var(--accent); }
+    .stat dt {
+      order: 2; max-width: 20ch;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted);
+    }
+    @media (min-width: 640px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stat:nth-child(2n) { border-left: 1px solid var(--line); padding-left: 2rem; }
+    }
+    @media (min-width: 1024px) {
+      .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .stat { padding: 3rem 0; }
+      .stat:nth-child(2n) { border-left: 0; padding-left: 0; }
+      .stat:not(:nth-child(4n + 1)) { border-left: 1px solid var(--line); padding-left: 2rem; }
+    }
+
+    /* GitHub contribution calendar */
+    .gh { margin-top: 4rem; --fy: 24px; --dur: 560ms; }
+    .gh__head {
+      display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+      gap: 0.75rem 2rem;
+    }
+    .gh__total { color: var(--muted); }
+    .gh__total strong { color: var(--foreground); font-weight: 600; }
+    .gh__link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+      transition: color 340ms var(--out);
+    }
+    .gh__link span { color: var(--accent); }
+    .gh__link:hover, .gh__link:focus-visible { color: var(--foreground); }
+    .gh__scroll {
+      margin-top: 1.5rem; overflow-x: auto; overflow-y: hidden;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      padding: 1.5rem 0; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent;
+    }
+    .gh__inner { --cell: 0.875rem; --gap: 0.1875rem; width: max-content; }
+    @media (max-width: 640px) { .gh__inner { --cell: 11px; --gap: 3px; } }
+    .gh__months { position: relative; height: 1.25rem; margin-left: calc(2rem + var(--gap)); }
+    .gh__month {
+      position: absolute; top: 0;
+      font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    }
+    .gh__row { display: flex; gap: var(--gap); }
+    .gh__wd {
+      display: grid; grid-template-rows: repeat(7, var(--cell)); gap: var(--gap); width: 2rem;
+      font-size: 0.625rem; line-height: var(--cell); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+    }
+    .gh__weeks { position: relative; display: flex; gap: var(--gap); }
+    .gh__week { display: grid; grid-template-rows: repeat(7, var(--cell)); gap: var(--gap); }
+    .gh__day {
+      width: var(--cell); height: var(--cell); border-radius: 2px;
+      background: var(--surface-2); outline: 1px solid rgba(243, 241, 234, 0.04); outline-offset: -1px;
+      transition: transform 200ms var(--out);
+    }
+    .gh__day--pad { background: transparent; outline: 0; }
+    .gh__day[data-level="1"] { background: color-mix(in srgb, var(--accent) 28%, var(--surface-2)); }
+    .gh__day[data-level="2"] { background: color-mix(in srgb, var(--accent) 52%, var(--surface-2)); }
+    .gh__day[data-level="3"] { background: color-mix(in srgb, var(--accent) 76%, var(--surface-2)); }
+    .gh__day[data-level="4"] { background: var(--accent); }
+    .gh__day:not(.gh__day--pad):hover { transform: scale(1.35); }
+    .gh__legend {
+      margin-top: 1rem; display: flex; align-items: center; justify-content: flex-end; gap: 0.375rem;
+      font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    }
+    .gh__legend .gh__day { width: 0.75rem; height: 0.75rem; }
+    .gh__legend .gh__day:hover { transform: none; }
+    .gh.is-failed .gh__scroll, .gh.is-failed .gh__legend { display: none; }
+
+    /* ───────────── 8) Clients / Voices ───────────── */
+    .voices__body { margin-top: 4rem; display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 1024px) {
+      .voices__body { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gutter); }
+      .voices__list { grid-column: span 5; }
+      .voices__panel { grid-column: span 7; }
+    }
+    .voice-btn {
+      width: 100%; display: flex; align-items: baseline; gap: 1.25rem;
+      border-top: 1px solid var(--line); padding: 1.75rem 0; text-align: left;
+    }
+    .voices__list li:last-child .voice-btn { border-bottom: 1px solid var(--line); }
+    .voice-btn__idx {
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      font-variant-numeric: tabular-nums; letter-spacing: 0.18em; color: var(--muted);
+      transition: color 340ms var(--out);
+    }
+    .voice-btn__main { flex: 1; min-width: 0; }
+    .voice-btn__name {
+      display: block; font-size: var(--fs-h3); line-height: var(--lh-h3);
+      font-weight: 600; letter-spacing: -0.01em; color: var(--muted);
+      transition: color 340ms var(--out);
+    }
+    .voice-btn__role {
+      display: block; margin-top: 0.25rem;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+    }
+    .voice-btn__rule {
+      align-self: center; flex: none; height: 1px; width: 0; background: var(--accent);
+      transition: width 420ms var(--expo);
+    }
+    .voice-btn.is-active .voice-btn__idx { color: var(--accent); }
+    .voice-btn.is-active .voice-btn__name { color: var(--foreground); }
+    .voice-btn.is-active .voice-btn__rule { width: 2.5rem; }
+
+    .voices__panel { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 640px) {
+      .voices__panel { grid-template-columns: 1fr auto; align-items: start; gap: var(--gutter); }
+    }
+    .voices__quote { order: 2; }
+    .voices__figure-wrap { order: 1; }
+    @media (min-width: 640px) {
+      .voices__quote { order: 1; }
+      .voices__figure-wrap { order: 2; width: 16rem; }
+    }
+    .voices__text {
+      max-width: 30ch;
+      font-size: var(--fs-h3); line-height: 1.3; font-weight: 500; letter-spacing: -0.01em;
+      color: var(--foreground);
+    }
+    .voices__text .word {
+      display: inline-block;
+      transform: translate3d(0, 18px, 0); opacity: 0;
+    }
+    .voices__text.is-played .word {
+      transform: none; opacity: 1;
+      transition:
+        transform 520ms var(--quart) calc(var(--i) * 22ms),
+        opacity 520ms var(--quart) calc(var(--i) * 22ms);
+    }
+    .voices__foot {
+      margin-top: 2rem;
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+    }
+    .voices__figure-wrap .liquid {
+      aspect-ratio: 4 / 5; width: 100%; border-radius: 0.125rem;
+      opacity: 0; transform: scale(1.06);
+      transition: opacity 640ms var(--expo), transform 640ms var(--expo);
+    }
+    .voices__figure-wrap.in-view .liquid { opacity: 1; transform: none; }
+    @media (max-width: 639px) { .voices__figure-wrap .liquid { aspect-ratio: 4 / 3; } }
+
+    /* ───────────── 9) Contact / Footer ───────────── */
+    .contact { padding-top: var(--section); padding-inline: var(--gutter); }
+    .contact .heading { max-width: 18ch; font-size: var(--fs-h1); }
+    @media (min-width: 640px) { .contact .heading { font-size: var(--fs-display); } }
+    .contact__body { margin-top: 2rem; max-width: 44ch; font-size: var(--fs-lead); line-height: var(--lh-lead); color: var(--muted); }
+    .contact__mail-wrap { margin-top: 3rem; }
+    .contact__mail {
+      display: inline-flex; align-items: baseline; gap: 0.75rem;
+      font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: 600; letter-spacing: -0.01em;
+      word-break: break-all;
+      transition: transform 340ms var(--out), color 340ms var(--out);
+    }
+    .contact__mail span:last-child { color: var(--accent); flex: none; }
+    .contact__mail:hover, .contact__mail:focus-visible { transform: translateX(14px); color: var(--accent); }
+    @media (min-width: 640px) { .contact__mail { font-size: var(--fs-h1); line-height: var(--lh-h1); gap: 1rem; } }
+
+    .footer-bar {
+      margin-top: var(--section); border-top: 1px solid var(--line); padding: 3rem 0;
+      padding-bottom: 7rem; /* clears the floating chat button */
+      display: grid; grid-template-columns: 1fr; gap: 2.5rem;
+    }
+    @media (min-width: 1024px) {
+      .footer-bar { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .footer-bar__sig { grid-column: span 6; }
+      .footer-bar__social { grid-column: span 3; }
+      .footer-bar__copy { grid-column: span 3; text-align: right; }
+    }
+    .footer-bar__name {
+      font-family: var(--font-display); font-size: var(--fs-h2); line-height: 1;
+      text-transform: uppercase; letter-spacing: -0.01em;
+    }
+    .footer-bar__tag { margin-top: 1rem; }
+    .footer-bar__social ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .social-link {
+      display: inline-flex; align-items: center; color: var(--muted);
+      transition: color 340ms var(--out);
+    }
+    .social-link::before {
+      content: ""; height: 1px; width: 0; margin-right: 0; background: var(--accent);
+      transition: width 340ms var(--out), margin-right 340ms var(--out);
+    }
+    .social-link:hover, .social-link:focus-visible { color: var(--foreground); }
+    .social-link:hover::before, .social-link:focus-visible::before { width: 1.5rem; margin-right: 0.75rem; }
+    .footer-bar__copy p {
+      font-size: var(--fs-eyebrow); line-height: var(--lh-eyebrow);
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+    }
+
+    /* ───────────── Chat widget (Byte) ───────────── */
+    .chat { position: fixed; right: var(--gutter); bottom: var(--gutter); z-index: 60; }
+    .chat__toggle {
+      position: relative;
+      display: grid; place-items: center;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      background: var(--accent); color: var(--background);
+      box-shadow: 0 0.75rem 2rem -0.5rem rgba(255, 59, 29, 0.45);
+      opacity: 0; transform: translate3d(0, 16px, 0) scale(0.9);
+      transition: opacity 520ms var(--expo), transform 520ms var(--expo), background-color 340ms var(--out);
+    }
+    .chat.in-view .chat__toggle { opacity: 1; transform: none; }
+    .chat__toggle:hover { background: var(--accent-2); }
+    .chat__toggle svg { width: 1.375rem; height: 1.375rem; grid-area: 1 / 1; transition: opacity 260ms var(--out), transform 420ms var(--expo); }
+    .chat__toggle .i-close { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+    .chat.is-open .chat__toggle .i-chat { opacity: 0; transform: rotate(90deg) scale(0.6); }
+    .chat.is-open .chat__toggle .i-close { opacity: 1; transform: none; }
+    .chat-hidden .chat { opacity: 0; pointer-events: none; }
+
+    .chat__panel {
+      position: absolute; right: 0; bottom: calc(100% + 1rem);
+      width: min(24rem, calc(100vw - 2 * var(--gutter)));
+      height: min(34rem, calc(100svh - 9rem));
+      display: flex; flex-direction: column;
+      background: var(--surface); border: 1px solid var(--line-strong); border-radius: 0.25rem;
+      box-shadow: 0 2rem 4rem -1rem rgba(0, 0, 0, 0.7);
+      transform-origin: bottom right;
+      opacity: 0; visibility: hidden; transform: translate3d(0, 1rem, 0) scale(0.98);
+      transition: opacity 450ms var(--expo), transform 450ms var(--expo), visibility 0s linear 450ms;
+    }
+    .chat.is-open .chat__panel {
+      opacity: 1; visibility: visible; transform: none;
+      transition: opacity 450ms var(--expo), transform 450ms var(--expo), visibility 0s;
+    }
+    .chat__head {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--line);
+    }
+    .chat__who { display: flex; align-items: center; gap: 0.75rem; }
+    .chat__avatar {
+      display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+      border: 1px solid var(--line-strong);
+      font-family: var(--font-display); font-size: 1.125rem; color: var(--accent);
+    }
+    .chat__title { font-family: var(--font-display); font-size: 1.375rem; line-height: 1; text-transform: uppercase; letter-spacing: -0.01em; }
+    .chat__sub {
+      margin-top: 0.25rem; display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.6875rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+    }
+    .chat__sub::before { content: ""; width: 0.375rem; height: 0.375rem; border-radius: 9999px; background: var(--accent); }
+    .chat__close {
+      display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 9999px;
+      color: var(--muted); transition: color 340ms var(--out), background-color 340ms var(--out);
+    }
+    .chat__close:hover, .chat__close:focus-visible { color: var(--foreground); background: var(--surface-2); }
+    .chat__close svg { width: 1rem; height: 1rem; }
+    .chat__msgs {
+      flex: 1; overflow-y: auto; padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 0.625rem;
+      scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent;
+    }
+    .chat__msg {
+      max-width: 85%; padding: 0.625rem 0.875rem; border-radius: 0.875rem;
+      font-size: 0.9375rem; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere;
+      animation: msg-in 420ms var(--expo) both;
+    }
+    .chat__msg--bot { align-self: flex-start; background: var(--surface-2); border: 1px solid var(--line); border-bottom-left-radius: 0.25rem; }
+    .chat__msg--user { align-self: flex-end; background: var(--accent); color: var(--background); font-weight: 500; border-bottom-right-radius: 0.25rem; }
+    @keyframes msg-in { from { opacity: 0; transform: translate3d(0, 10px, 0); } to { opacity: 1; transform: none; } }
+    .chat__msg--bot a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+    .chat__msg--bot a:hover { color: var(--accent-2); }
+    .chat__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; animation: msg-in 420ms var(--expo) both; }
+    .chat__chip {
+      padding: 0.4375rem 0.875rem; border-radius: 9999px;
+      border: 1px solid var(--line-strong); background: transparent;
+      font-size: 0.8125rem; line-height: 1.2; font-weight: 500; color: var(--foreground);
+      transition: border-color 340ms var(--out), color 340ms var(--out), background-color 340ms var(--out);
+    }
+    .chat__chip:hover, .chat__chip:focus-visible { border-color: var(--accent); color: var(--accent); }
+    .chat__typing {
+      align-self: flex-start; display: flex; gap: 0.3rem; padding: 0.875rem;
+      background: var(--surface-2); border: 1px solid var(--line); border-radius: 0.875rem; border-bottom-left-radius: 0.25rem;
+    }
+    .chat__typing span { width: 0.375rem; height: 0.375rem; border-radius: 9999px; background: var(--muted); animation: dot 1.1s var(--out) infinite; }
+    .chat__typing span:nth-child(2) { animation-delay: 0.15s; }
+    .chat__typing span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes dot { 0%, 60%, 100% { opacity: 0.35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); background: var(--accent); } }
+    .chat__form { display: flex; gap: 0.5rem; padding: 0.875rem; border-top: 1px solid var(--line); }
+    .chat__input {
+      flex: 1; min-width: 0; padding: 0.75rem 1rem; border-radius: 9999px;
+      background: var(--background); border: 1px solid var(--line);
+      font-size: 0.9375rem; color: var(--foreground);
+      transition: border-color 340ms var(--out);
+    }
+    .chat__input::placeholder { color: var(--muted); }
+    .chat__input:focus { outline: none; border-color: var(--accent); }
+    .chat__send {
+      flex: none; display: grid; place-items: center; width: 2.875rem; height: 2.875rem; border-radius: 9999px;
+      background: var(--accent); color: var(--background);
+      transition: background-color 340ms var(--out), opacity 200ms var(--out);
+    }
+    .chat__send:hover { background: var(--accent-2); }
+    .chat__send:disabled { opacity: 0.5; cursor: default; }
+    .chat__send svg { width: 1.125rem; height: 1.125rem; }
+    @media (max-width: 640px) {
+      .chat__toggle { width: 3.25rem; height: 3.25rem; }
+      .chat__msg, .chat__input { font-size: 16px; } /* no iOS zoom on focus */
+    }
+
+    :focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+
+    /* ───────────── Reduced motion ───────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .preloader { display: none; }
+      .marquee__track { animation: none; }
+      .split-unit, .hero__line .ch, .fade-up, .voices__text .word,
+      .voices__figure-wrap .liquid, .hero__cue, .chat__toggle {
+        transform: none !important; opacity: 1 !important; transition: none !important;
+      }
+      [data-split]:not(.is-split) { visibility: visible; }
+      .chat__msg { animation: none; }
+    }
+  </style>
+{% endraw %}
+  <noscript>
+    <style>
+      .preloader { display: none; }
+      [data-split]:not(.is-split) { visibility: visible; }
+      .split-unit, .hero__line .ch, .fade-up, .voices__text .word, .voices__figure-wrap .liquid, .hero__cue { transform: none; opacity: 1; }
+    </style>
+  </noscript>
+
+  <script type="importmap">
+  { "imports": { "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.19/dist/lenis.mjs" } }
+  </script>
 </head>
-<body data-lang="id">
+<body>
 
-<div id="scroll-progress-bar"></div>
-<div class="dot-grid"></div>
+  <!-- 1) Preloader -->
+  <div class="preloader" id="preloader">
+    <p class="preloader__brand">Kenza Athallah</p>
+    <p class="preloader__count" aria-live="off"><span data-count>0</span><span>%</span></p>
+  </div>
 
-<!-- ════════════════ NAVBAR ════════════════ -->
-<nav class="navbar">
-  <div class="nav-inner">
-    <a href="#home" class="nav-brand">Kazed.</a>
-
-    <ul class="nav-links">
-      <li><a href="#home"     class="nav-link active"><span class="t-id">Beranda</span><span class="t-en">Home</span></a></li>
-      <li><a href="#about"   class="nav-link"><span class="t-id">Tentang</span><span class="t-en">About</span></a></li>
-      <li><a href="#skills"  class="nav-link"><span class="t-id">Skill</span><span class="t-en">Skills</span></a></li>
-      <li><a href="#projects"class="nav-link"><span class="t-id">Project</span><span class="t-en">Projects</span></a></li>
-      <li><a href="#timeline"class="nav-link">Timeline</a></li>
-      <li><a href="#clients" class="nav-link"><span class="t-id">Klien</span><span class="t-en">Clients</span></a></li>
-      <li><a href="#contact" class="nav-link"><span class="t-id">Kontak</span><span class="t-en">Contact</span></a></li>
-    </ul>
-
-    <div class="nav-end">
-      <div class="lang-toggle" id="langToggle">
-        <button class="lang-btn active" data-lang="id">ID</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
-      <div class="lang-toggle" id="themeToggle">
-        <button class="lang-btn active" data-theme-btn="dark"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">dark_mode</span></button>
-        <button class="lang-btn" data-theme-btn="light"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">light_mode</span></button>
-      </div>
-      <a href="#contact" class="btn-primary sm btn-hire nav-hire-desktop"><span class="t-id">Rekrut Saya</span><span class="t-en">Hire Me</span></a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
+  <!-- 2) Nav -->
+  <header class="site-header">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul>
+        <li><a href="#story" style="--i:0">About</a></li>
+        <li><a href="#ventures" style="--i:1">Projects</a></li>
+        <li><a href="#impact" style="--i:2">Impact</a></li>
+        <li><a href="#voices" style="--i:3">Clients</a></li>
+        <li><a href="#contact" style="--i:4">Contact</a></li>
+      </ul>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="logo" href="#top" aria-label="Kenza Athallah, back to top">
+        <span class="logo__mark"><img src="{{ url_for('static', filename='img/Ken-avatar.jpg') }}" alt="" width="40" height="40" /></span>
+        <span class="logo__name">Kenza Athallah</span>
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="#story">About</a></li>
+        <li><a class="nav-link" href="#ventures">Projects</a></li>
+        <li><a class="nav-link" href="#impact">Impact</a></li>
+        <li><a class="nav-link" href="#voices">Clients</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
-    </div>
-  </div>
+    </nav>
+  </header>
 
-  <!-- Mobile dropdown menu -->
-  <div class="nav-mobile" id="navMobile">
-    <a href="#home"     class="nav-link"><span class="t-id">Beranda</span><span class="t-en">Home</span></a>
-    <a href="#about"   class="nav-link"><span class="t-id">Tentang</span><span class="t-en">About</span></a>
-    <a href="#skills"  class="nav-link"><span class="t-id">Skill</span><span class="t-en">Skills</span></a>
-    <a href="#projects"class="nav-link"><span class="t-id">Project</span><span class="t-en">Projects</span></a>
-    <a href="#timeline"class="nav-link">Timeline</a>
-    <a href="#clients" class="nav-link"><span class="t-id">Klien</span><span class="t-en">Clients</span></a>
-    <a href="#contact" class="nav-link"><span class="t-id">Kontak</span><span class="t-en">Contact</span></a>
-    <div class="nav-mobile-footer">
-      <div class="lang-toggle" id="langToggleMobile">
-        <button class="lang-btn active" data-lang="id">ID</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+  <main>
+    <!-- 3) Hero -->
+    <section class="hero" id="top">
+      <div class="hero__top">
+        <h2 class="hero__roles" id="heroRoles">
+          <span class="split-line"><span class="split-unit" style="--delay:0ms">AI Specialist</span></span>
+          <span class="split-line"><span class="split-unit" style="--delay:80ms">Systems Engineer</span></span>
+          <span class="split-line"><span class="split-unit" style="--delay:160ms">Fullstack Dev</span></span>
+          <span class="split-line"><span class="split-unit" style="--delay:240ms">Data Analyst</span></span>
+        </h2>
+        <p class="hero__desc fade-up" id="heroDesc">AI Specialist and Systems Engineer from Surakarta. I build AI tools and automations that take manual work off people's hands, backed by a background in data.</p>
       </div>
-      <div class="lang-toggle" id="themeToggleMobile">
-        <button class="lang-btn active" data-theme-btn="dark"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">dark_mode</span></button>
-        <button class="lang-btn" data-theme-btn="light"><span class="material-symbols-outlined" style="font-size:.8rem;line-height:1;font-variation-settings:'FILL' 1">light_mode</span></button>
-      </div>
-      <a href="#contact" class="btn-primary sm btn-hire"><span class="t-id">Rekrut Saya</span><span class="t-en">Hire Me</span></a>
-    </div>
-  </div>
-</nav>
 
-<main>
-
-  <!-- ════════════════ HERO ════════════════ -->
-  <section id="home" class="section-animate">
-    <!-- Ambient blobs -->
-    <div class="glow glow-orange" style="width:460px;height:460px;top:-14%;right:-8%;opacity:.85;"></div>
-    <div class="glow glow-grey"   style="width:340px;height:340px;bottom:5%;left:38%;opacity:.7;"></div>
-
-    <div class="container">
-      <div class="hero-wrap">
-
-        <!-- Left: glass card -->
-        <div class="hero-card card">
-
-          <div class="hero-status">
-            <span class="status-dot"></span>
-            <span class="t-id">Terbuka untuk peluang kerja &amp; magang</span>
-            <span class="t-en">Open to work &amp; internship opportunities</span>
-          </div>
-
-          <div>
-            <p style="font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--on-dim);margin-bottom:.75rem;">
-              <span class="t-id">Perkenalkan, nama saya</span><span class="t-en">Hello, I'm</span>
-            </p>
-            <h1 class="hero-name">
-              <span class="line1">{{ full_name.split()[0] }} {{ full_name.split()[1] }}</span>
-              <span class="line2">{{ full_name.split()[2] }} {{ full_name.split()[3] }}.</span>
-            </h1>
-          </div>
-
-          <div class="chip-row">
-            <span class="chip-orange">Data Analyst</span>
-            <span class="chip-orange">Data Science</span>
-            <span class="chip-neutral">Backend Dev</span>
-            <span class="chip-neutral">Graphic Designer</span>
-          </div>
-
-          <p class="hero-desc">
-            <span class="t-id">Lebih dari 5 tahun berkecimpung di dunia teknologi: dari Data Analytics dan Backend Development hingga Desain Grafis. Berpengalaman mengelola data dari awal hingga visualisasi menggunakan Python, SQL, dan Power BI, sekaligus aktif merancang visual untuk event dan branding.</span>
-            <span class="t-en">5+ years across tech: data analytics, backend development, and graphic design. Experienced in managing data end to end with Python, SQL, and Power BI, while actively creating visual designs for events and branding.</span>
-          </p>
-
-          <div class="btn-row">
-            <a href="#projects" class="btn-primary">
-              <span class="t-id">Lihat Project</span><span class="t-en">View Projects</span>
-            </a>
-            <a href="#contact" class="btn-secondary">
-              <span class="t-id">Hubungi Saya</span><span class="t-en">Contact Me</span>
-            </a>
-            <a href="{{ url_for('static', filename='cv/CV_Kenza_ID.pdf') }}" class="btn-secondary cv-id" download>
-              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">download</span>
-              Download CV
-            </a>
-            <a href="{{ url_for('static', filename='cv/CV_Kenza_ENG.pdf') }}" class="btn-secondary cv-en" download>
-              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">download</span>
-              Download CV
-            </a>
-          </div>
-
-          <div class="social-row">
-            <a href="https://github.com/K4ZED" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon card">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            </a>
-            <a href="https://linkedin.com/in/kenzaathallah" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon card">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="mailto:kenzaathallah.wijaya@gmail.com" aria-label="Email" class="social-icon card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            </a>
-            <a href="https://portfolio-kazed.my.id/" target="_blank" rel="noopener" aria-label="Website" class="social-icon card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </a>
-            <span class="social-divider"></span>
-            <span class="social-email">kenzaathallah.wijaya@gmail.com</span>
-          </div>
-
-          <div class="stats-strip">
-            <div class="stat-item">
-              <p class="stat-val">5+</p>
-              <p class="stat-lbl"><span class="t-id">Tahun di Teknologi</span><span class="t-en">Years in Tech</span></p>
-            </div>
-            <div class="stat-item">
-              <p class="stat-val">2</p>
-              <p class="stat-lbl"><span class="t-id">Magang</span><span class="t-en">Internships</span></p>
-            </div>
-            <div class="stat-item">
-              <p class="stat-val">8+</p>
-              <p class="stat-lbl">Projects</p>
-            </div>
-            <div class="stat-item">
-              <p class="stat-val">3</p>
-              <p class="stat-lbl">Awards</p>
-            </div>
-            <div class="stat-item">
-              <p class="stat-val">3</p>
-              <p class="stat-lbl"><span class="t-id">Klien</span><span class="t-en">Clients</span></p>
-            </div>
-          </div>
+      <!--
+        Hero portrait: removed for now. To add a photo, paste this back (a transparent-background cutout PNG works best):
+        <div class="hero__portrait">
+          <figure class="liquid" data-bare data-scale="30" role="img" aria-label="Portrait of Kenza Athallah">
+            <div class="liquid-media"><img src="/static/img/YOUR-PHOTO.png" alt="" fetchpriority="high" /></div>
+          </figure>
         </div>
+      -->
 
-        <!-- Right: circle avatar -->
-        <div class="hero-avatar">
-          <span class="avatar-deco-dot orange animate-float"></span>
-          <span class="avatar-deco-dot grey"></span>
-          <div class="avatar-ring">
-            <img src="{{ url_for('static', filename='img/Ken.png') }}" alt="{{ full_name }}" />
-          </div>
-          <div class="avatar-tag card">
-            <span class="avatar-tag-name">{{ name }}</span>
-            <div class="chip-row">
-              <span class="chip-neutral">Data & Backend</span>
-              <span class="chip-neutral">Design</span>
-            </div>
-          </div>
-        </div>
+      <div class="hero__base" aria-hidden="true"></div>
 
+      <h1 class="hero__name" aria-label="Kenza Athallah">
+        <span class="hero__line" aria-hidden="true">Kenza</span>
+        <span class="hero__line" aria-hidden="true">Athallah</span>
+      </h1>
+
+      <p class="hero__cue" id="heroCue">Scroll to enter</p>
+    </section>
+
+    <!-- 4) Marquee -->
+    <section class="marquee" aria-label="Focus areas">
+      <div class="marquee__track">
+        <span class="marquee__item">AI Automation</span>
+        <span class="marquee__item">RAG &amp; LLM</span>
+        <span class="marquee__item">Fullstack Development</span>
+        <span class="marquee__item">Machine Learning</span>
+        <span class="marquee__item">Data Analysis</span>
+        <span class="marquee__item" aria-hidden="true">AI Automation</span>
+        <span class="marquee__item" aria-hidden="true">RAG &amp; LLM</span>
+        <span class="marquee__item" aria-hidden="true">Fullstack Development</span>
+        <span class="marquee__item" aria-hidden="true">Machine Learning</span>
+        <span class="marquee__item" aria-hidden="true">Data Analysis</span>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════ ABOUT ════════════════ -->
-  <section id="about" class="section section-animate">
-    <div class="container">
-      <h2 class="section-heading">
-        <span class="t-id">Tentang <span class="accent">Saya</span></span>
-        <span class="t-en">About <span class="accent">Me</span></span>
-      </h2>
-
-      <div class="about-grid">
-
-        <!-- Bio card -->
-        <div class="about-bio card card-hover">
-          <div class="bio-header">
-            <div class="icon-box">
-              <span class="material-symbols-outlined" style="font-size:1.125rem;font-variation-settings:'FILL' 1">person</span>
-            </div>
+    <!-- 5) About -->
+    <section class="section" id="story">
+      <div class="story">
+        <div class="story__left">
+          <p class="eyebrow">About</p>
+          <h2 class="heading heading--grow" data-split>Building AI that does the boring work.</h2>
+          <p class="story__body fade-up">I'm a Data Science student at Universitas Sebelas Maret who works on AI tools, fullstack apps and data. Right now I run internal AI infrastructure at Dzakiyah Store Group, build web apps for clients, and keep shipping side projects around LLMs and automation.</p>
+        </div>
+        <ul class="story__right">
+          <li class="principle fade-up" style="--delay:0ms">
+            <span class="principle__num">01</span>
             <div>
-              <p class="bio-name">{{ full_name }}</p>
-              <p class="bio-role">Data Analyst & Graphic Designer</p>
+              <h3 class="principle__title">AI Specialist</h3>
+              <p class="principle__text">Runs internal AI tools and builds AI-driven workflow automation.</p>
+              <p class="principle__when">Dzakiyah Store Group · 2026 to present</p>
             </div>
-          </div>
-          <p class="bio-text">
-            <span class="t-id">Berlatar belakang Rekayasa Perangkat Lunak dari SMK Telkom Malang dengan pengalaman lebih dari 5 tahun di dunia teknologi. Berpengalaman sebagai Data Analyst di Telkom dan Amigo Group, mengelola data dari pengumpulan hingga visualisasi menggunakan Python, SQL, dan Power BI, keduanya dijalani secara hybrid.</span>
-            <span class="t-en">Software engineering background from SMK Telkom Malang with over 5 years in tech. Experienced as a Data Analyst at Telkom and Amigo Group, handling data from collection to visualization using Python, SQL, and Power BI, both carried out in a hybrid setup.</span>
-          </p>
-          <p class="bio-text">
-            <span class="t-id">Lebih dari 5 tahun berkecimpung di dunia teknologi sejak 2020: dari coding, desain, hingga analisis data. Di samping itu, aktif mendesain untuk kebutuhan event dan branding, serta terus mendalami machine learning dan cloud computing.</span>
-            <span class="t-en">Over 5 years immersed in technology since 2020, spanning coding, design, and data analysis. Also actively creating designs for events and branding, with a continuing focus on machine learning and cloud computing.</span>
-          </p>
-          <div class="chip-row" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,.06);margin-top:auto;">
-            <span class="chip-orange">Data Analyst</span>
-            <span class="chip-orange">Data Science</span>
-            <span class="chip-neutral">Data Engineering</span>
-            <span class="chip-neutral">Backend Dev</span>
-            <span class="chip-cream">Graphic Design</span>
-          </div>
-        </div>
-
-        <!-- Stats 2×2 -->
-        <div class="stats-2x2">
-          <div class="stat-card card card-hover">
-            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">terminal</span></div>
-            <p class="stat-val">5+</p>
-            <p class="stat-lbl"><span class="t-id">Tahun di Teknologi</span><span class="t-en">Years in Tech</span></p>
-          </div>
-          <div class="stat-card card card-hover">
-            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">code_blocks</span></div>
-            <p class="stat-val">8+</p>
-            <p class="stat-lbl"><span class="t-id">Project Selesai</span><span class="t-en">Projects Done</span></p>
-          </div>
-          <div class="stat-card card card-hover">
-            <div class="icon-box icon-box-cream"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">emoji_events</span></div>
-            <p class="stat-val" style="color:var(--secondary);">3</p>
-            <p class="stat-lbl">Awards</p>
-          </div>
-          <div class="stat-card card card-hover">
-            <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">handshake</span></div>
-            <p class="stat-val" style="color:var(--tertiary);">2</p>
-            <p class="stat-lbl"><span class="t-id">Pengalaman Magang</span><span class="t-en">Internships</span></p>
-          </div>
-        </div>
-
-        <!-- Info strip -->
-        <div class="info-strip">
-          <div class="info-card card card-hover">
-            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">location_on</span></div>
+          </li>
+          <li class="principle fade-up" style="--delay:90ms">
+            <span class="principle__num">02</span>
             <div>
-              <p class="info-lbl"><span class="t-id">Lokasi</span><span class="t-en">Location</span></p>
-              <p class="info-val"><span class="t-id">Sukoharjo, Jawa Tengah</span><span class="t-en">Sukoharjo, Central Java</span></p>
+              <h3 class="principle__title">Fullstack Engineer (Freelance)</h3>
+              <p class="principle__text">8+ web apps for clients, from database schema to REST API.</p>
+              <p class="principle__when">2022 to present</p>
             </div>
-          </div>
-          <div class="info-card card card-hover">
-            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">translate</span></div>
+          </li>
+          <li class="principle fade-up" style="--delay:180ms">
+            <span class="principle__num">03</span>
             <div>
-              <p class="info-lbl"><span class="t-id">Bahasa</span><span class="t-en">Languages</span></p>
-              <p class="info-val"><span class="t-id">Indonesia · Inggris (TOEFL 513)</span><span class="t-en">Indonesian · English (TOEFL 513)</span></p>
+              <h3 class="principle__title">Retail Data Analyst Intern</h3>
+              <p class="principle__text">Reports and dashboards for sales and operations.</p>
+              <p class="principle__when">Amigo Group · Feb 2026 to Jul 2026</p>
             </div>
-          </div>
-          <div class="info-card card card-hover">
-            <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">target</span></div>
+          </li>
+          <li class="principle fade-up" style="--delay:270ms">
+            <span class="principle__num">04</span>
             <div>
-              <p class="info-lbl"><span class="t-id">Fokus Saat Ini</span><span class="t-en">Current Focus</span></p>
-              <p class="info-val">ML · Backend Dev · Data viz · Cloud</p>
+              <h3 class="principle__title">Coordinator of Technology</h3>
+              <p class="principle__text">Led the team behind registration, e-tickets and real-time visitor info.</p>
+              <p class="principle__when">P!NGFEST UNS · Mar 2024 to Oct 2024</p>
             </div>
-          </div>
-        </div>
-
-        <!-- GitHub Contribution Graph -->
-        <div class="gh-graph-card card">
-          <div class="gh-graph-header">
-            <div class="icon-box" style="width:1.75rem;height:1.75rem;">
-              <span class="material-symbols-outlined" style="font-size:.9rem;font-variation-settings:'FILL' 1">commit</span>
-            </div>
+          </li>
+          <li class="principle fade-up" style="--delay:360ms">
+            <span class="principle__num">05</span>
             <div>
-              <p class="info-lbl"><span class="t-id">Aktivitas GitHub</span><span class="t-en">GitHub Activity</span></p>
-              <a href="https://github.com/K4ZED" target="_blank" rel="noopener" class="gh-graph-link">github.com/K4ZED</a>
+              <h3 class="principle__title">Telecom Data Analyst Intern</h3>
+              <p class="principle__text">BTS performance analysis for East Java and Madura.</p>
+              <p class="principle__when">Telkom Landmark Surabaya · Jun 2022 to Nov 2022</p>
             </div>
-          </div>
-          <div class="gh-cal" id="ghCal">
-            <p class="gh-cal-total" id="ghCalTotal"></p>
-            <div class="gh-cal-scroll">
-              <div class="gh-cal-inner">
-                <div class="gh-cal-months" id="ghCalMonths"></div>
-                <div class="gh-cal-grid-row">
-                  <div class="gh-weekdays" id="ghCalWeekdays"></div>
-                  <div class="gh-weeks" id="ghCalGrid"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════ SKILLS ════════════════ -->
-  <section id="skills" class="section section-animate">
-    <div class="container">
-      <h2 class="section-heading">
-        <span class="t-id">Yang Bisa Saya <span class="accent">Lakukan</span></span>
-        <span class="t-en">What I Can <span class="accent">Do</span></span>
-      </h2>
-
-      <div class="skills-grid card-grid">
-
-        <div class="skill-card card card-hover">
-          <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">table_chart</span></div>
-          <div>
-            <h3 class="skill-title">Data Analyst</h3>
-            <p class="skill-desc">
-              <span class="t-id">Mengelola siklus data secara menyeluruh: dari pengumpulan, pembersihan, dan EDA hingga visualisasi serta pelaporan bisnis menggunakan dashboard interaktif.</span>
-              <span class="t-en">Managing the full data lifecycle: from collection, cleaning, and EDA to business reporting through interactive dashboards.</span>
-            </p>
-          </div>
-          <div class="skill-tags">
-            <span class="chip-orange">Python</span><span class="chip-orange">SQL</span>
-            <span class="chip-neutral">Pandas / NumPy</span><span class="chip-neutral">Matplotlib</span>
-            <span class="chip-neutral">Power BI</span><span class="chip-neutral">Excel</span><span class="chip-neutral">EDA</span>
-          </div>
-        </div>
-
-        <div class="skill-card card card-hover">
-          <div class="icon-box icon-box-cream"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">model_training</span></div>
-          <div>
-            <h3 class="skill-title">Data Science &amp; ML</h3>
-            <p class="skill-desc">
-              <span class="t-id">Membangun model prediktif dan analisis sentimen menggunakan pendekatan statistik dan deep learning, termasuk evaluasi dan interpretasi hasil model.</span>
-              <span class="t-en">Building predictive models and sentiment analysis using statistical and deep learning approaches, including model evaluation and interpretation.</span>
-            </p>
-          </div>
-          <div class="skill-tags">
-            <span class="chip-cream">Scikit-learn</span><span class="chip-cream">Deep Learning</span>
-            <span class="chip-neutral">NLP</span><span class="chip-neutral">Predictive Modeling</span>
-            <span class="chip-neutral">Feature Engineering</span><span class="chip-neutral">Jupyter</span>
-          </div>
-        </div>
-
-        <div class="skill-card card card-hover">
-          <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">hub</span></div>
-          <div>
-            <h3 class="skill-title">Data Engineering</h3>
-            <p class="skill-desc">
-              <span class="t-id">Merancang dan mengelola pipeline data: mulai dari pengumpulan, transformasi, hingga pengiriman data ke platform cloud yang skalabel.</span>
-              <span class="t-en">Designing and managing data pipelines: from collection and transformation to delivery across scalable cloud platforms.</span>
-            </p>
-          </div>
-          <div class="skill-tags">
-            <span class="chip-neutral">Python</span><span class="chip-neutral">SQL</span>
-            <span class="chip-neutral">ETL</span><span class="chip-neutral">AWS</span>
-            <span class="chip-neutral">Azure</span><span class="chip-neutral">GCP</span>
-          </div>
-        </div>
-
-        <div class="skill-card card card-hover">
-          <div class="icon-box"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">terminal</span></div>
-          <div>
-            <h3 class="skill-title">Backend Development</h3>
-            <p class="skill-desc">
-              <span class="t-id">Membangun API dan backend ringan untuk menyajikan data dan hasil analitik, lalu mendeploy ke platform cloud agar dapat diakses secara andal.</span>
-              <span class="t-en">Building APIs and lightweight backends to serve data and analytical results, deployed to cloud platforms for reliable access.</span>
-            </p>
-          </div>
-          <div class="skill-tags">
-            <span class="chip-orange">Python</span><span class="chip-orange">Flask</span>
-            <span class="chip-neutral">FastAPI</span><span class="chip-neutral">REST API</span>
-            <span class="chip-neutral">Git</span>
-          </div>
-        </div>
-
-        <div class="skill-card card card-hover">
-          <div class="icon-box icon-box-grey"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 0">palette</span></div>
-          <div>
-            <h3 class="skill-title"><span class="t-id">Desain Grafis</span><span class="t-en">Graphic Design</span></h3>
-            <p class="skill-desc">
-              <span class="t-id">Mendesain materi visual untuk event dan branding. Canva sebagai alat utama, dengan kemampuan dasar di Figma dan Adobe Illustrator untuk kebutuhan lebih teknis.</span>
-              <span class="t-en">Designing visual materials for events and branding. Canva as the primary tool, with foundational skills in Figma and Adobe Illustrator when needed.</span>
-            </p>
-          </div>
-          <div class="skill-tags">
-            <span class="chip-orange">Canva</span>
-            <span class="chip-neutral">Figma</span><span class="chip-neutral">Adobe Illustrator</span>
-            <span class="chip-neutral">Event Branding</span><span class="chip-neutral">Digital Content</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════ PROJECTS ════════════════ -->
-  <section id="projects" class="section section-animate">
-    <div class="container">
-      <h2 class="section-heading">
-        <span class="t-id">Project <span class="accent">Pilihan</span></span>
-        <span class="t-en">Selected <span class="accent">Projects</span></span>
-      </h2>
-
-      <div class="projects-grid card-grid">
-
-        <div class="proj-featured">
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-orange"></div>
-            <div class="proj-body">
-              <div class="proj-tag-row">
-                <div class="chip-row"><span class="chip-orange">Data</span><span class="chip-neutral">Analytics</span></div>
-                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">cell_tower</span>
-              </div>
-              <h3 class="proj-title">BTS Performance Monitoring &amp; Analysis</h3>
-              <p class="proj-desc">
-                <span class="t-id">Menganalisis data performa BTS untuk mengevaluasi kekuatan sinyal, stabilitas jaringan, dan kualitas layanan di Jawa Timur dan Madura.</span>
-                <span class="t-en">Analyzed BTS performance data to evaluate signal strength, network stability, and service quality across East Java and Madura.</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-cream"></div>
-            <div class="proj-body">
-              <div class="proj-tag-row">
-                <div class="chip-row"><span class="chip-neutral">Data</span><span class="chip-neutral">Web</span></div>
-                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">dashboard</span>
-              </div>
-              <h3 class="proj-title">Web-Based Data Visualization Dashboard</h3>
-              <p class="proj-desc">
-                <span class="t-id">Dashboard berbasis web yang menyajikan hasil analitik melalui visualisasi data yang jelas dan interaktif.</span>
-                <span class="t-en">Web-based dashboards presenting analytical results through clear, interactive data visualizations.</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-grey"></div>
-            <div class="proj-body">
-              <div class="proj-tag-row">
-                <div class="chip-row"><span class="chip-orange">Web</span><span class="chip-neutral">Backend</span></div>
-                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">language</span>
-              </div>
-              <h3 class="proj-title">P!NGFEST · Pekan Teknologi UNS</h3>
-              <p class="proj-desc">
-                <span class="t-id">Website resmi P!NGFEST, menampilkan profil acara, pendaftaran lomba dan seminar, serta sistem ticketing untuk peserta.</span>
-                <span class="t-en">Official P!NGFEST website, featuring event introduction, competition and seminar registration, and a participant ticketing system.</span>
-              </p>
-              <div class="chip-row" style="margin-top:auto;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);">
-                <span class="chip-neutral">PHP</span><span class="chip-neutral">Laravel</span><span class="chip-neutral">Blade</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-orange"></div>
-            <div class="proj-body">
-              <div class="proj-tag-row">
-                <div class="chip-row"><span class="chip-orange">Web</span><span class="chip-neutral">Company Profile</span></div>
-                <span class="material-symbols-outlined proj-icon" style="font-variation-settings:'FILL' 0;color:rgba(255,255,255,.18);">business</span>
-              </div>
-              <h3 class="proj-title">Pemoela Lab</h3>
-              <p class="proj-desc">
-                <span class="t-id">Website company profile untuk Pemoela Lab, digital solution agency yang menyediakan layanan pengembangan website dan solusi teknologi untuk bisnis.</span>
-                <span class="t-en">Company profile website for Pemoela Lab, a digital solution agency offering website development and technology solutions for businesses.</span>
-              </p>
-              <div class="chip-row" style="margin-top:auto;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06);">
-                <span class="chip-neutral">PHP</span><span class="chip-neutral">Laravel</span><span class="chip-neutral">Blade</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-three">
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-grey"></div>
-            <div class="proj-body-sm">
-              <div class="chip-row"><span class="chip-neutral">ML</span><span class="chip-neutral">NLP</span></div>
-              <h3 class="proj-title-sm">Sentiment Analysis Using Deep Learning</h3>
-              <p class="proj-desc-sm">
-                <span class="t-id">Model analisis sentimen berbasis deep learning untuk mengklasifikasikan data teks ke dalam kategori positif, negatif, atau netral.</span>
-                <span class="t-en">Deep learning-based sentiment analysis model classifying text data into positive, negative, or neutral categories.</span>
-              </p>
-            </div>
-          </div>
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-grey"></div>
-            <div class="proj-body-sm">
-              <div class="chip-row"><span class="chip-neutral">ML</span><span class="chip-neutral">Data Science</span></div>
-              <h3 class="proj-title-sm">Data Prediction &amp; Machine Learning</h3>
-              <p class="proj-desc-sm">
-                <span class="t-id">Model prediktif yang mengekstrak insight dari dataset menggunakan kombinasi analisis statistik dan deep learning.</span>
-                <span class="t-en">Predictive models extracting insights from datasets through a combination of statistical analysis and deep learning.</span>
-              </p>
-            </div>
-          </div>
-          <div class="proj-card card card-hover">
-            <div class="stripe stripe-cream"></div>
-            <div class="proj-body-sm">
-              <div class="chip-row"><span class="chip-neutral">Cloud</span><span class="chip-neutral">Data</span></div>
-              <h3 class="proj-title-sm">Cloud-Based Data Analytics</h3>
-              <p class="proj-desc-sm">
-                <span class="t-id">Workflow analitik data di platform AWS, Azure, dan GCP untuk pemrosesan dan analisis yang skalabel.</span>
-                <span class="t-en">Data analytics workflows across AWS, Azure, and GCP for scalable processing and analysis.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-full card card-hover">
-          <div class="proj-full-stripe"></div>
-          <div class="proj-full-body">
-            <div class="proj-full-text">
-              <div class="chip-row" style="margin-bottom:.75rem;">
-                <span class="chip-orange">Web</span><span class="chip-neutral">Portfolio</span>
-              </div>
-              <h3 class="proj-title" style="margin-bottom:.5rem;">Personal Web Portfolio · <span class="accent"><span class="t-id">Halaman Ini</span><span class="t-en">This Very Page</span></span></h3>
-              <p class="proj-desc">
-                <span class="t-id">Portofolio pribadi ini, dibangun dengan Flask: tampilan warm glassmorphism, dukungan dua bahasa, dan animasi scroll.</span>
-                <span class="t-en">This personal portfolio, built with Flask: warm glassmorphism aesthetic, bilingual support, and scroll animations.</span>
-              </p>
-            </div>
-            <div class="proj-full-chips">
-              <span class="chip-orange">Flask</span><span class="chip-neutral">CSS</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Portfolio Websites -->
-        <div class="proj-subsection">
-          <div class="proj-sub-header">
-            <h3 class="proj-sub-heading">
-              <span class="t-id">Portfolio <span class="accent">Website</span></span>
-              <span class="t-en">Portfolio <span class="accent">Websites</span></span>
-            </h3>
-            <p class="proj-sub-note">
-              <span class="t-id">Seluruh website berikut merupakan dummy atau tampilan saja, bukan hasil produksi asli.</span>
-              <span class="t-en">All websites below are dummy or display-only, not actual production builds.</span>
-            </p>
-          </div>
-          <div class="porto-bento">
-
-            <a href="https://wedding-dummy.vercel.app/" target="_blank" rel="noopener" class="porto-card porto-card--featured">
-              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(218,195,161,.22) 0%,rgba(240,107,21,.12) 100%);">
-                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">favorite</span>
-                <span class="porto-num">01</span>
-                <div class="porto-thumb-dots"></div>
-              </div>
-              <div class="porto-info">
-                <div class="chip-row"><span class="chip-cream">Wedding</span><span class="chip-neutral">Web</span></div>
-                <h3 class="porto-title">Wedding Website</h3>
-                <p class="porto-desc">
-                  <span class="t-id">Template undangan pernikahan digital yang elegan dengan desain responsif dan animasi halus.</span>
-                  <span class="t-en">Elegant digital wedding invitation template with smooth animations and responsive design.</span>
-                </p>
-                <div class="porto-cta">
-                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                  <span class="material-symbols-outlined">arrow_outward</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://kazed-body-fat-calc.vercel.app/" target="_blank" rel="noopener" class="porto-card">
-              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(96,165,250,.2) 0%,rgba(96,165,250,.05) 100%);">
-                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">monitor_weight</span>
-                <span class="porto-num">02</span>
-              </div>
-              <div class="porto-info">
-                <div class="chip-row"><span class="chip-neutral">Tools</span><span class="chip-neutral">Web</span></div>
-                <h3 class="porto-title">Body Fat Calculator</h3>
-                <p class="porto-desc">
-                  <span class="t-id">Kalkulator persentase lemak tubuh berbasis web dengan antarmuka bersih.</span>
-                  <span class="t-en">Web-based body fat percentage calculator with a clean interface.</span>
-                </p>
-                <div class="porto-cta">
-                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                  <span class="material-symbols-outlined">arrow_outward</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://pemoela-lab.vercel.app/" target="_blank" rel="noopener" class="porto-card">
-              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(240,107,21,.25) 0%,rgba(240,107,21,.06) 100%);">
-                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">business</span>
-                <span class="porto-num">03</span>
-              </div>
-              <div class="porto-info">
-                <div class="chip-row"><span class="chip-orange">Pemoela Lab</span><span class="chip-neutral">Web</span></div>
-                <h3 class="porto-title">Pemoela Lab</h3>
-                <p class="porto-desc">
-                  <span class="t-id">Demo company profile Pemoela Lab, digital solution agency.</span>
-                  <span class="t-en">Demo company profile for Pemoela Lab, a digital solution agency.</span>
-                </p>
-                <div class="porto-cta">
-                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                  <span class="material-symbols-outlined">arrow_outward</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://test-company-website.vercel.app/" target="_blank" rel="noopener" class="porto-card">
-              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.02) 100%);">
-                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">corporate_fare</span>
-                <span class="porto-num">04</span>
-              </div>
-              <div class="porto-info">
-                <div class="chip-row"><span class="chip-neutral">Company Profile</span><span class="chip-neutral">Web</span></div>
-                <h3 class="porto-title">Semesta Group</h3>
-                <p class="porto-desc">
-                  <span class="t-id">Company profile Semesta Group. Proyek pribadi, tidak berafiliasi dengan perusahaan terkait.</span>
-                  <span class="t-en">Semesta Group profile. Personal project, not affiliated with the actual company.</span>
-                </p>
-                <div class="porto-cta">
-                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                  <span class="material-symbols-outlined">arrow_outward</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://simulasi-bencana-kzd.vercel.app/" target="_blank" rel="noopener" class="porto-card">
-              <div class="porto-thumb" style="background:linear-gradient(135deg,rgba(74,222,128,.18) 0%,rgba(74,222,128,.04) 100%);">
-                <span class="material-symbols-outlined porto-thumb-icon" style="font-variation-settings:'FILL' 1">storm</span>
-                <span class="porto-num">05</span>
-              </div>
-              <div class="porto-info">
-                <div class="chip-row"><span class="chip-neutral">Interaktif</span><span class="chip-neutral">Edukasi</span></div>
-                <h3 class="porto-title">Simulasi Bencana Alam</h3>
-                <p class="porto-desc">
-                  <span class="t-id">Media interaktif berbasis web untuk simulasi skenario bencana alam sebagai edukasi.</span>
-                  <span class="t-en">Web-based interactive media simulating natural disaster scenarios for education.</span>
-                </p>
-                <div class="porto-cta">
-                  <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                  <span class="material-symbols-outlined">arrow_outward</span>
-                </div>
-              </div>
-            </a>
-
-          </div>
-        </div>
-
-        <!-- Best Projects -->
-        <div class="proj-subsection">
-          <div class="proj-sub-header">
-            <h3 class="proj-sub-heading">
-              <span class="t-id">Project <span class="accent">Terbaik</span></span>
-              <span class="t-en"><span class="accent">Best</span> Projects</span>
-            </h3>
-            <p class="proj-sub-note">
-              <span class="t-id">Tampilan demo saja, bukan hasil produksi asli.</span>
-              <span class="t-en">Display/demo only, not actual production builds.</span>
-            </p>
-          </div>
-          <div class="best-bento">
-
-            <a href="https://waows-6-ken-day2.vercel.app/" target="_blank" rel="noopener" class="best-card">
-              <div class="best-card-bg" style="background:linear-gradient(135deg,rgba(240,107,21,.18) 0%,transparent 60%);"></div>
-              <div class="best-card-inner">
-                <div class="best-card-top">
-                  <div class="best-icon-wrap" style="background:rgba(240,107,21,.15);color:var(--primary);">
-                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:1.25rem;">model_training</span>
-                  </div>
-                  <div class="chip-row"><span class="chip-orange">ML</span><span class="chip-neutral">Flask</span><span class="chip-neutral">Python</span></div>
-                </div>
-                <h3 class="best-title">Machine Learning with Flask</h3>
-                <p class="best-desc">
-                  <span class="t-id">Model machine learning yang diintegrasikan dengan Flask, menampilkan prediksi real-time melalui antarmuka web yang interaktif.</span>
-                  <span class="t-en">Machine learning model integrated with Flask, delivering real-time predictions through an interactive web interface.</span>
-                </p>
-                <div class="best-footer">
-                  <div class="chip-row"><span class="chip-neutral">Scikit-learn</span><span class="chip-neutral">Jinja2</span></div>
-                  <span class="best-cta">
-                    <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                    <span class="material-symbols-outlined">arrow_outward</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://waows-6-ken-day1.vercel.app/" target="_blank" rel="noopener" class="best-card">
-              <div class="best-card-bg" style="background:linear-gradient(135deg,rgba(218,195,161,.15) 0%,transparent 60%);"></div>
-              <div class="best-card-inner">
-                <div class="best-card-top">
-                  <div class="best-icon-wrap" style="background:rgba(218,195,161,.15);color:var(--secondary);">
-                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;font-size:1.25rem;">storage</span>
-                  </div>
-                  <div class="chip-row"><span class="chip-cream">Flask</span><span class="chip-neutral">MySQL</span><span class="chip-neutral">Python</span></div>
-                </div>
-                <h3 class="best-title">Flask + MySQL Full Stack</h3>
-                <p class="best-desc">
-                  <span class="t-id">Aplikasi web full stack menggunakan Flask sebagai backend dan MySQL sebagai database, lengkap dengan operasi CRUD dan manajemen data.</span>
-                  <span class="t-en">Full stack web application using Flask as the backend and MySQL as the database, featuring CRUD operations and data management.</span>
-                </p>
-                <div class="best-footer">
-                  <div class="chip-row"><span class="chip-neutral">SQLAlchemy</span><span class="chip-neutral">Jinja2</span></div>
-                  <span class="best-cta">
-                    <span><span class="t-id">Lihat Demo</span><span class="t-en">Live Demo</span></span>
-                    <span class="material-symbols-outlined">arrow_outward</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════ TIMELINE ════════════════ -->
-  <section id="timeline" class="section section-animate">
-    <div class="container">
-      <h2 class="section-heading">
-        <span class="t-id">Perjalanan <span class="accent">Saya</span></span>
-        <span class="t-en">My <span class="accent">Journey</span></span>
-      </h2>
-
-      <div class="tl-grid">
-
+    <!-- 6) Projects -->
+    <section class="section ventures" id="ventures">
+      <div class="section-head">
         <div>
-          <p class="tl-col-label"><span class="t-id">Pendidikan</span><span class="t-en">Education</span></p>
-          <div class="tl-track tl-entries">
-            <div class="tl-entry">
-              <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Agustus 2023 · Sekarang</span><span class="t-en">Aug 2023 · Present</span></p>
-              <h4 class="tl-title"><span class="t-id">Sarjana Sains Data · Universitas Sebelas Maret</span><span class="t-en">Bachelor of Data Science · Universitas Sebelas Maret</span></h4>
-              <p class="tl-desc"><span class="t-id">Mempelajari analisis data, machine learning, deep learning, dan platform cloud (AWS, Azure, serta GCP) sebagai bagian dari kurikulum.</span><span class="t-en">Studying data analysis, machine learning, deep learning, and cloud platforms (AWS, Azure, and GCP) as part of the curriculum.</span></p>
-            </div>
-            <div class="tl-entry">
-              <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Juli 2020 · Juni 2023</span><span class="t-en">Jul 2020 · Jun 2023</span></p>
-              <h4 class="tl-title"><span class="t-id">Rekayasa Perangkat Lunak · SMK Telkom Malang</span><span class="t-en">Software Engineering · SMK Telkom Malang</span></h4>
-              <p class="tl-desc"><span class="t-id">Tempat perjalanan di dunia teknologi dimulai: mempelajari pemrograman, dasar-dasar UI/UX, dan pengembangan web yang terstruktur.</span><span class="t-en">Where the tech journey began: learning programming, UI/UX fundamentals, and structured web development.</span></p>
-            </div>
-          </div>
+          <p class="eyebrow">Selected Projects</p>
+          <h2 class="heading heading--grow" data-split>Things I've built.</h2>
         </div>
+        <p class="label">12 / Projects</p>
+      </div>
 
+      <!--
+        Project images: set data-src on a figure to an image path, e.g.
+        data-src="{{ url_for('static', filename='img/projects/sentiment.webp') }}"
+        Leave data-src empty to show the branded placeholder with the project name.
+      -->
+      <ul class="ventures__grid" id="ventureGrid">
+        <li class="fade-up">
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Eko" role="img" aria-label="Eko"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Eko</h3>
+                <p class="venture__blurb">Telegram bot that answers questions about Central Java&#x27;s economy in plain language, grounded in official BPS data across 12 topics.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Python, OpenAI &amp; Gemini API, ChromaDB</p>
+                <a class="venture__tag" href="https://t.me/Eko_BPSbot" target="_blank" rel="noreferrer noopener">Live Bot ↗</a>
+              </div>
+            </div>
+            <p class="label venture__cat">AI, RAG</p>
+          </article>
+        </li>
+        <li class="fade-up">
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Podclip" role="img" aria-label="Podclip"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Podclip</h3>
+                <p class="venture__blurb">Turns long YouTube podcasts and live streams into vertical short clips, with auto moment picking, smart reframing and subtitles.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Python, LLM, Computer Vision</p>
+                <p class="venture__tag">Personal Tool</p>
+              </div>
+            </div>
+            <p class="label venture__cat">AI, Video</p>
+          </article>
+        </li>
+        <li class="fade-up">
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Agent HQ" role="img" aria-label="Agent HQ"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Agent HQ</h3>
+                <p class="venture__blurb">A home-server setup where a head AI agent takes coding tasks I send from my phone or iPad and works on them in the background.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Claude Code, Web UI</p>
+                <p class="venture__tag">Personal Tool</p>
+              </div>
+            </div>
+            <p class="label venture__cat">AI Automation</p>
+          </article>
+        </li>
+        <li class="fade-up">
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Batik Manekin Studio" role="img" aria-label="Batik Manekin Studio"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Batik Manekin Studio</h3>
+                <p class="venture__blurb">Generates store catalog photos by dressing mannequin shots in uploaded batik and placing them on generated backgrounds.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Gemini</p>
+                <p class="venture__tag">Client Tool</p>
+              </div>
+            </div>
+            <p class="label venture__cat">Generative AI</p>
+          </article>
+        </li>
+        <li class="fade-up">
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Geniuz" role="img" aria-label="Geniuz"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Geniuz</h3>
+                <p class="venture__blurb">Online tutoring platform. I handled the backend: admin auth, class management and student progress tracking.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Next.js, TypeScript, Python</p>
+                <p class="venture__tag">Team of 6</p>
+              </div>
+            </div>
+            <p class="label venture__cat">Fullstack</p>
+          </article>
+        </li>
+        <li class="fade-up">
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Gym Management PWA" role="img" aria-label="Gym Management PWA"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Gym Management PWA</h3>
+                <p class="venture__blurb">Member and admin apps with QR check-in, class and trainer booking, memberships and payments.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Next.js, Supabase</p>
+                <p class="venture__tag">PWA</p>
+              </div>
+            </div>
+            <p class="label venture__cat">Fullstack</p>
+          </article>
+        </li>
+        <li class="fade-up venture-extra" hidden>
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="AI Skill Mapping" role="img" aria-label="AI Skill Mapping"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">AI Skill Mapping</h3>
+                <p class="venture__blurb">My thesis: mapping AI skills in Indonesian job postings scraped from JobStreet, Glints and Kalibrr, comparing IndoBERT with LLMs.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">IndoBERT, LLM</p>
+                <p class="venture__tag venture__tag--muted">In Progress</p>
+              </div>
+            </div>
+            <p class="label venture__cat">NLP Research</p>
+          </article>
+        </li>
+        <li class="fade-up venture-extra" hidden>
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Dengue Severity Prediction" role="img" aria-label="Dengue Severity Prediction"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Dengue Severity Prediction</h3>
+                <p class="venture__blurb">Predicting dengue severity from blood RNA expression data.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Python, Scikit-learn</p>
+                <p class="venture__tag">Research</p>
+              </div>
+            </div>
+            <p class="label venture__cat">Bioinformatics, ML</p>
+          </article>
+        </li>
+        <li class="fade-up venture-extra" hidden>
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Paddy Field Mapping" role="img" aria-label="Paddy Field Mapping"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Paddy Field Mapping</h3>
+                <p class="venture__blurb">Land-cover classification and spatial analysis of rice fields in Boyolali, Klaten and Sukoharjo.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Google Earth Engine</p>
+                <p class="venture__tag">Research</p>
+              </div>
+            </div>
+            <p class="label venture__cat">Geospatial</p>
+          </article>
+        </li>
+        <li class="fade-up venture-extra" hidden>
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Social Media Sentiment" role="img" aria-label="Social Media Sentiment"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Social Media Sentiment</h3>
+                <p class="venture__blurb">Scraped comments from X, Instagram and YouTube and built a 3-class sentiment model to measure public opinion.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Python, Scraping</p>
+                <p class="venture__tag">Analysis</p>
+              </div>
+            </div>
+            <p class="label venture__cat">NLP, Deep Learning</p>
+          </article>
+        </li>
+        <li class="fade-up venture-extra" hidden>
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="Java Route Finder" role="img" aria-label="Java Route Finder"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">Java Route Finder</h3>
+                <p class="venture__blurb">A personal maps app with fastest, safest, mountain and non-mountain route modes.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Maps, Routing</p>
+                <p class="venture__tag venture__tag--muted">In Progress</p>
+              </div>
+            </div>
+            <p class="label venture__cat">Web App</p>
+          </article>
+        </li>
+        <li class="fade-up venture-extra" hidden>
+          <article class="venture" data-liquid-hover>
+            <figure class="liquid" data-scale="28" data-src="" data-label="ML with Flask" role="img" aria-label="ML with Flask"><div class="liquid-media"></div></figure>
+            <div class="venture__row">
+              <div>
+                <h3 class="venture__name">ML with Flask</h3>
+                <p class="venture__blurb">A machine learning model served through a Flask web app.</p>
+              </div>
+              <div class="venture__meta">
+                <p class="venture__tech">Scikit-learn, Jinja2</p>
+                <a class="venture__tag" href="https://waows-6-ken-day2.vercel.app/" target="_blank" rel="noreferrer noopener">Best Project Award ↗</a>
+              </div>
+            </div>
+            <p class="label venture__cat">Machine Learning, Web</p>
+          </article>
+        </li>
+      </ul>
+      <div class="ventures__more">
+        <button class="more-btn" id="moreProjects" type="button" aria-controls="ventureGrid" aria-expanded="false">Show all projects <span aria-hidden="true">+6</span></button>
+      </div>
+    </section>
+
+    <!-- 7) Impact -->
+    <section class="section impact" id="impact">
+      <div class="section-head">
         <div>
-          <p class="tl-col-label"><span class="t-id">Pengalaman</span><span class="t-en">Experience</span></p>
-          <div class="tl-track tl-entries">
-            <div class="tl-entry">
-              <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Februari 2026 · Mei 2026</span><span class="t-en">Feb 2026 · May 2026</span></p>
-              <h4 class="tl-title">Campus Ambassador · <span class="accent">MySkill</span></h4>
-              <p class="tl-desc"><span class="t-id">Menyelesaikan program MySkill Campus Ambassador Batch 1, platform edukasi karir yang didukung AWS EdStart dan LinkedIn Top Startups.</span><span class="t-en">Completed the MySkill Campus Ambassador Batch 1 program, a career education platform backed by AWS EdStart and LinkedIn Top Startups.</span></p>
-              <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_MySkill_Campus_Ambassador_Kenza_Athallah_Nandana_Wijaya.png') }}" class="cert-link">
-                <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
-                <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
-              </a>
-            </div>
-            <div class="tl-entry">
-              <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">2026 · Sekarang</span><span class="t-en">2026 · Present</span></p>
-              <h4 class="tl-title">Data Analyst Intern · <span class="accent">Amigo Group</span></h4>
-              <p class="tl-desc"><span class="t-id">Magang dalam program MBKM. Mengelola dan menganalisis data bisnis untuk mendukung pengambilan keputusan berbasis data di lingkungan ritel.</span><span class="t-en">Interned through the MBKM program. Managed and analyzed business data to support data-driven decision-making in a retail environment.</span></p>
-            </div>
-            <div class="tl-entry">
-              <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Juni 2024 · Juli 2025</span><span class="t-en">Jun 2024 · Jul 2025</span></p>
-              <h4 class="tl-title">Freelance Graphic Designer · <span class="accent">CV. Dharma Syafa Kreasi</span></h4>
-              <p class="tl-desc"><span class="t-id">Mendesain poster, feed Instagram, banner, backdrop, dan materi promosi untuk berbagai kebutuhan event klien.</span><span class="t-en">Designed posters, Instagram feeds, banners, backdrops, and promotional materials for various client events.</span></p>
-            </div>
-            <div class="tl-entry">
-              <span class="tl-dot"></span>
-              <p class="tl-date"><span class="t-id">Juli 2022 · Desember 2022</span><span class="t-en">Jul 2022 · Dec 2022</span></p>
-              <h4 class="tl-title">Telecom Data Analyst Intern · <span class="accent">Telkom Landmark SBY</span></h4>
-              <p class="tl-desc"><span class="t-id">Mengumpulkan dan menganalisis data performa BTS di Jawa Timur dan Madura untuk mendukung pengambilan keputusan operasional.</span><span class="t-en">Collected and analyzed BTS performance data across East Java and Madura to support operational decision-making.</span></p>
+          <p class="eyebrow">By The Numbers</p>
+          <h2 class="heading heading--tight" data-split>Five years, measured.</h2>
+        </div>
+      </div>
+
+      <dl class="stats">
+        <div class="stat fade-up" style="--delay:0ms"><dt>Years in tech</dt><dd>5+</dd></div>
+        <div class="stat fade-up" style="--delay:110ms"><dt>Client web apps</dt><dd>8+</dd></div>
+        <div class="stat fade-up" style="--delay:220ms"><dt>Projects built</dt><dd>12</dd></div>
+        <div class="stat fade-up" style="--delay:330ms"><dt>Best Project Awards</dt><dd>3</dd></div>
+      </dl>
+
+      <!-- GitHub contribution calendar (data from the /gh-data route) -->
+      <div class="gh fade-up" id="gh">
+        <div class="gh__head">
+          <p class="eyebrow">GitHub Activity</p>
+          <a class="gh__link" href="https://github.com/K4ZED" target="_blank" rel="noreferrer noopener">github.com/K4ZED <span>↗</span></a>
+        </div>
+        <p class="gh__total" id="ghTotal" style="margin-top:1rem">Loading contributions…</p>
+        <div class="gh__scroll" id="ghScroll" data-lenis-prevent>
+          <div class="gh__inner">
+            <div class="gh__months" id="ghMonths"></div>
+            <div class="gh__row">
+              <div class="gh__wd" id="ghWeekdays" aria-hidden="true"></div>
+              <div class="gh__weeks" id="ghGrid"></div>
             </div>
           </div>
         </div>
-
+        <div class="gh__legend" aria-hidden="true">
+          <span>Less</span>
+          <span class="gh__day" data-level="0"></span>
+          <span class="gh__day" data-level="1"></span>
+          <span class="gh__day" data-level="2"></span>
+          <span class="gh__day" data-level="3"></span>
+          <span class="gh__day" data-level="4"></span>
+          <span>More</span>
+        </div>
       </div>
+    </section>
 
-      <!-- Awards -->
-      <p class="awards-label"><span class="t-id">Penghargaan</span><span class="t-en">Awards</span></p>
-      <div class="awards-grid card-grid">
-        <div class="award-card card card-hover">
-          <span class="material-symbols-outlined award-icon" style="font-variation-settings:'FILL' 1">emoji_events</span>
-          <div>
-            <p class="award-badge">Best Project Award</p>
-            <h4 class="award-title">Python–Flask Development</h4>
-            <p class="award-desc"><span class="t-id">Penghargaan atas kualitas implementasi dan fungsionalitas project dalam program Python–Flask Development.</span><span class="t-en">Awarded for project implementation quality and functionality in the Python–Flask Development program.</span></p>
-            <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_Python_BestProject.pdf') }}" class="cert-link">
-              <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
-              <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
-            </a>
-          </div>
-        </div>
-        <div class="award-card card card-hover">
-          <span class="material-symbols-outlined award-icon" style="font-variation-settings:'FILL' 1">emoji_events</span>
-          <div>
-            <p class="award-badge">Best Project Award</p>
-            <h4 class="award-title">Python-Flask for Web Applications</h4>
-            <p class="award-desc"><span class="t-id">Penghargaan atas kualitas implementasi project web berbasis Python dan Flask.</span><span class="t-en">Awarded for the quality of the Python-Flask web application project.</span></p>
-            <a href="#" data-cert="{{ url_for('static', filename='img/Kenza Athallah Nandana Wijaya.pdf') }}" class="cert-link">
-              <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
-              <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
-            </a>
-          </div>
-        </div>
-        <div class="award-card card card-hover">
-          <span class="material-symbols-outlined award-icon" style="font-variation-settings:'FILL' 1">emoji_events</span>
-          <div>
-            <p class="award-badge">Best Project Award</p>
-            <h4 class="award-title">Flask &amp; Machine Learning Fundamentals</h4>
-            <p class="award-desc"><span class="t-id">Penghargaan atas keberhasilan mengintegrasikan Flask dengan machine learning secara efektif dalam satu project.</span><span class="t-en">Awarded for successfully integrating Flask with machine learning in a cohesive project.</span></p>
-            <a href="#" data-cert="{{ url_for('static', filename='img/Sertifikat_Python_BestProject.pdf') }}" class="cert-link">
-              <span class="material-symbols-outlined" style="font-size:.8rem;font-variation-settings:'FILL' 0">open_in_new</span>
-              <span class="t-id">Lihat Sertifikat</span><span class="t-en">View Certificate</span>
-            </a>
-          </div>
+    <!-- 8) Clients -->
+    <section class="section voices" id="voices">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Clients</p>
+          <h2 class="heading heading--tight" data-split>Who I've designed for.</h2>
         </div>
       </div>
 
+      <div class="voices__body">
+        <ul class="voices__list" id="voiceList">
+          <li>
+            <button class="voice-btn is-active" type="button" aria-pressed="true"
+              data-text="Visual assets for events, built to look good on a poster and on a phone screen."
+              data-name="Wonderland" data-sector="Entertainment &amp; Events"
+              data-logo="{{ url_for('static', filename='img/Wonderland-sm.png') }}">
+              <span class="voice-btn__idx">01</span>
+              <span class="voice-btn__main">
+                <span class="voice-btn__name">Wonderland</span>
+                <span class="voice-btn__role">Entertainment &amp; Events</span>
+              </span>
+              <span class="voice-btn__rule" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="voice-btn" type="button" aria-pressed="false"
+              data-text="Promotional and branding materials for retail and supermarket campaigns."
+              data-name="Luwes Group" data-sector="Retail &amp; Supermarket"
+              data-logo="{{ url_for('static', filename='img/Luwes Group.png') }}">
+              <span class="voice-btn__idx">02</span>
+              <span class="voice-btn__main">
+                <span class="voice-btn__name">Luwes Group</span>
+                <span class="voice-btn__role">Retail &amp; Supermarket</span>
+              </span>
+              <span class="voice-btn__rule" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="voice-btn" type="button" aria-pressed="false"
+              data-text="Visual content for apparel branding, keeping the look consistent across every drop."
+              data-name="Cardinal" data-sector="Fashion &amp; Apparel"
+              data-logo="{{ url_for('static', filename='img/Cardinal.png') }}">
+              <span class="voice-btn__idx">03</span>
+              <span class="voice-btn__main">
+                <span class="voice-btn__name">Cardinal</span>
+                <span class="voice-btn__role">Fashion &amp; Apparel</span>
+              </span>
+              <span class="voice-btn__rule" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="voices__panel">
+          <blockquote class="voices__quote" aria-live="polite">
+            <p class="voices__text" id="voiceText">Visual assets for events, built to look good on a poster and on a phone screen.</p>
+            <footer class="voices__foot" id="voiceFoot">Wonderland / Entertainment &amp; Events</footer>
+          </blockquote>
+          <div class="voices__figure-wrap" id="voiceFigureWrap">
+            <figure class="liquid liquid--contain" id="voiceFigure" data-scale="22" role="img" aria-label="Wonderland logo"
+              data-src="{{ url_for('static', filename='img/Wonderland-sm.png') }}" data-label="Wonderland"><div class="liquid-media"></div></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9) Contact -->
+    <footer class="contact" id="contact">
+      <p class="eyebrow">Let's Talk</p>
+      <h2 class="heading" data-split>Got a workflow that should run itself?</h2>
+      <p class="contact__body fade-up">I'm open to AI, automation and fullstack work. Send me a message and I'll get back to you.</p>
+      <div class="contact__mail-wrap fade-up" style="--delay:90ms">
+        <a class="contact__mail" href="mailto:kenzaathallah.wijaya@gmail.com"><span>kenzaathallah.wijaya@gmail.com</span><span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="footer-bar">
+        <div class="footer-bar__sig">
+          <p class="footer-bar__name">Kenza Athallah</p>
+          <p class="label footer-bar__tag">Designed &amp; built by Kazed.</p>
+        </div>
+        <nav class="footer-bar__social" aria-label="Social">
+          <ul>
+            <li><a class="social-link" href="https://github.com/K4ZED" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+            <li><a class="social-link" href="https://linkedin.com/in/kenzaathallah" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+            <li><a class="social-link" href="{{ url_for('static', filename='cv/CV-Kenza-Athallah-Nandana-Wijaya.pdf') }}" target="_blank" rel="noreferrer noopener">Download CV</a></li>
+          </ul>
+        </nav>
+        <div class="footer-bar__copy">
+          <p>© 2026 Kenza Athallah. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Chat widget (Byte), talks to the /chat route -->
+  <div class="chat" id="chat">
+    <div class="chat__panel" id="chatPanel" role="dialog" aria-label="Chat with Byte" aria-hidden="true">
+      <div class="chat__head">
+        <div class="chat__who">
+          <span class="chat__avatar" aria-hidden="true">B</span>
+          <div>
+            <p class="chat__title">Byte</p>
+            <p class="chat__sub">Kenza's virtual assistant</p>
+          </div>
+        </div>
+        <button class="chat__close" id="chatClose" type="button" aria-label="Close chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="chat__msgs" id="chatMsgs" data-lenis-prevent>
+        <div class="chat__msg chat__msg--bot">Hi! This is Byte, the assistant on Kenza's portfolio. I answer as Kenza, so ask me about my projects, experience, skills or how to reach me.</div>
+      </div>
+      <form class="chat__form" id="chatForm" autocomplete="off">
+        <input class="chat__input" id="chatInput" type="text" maxlength="300" placeholder="Type a message…" aria-label="Message" />
+        <button class="chat__send" id="chatSend" type="submit" aria-label="Send message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
     </div>
-  </section>
-
-  <!-- ════════════════ CLIENTS ════════════════ -->
-  <section id="clients" class="section section-animate">
-    <div class="container">
-      <h2 class="section-heading">
-        <span class="t-id">Klien yang Pernah Saya <span class="accent">Tangani</span></span>
-        <span class="t-en">Clients I've <span class="accent">Worked With</span></span>
-      </h2>
-      <p class="clients-desc">
-        <span class="t-id">Sebagai Freelance Graphic Designer untuk kebutuhan visual event dan branding.</span>
-        <span class="t-en">As a Freelance Graphic Designer for visual event and branding needs.</span>
-      </p>
-
-      <div class="clients-grid card-grid">
-        <div class="client-card card card-hover">
-          <div class="client-logo">
-            <img src="{{ url_for('static', filename='img/Wonderland.png') }}" alt="Wonderland" loading="lazy" />
-          </div>
-          <div>
-            <h3 class="client-name">Wonderland</h3>
-            <span class="chip-neutral"><span class="t-id">Hiburan &amp; Event</span><span class="t-en">Entertainment &amp; Events</span></span>
-            <p class="client-desc"><span class="t-id">Desain aset visual event: poster, banner, backdrop, dan konten promosi digital.</span><span class="t-en">Visual asset design for events: posters, banners, backdrops, and digital promotional content.</span></p>
-          </div>
-        </div>
-        <div class="client-card card card-hover">
-          <div class="client-logo">
-            <img src="{{ url_for('static', filename='img/Luwes Group.png') }}" alt="Luwes Group" loading="lazy" />
-          </div>
-          <div>
-            <h3 class="client-name">Luwes Group</h3>
-            <span class="chip-neutral"><span class="t-id">Ritel &amp; Supermarket</span><span class="t-en">Retail &amp; Supermarket</span></span>
-            <p class="client-desc"><span class="t-id">Desain materi promosi dan visual branding untuk keperluan event retail.</span><span class="t-en">Promotional material and visual branding design for retail event needs.</span></p>
-          </div>
-        </div>
-        <div class="client-card card card-hover">
-          <div class="client-logo">
-            <img src="{{ url_for('static', filename='img/Cardinal.png') }}" alt="Cardinal" loading="lazy" />
-          </div>
-          <div>
-            <h3 class="client-name">Cardinal</h3>
-            <span class="chip-neutral"><span class="t-id">Fashion &amp; Apparel</span><span class="t-en">Fashion &amp; Apparel</span></span>
-            <p class="client-desc"><span class="t-id">Desain konten visual dan materi promosi untuk branding produk apparel.</span><span class="t-en">Visual content and promotional material design for apparel product branding.</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════ CONTACT ════════════════ -->
-  <section id="contact" class="section section-animate">
-    <div class="container">
-      <div class="contact-card card">
-        <div class="glow glow-orange" style="width:320px;height:320px;top:-80px;right:-60px;opacity:.55;"></div>
-        <div class="glow glow-grey"   style="width:260px;height:260px;bottom:-60px;left:-40px;opacity:.45;"></div>
-
-        <div class="contact-inner">
-          <div class="contact-left">
-            <h2 class="contact-heading">
-              <span class="t-id">Ayo <span class="accent">Ngobrol!</span></span>
-              <span class="t-en">Let's <span class="accent">Talk!</span></span>
-            </h2>
-            <p class="contact-desc">
-              <span class="t-id">Tertarik berdiskusi tentang data, machine learning, web, atau kebutuhan desain visual? Saya terbuka untuk diajak bicara.</span>
-              <span class="t-en">Interested in discussing data, machine learning, web development, or visual design needs? Feel free to reach out.</span>
-            </p>
-            <a href="mailto:kenzaathallah.wijaya@gmail.com" class="btn-primary">
-              <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">mail</span>
-              <span class="t-id">Kirim Email</span><span class="t-en">Send Email</span>
-            </a>
-          </div>
-
-          <div class="contact-links">
-            <a href="mailto:kenzaathallah.wijaya@gmail.com" class="contact-link">
-              <div class="contact-link-icon card">
-                <span class="material-symbols-outlined" style="font-size:1rem;font-variation-settings:'FILL' 1">mail</span>
-              </div>
-              <span class="contact-link-text">kenzaathallah.wijaya@gmail.com</span>
-            </a>
-            <a href="https://linkedin.com/in/kenzaathallah" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon card">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </div>
-              <span class="contact-link-text">linkedin.com/in/kenzaathallah</span>
-            </a>
-            <a href="https://github.com/K4ZED" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon card">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              </div>
-              <span class="contact-link-text">github.com/K4ZED</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ════════════════ FOOTER ════════════════ -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <a href="#home" class="footer-brand"><span class="accent">K</span>azed<span class="accent">.</span></a>
-      <p class="footer-copy">
-        © {{ full_name }} {{ year }} ·
-        <span class="t-id">Dibuat dengan Flask &amp; CSS</span>
-        <span class="t-en">Built with Flask &amp; CSS</span>
-      </p>
-      <div class="footer-links">
-        <a href="https://github.com/K4ZED"              target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/kenzaathallah"  target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:kenzaathallah.wijaya@gmail.com">Email</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Certificate modal -->
-<div class="cert-modal" id="certModal" role="dialog" aria-modal="true">
-  <div class="cert-modal-backdrop"></div>
-  <div class="cert-modal-box">
-    <button class="cert-modal-close" aria-label="Tutup">
-      <span class="material-symbols-outlined" style="font-size:1rem">close</span>
+    <button class="chat__toggle" id="chatToggle" type="button" aria-label="Open chat" aria-expanded="false" aria-controls="chatPanel">
+      <svg class="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+      <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
-    <div class="cert-modal-body" id="certModalBody"></div>
   </div>
-</div>
 
-<!-- Chat widget (Byte) -->
-<div class="chat-widget">
-  <div class="chat-panel" id="chatPanel">
-    <div class="chat-header">
-      <div class="chat-header-info">
-        <div class="chat-avatar">B</div>
-        <div>
-          <p class="chat-title">Byte</p>
-          <p class="chat-subtitle"><span class="t-id">Asisten virtual Kenza</span><span class="t-en">Kenza's virtual assistant</span></p>
-        </div>
-      </div>
-      <button class="chat-close" id="chatClose" aria-label="Tutup chat">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot"><span class="t-id">Halo! Aku Byte, asisten virtual Kenza. Mau tanya soal skill, project, atau pengalamannya?</span><span class="t-en">Hi! I'm Byte, Kenza's virtual assistant. Ask me about his skills, projects, or experience.</span></div>
-    </div>
-    <div class="chat-input-area">
-      <input type="text" class="chat-input" id="chatInput" maxlength="300" autocomplete="off"
-             placeholder="Tanya soal Kenza..." aria-label="Tulis pesan" />
-      <button class="chat-send" id="chatSend" aria-label="Kirim pesan">
-        <span class="material-symbols-outlined">send</span>
-      </button>
-    </div>
-  </div>
-  <button class="chat-toggle" id="chatToggle" aria-label="Buka chat" aria-expanded="false">
-    <span class="material-symbols-outlined" id="chatToggleIcon">chat</span>
-  </button>
-</div>
+{% raw %}
+  <script>
+  (() => {
+    "use strict";
+    const T0 = performance.now();
+    const root = document.documentElement;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hoverMQ = matchMedia("(hover: hover) and (min-width: 769px)");
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const at = (ms, fn) => setTimeout(fn, Math.max(0, ms - (performance.now() - T0)));
+    const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    /* ── Adaptive grid above 1920px ── */
+    const FONT_BASE = 16, BASE_W = 1920, COEF = 0.6666;
+    function applyAdaptiveGrid() {
+      const w = window.innerWidth;
+      const reduction = ((BASE_W - w) / BASE_W) * 100 * COEF;
+      const size = FONT_BASE - (FONT_BASE * reduction) / 100;
+      if (size > FONT_BASE) root.style.fontSize = size + "px";
+      else root.style.removeProperty("font-size");
+    }
+    applyAdaptiveGrid();
+    addEventListener("resize", applyAdaptiveGrid);
+
+    /* ── Scroll helpers (Lenis is loaded by the module script below) ── */
+    window.__preloading = !reduce;
+    const scrollToTarget = (target) => {
+      if (window.lenis) window.lenis.scrollTo(target, { offset: 0 });
+      else if (typeof target === "number") window.scrollTo({ top: target, behavior: reduce ? "auto" : "smooth" });
+      else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    };
+
+    /* ── 1) Preloader ── */
+    function runPreloader() {
+      const pre = $("#preloader");
+      const finish = () => {
+        pre.classList.add("is-done");
+        pre.setAttribute("aria-hidden", "true");
+        root.classList.remove("is-loading");
+        window.__preloading = false;
+        if (window.lenis) window.lenis.start();
+      };
+      if (reduce) { finish(); return; }
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      root.classList.add("is-loading");
+      if (window.lenis) window.lenis.stop();
+
+      const num = $("[data-count]", pre);
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - start) / 2000);
+        num.textContent = Math.round(p * 100);
+        if (p < 1) requestAnimationFrame(tick);
+        else {
+          pre.classList.add("is-fading");                    // labels fade ~300ms
+          setTimeout(() => pre.classList.add("is-wiping"), 300 + 200); // then 200ms pause, wipe up
+        }
+      };
+      requestAnimationFrame(tick);
+
+      let done = false;
+      const once = () => { if (!done) { done = true; finish(); } };
+      pre.addEventListener("transitionend", (e) => {
+        if (e.target === pre && e.propertyName === "transform") once();
+      });
+      setTimeout(once, 4000); // safety net
+    }
+
+    /* ── 3) Hero sequencing ── */
+    function initHero() {
+      const lines = $$(".hero__line");
+      lines.forEach((line) => {
+        const text = line.textContent.trim();
+        line.innerHTML = [...text].map((ch, i) => `<span class="ch" style="--i:${i}">${esc(ch)}</span>`).join("");
+      });
+      const roles = $("#heroRoles");
+      const desc = $("#heroDesc");
+      const cue = $("#heroCue");
+      const chat = $("#chat");
+      if (reduce) {
+        lines.forEach((l) => l.classList.add("is-played"));
+        roles.classList.add("is-played");
+        desc.classList.add("in-view"); cue.classList.add("in-view"); chat.classList.add("in-view");
+        return;
+      }
+      const REVEAL_DELAY = 2500;
+      at(REVEAL_DELAY, () => lines[0].classList.add("is-played"));
+      at(REVEAL_DELAY + 240, () => lines[1].classList.add("is-played"));
+      at(2700, () => roles.classList.add("is-played"));
+      at(2900, () => desc.classList.add("in-view"));
+      at(3400, () => { cue.classList.add("in-view"); chat.classList.add("in-view"); });
+    }
+
+    /* ── Line-by-line heading split ── */
+    function splitLines(el) {
+      const text = (el.dataset.text ||= el.textContent.trim().replace(/\s+/g, " "));
+      el.innerHTML = text.split(" ").map((w) => `<span class="w">${esc(w)}</span>`).join(" ");
+      const groups = [];
+      let lastTop = null;
+      $$(".w", el).forEach((w) => {
+        const top = w.offsetTop;
+        if (lastTop === null || Math.abs(top - lastTop) > 4) { groups.push([]); lastTop = top; }
+        groups[groups.length - 1].push(w.textContent);
+      });
+      el.innerHTML = groups.map((g, i) =>
+        `<span class="split-line"><span class="split-unit" style="--delay:${i * 90}ms;--dur:900ms">${esc(g.join(" "))}</span></span>`
+      ).join("");
+      el.setAttribute("aria-label", text);
+      $$(".split-line", el).forEach((s) => s.setAttribute("aria-hidden", "true"));
+      el.classList.add("is-split");
+      el.dataset.lines = groups.length;
+    }
+    function playSplit(el) {
+      if (el.dataset.played) return;
+      el.dataset.played = "1";
+      el.classList.add("is-played");
+      const total = 900 + (Number(el.dataset.lines) - 1) * 90 + 100;
+      setTimeout(() => { // restore plain text so it re-wraps naturally on resize
+        el.textContent = el.dataset.text;
+        el.removeAttribute("aria-label");
+      }, total);
+    }
+
+    /* ── In-view reveals (IntersectionObserver, threshold 0, once) ── */
+    function initReveals() {
+      const splits = $$("[data-split]");
+      const blocks = $$(".fade-up:not(#heroDesc), #voiceFigureWrap");
+      if (reduce || !("IntersectionObserver" in window)) {
+        splits.forEach((el) => { el.classList.add("is-split"); });
+        blocks.forEach((el) => el.classList.add("in-view"));
+        return;
+      }
+      splits.forEach(splitLines);
+      let rt;
+      addEventListener("resize", () => {
+        clearTimeout(rt);
+        rt = setTimeout(() => splits.forEach((el) => { if (!el.dataset.played) splitLines(el); }), 150);
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          if (el.hasAttribute("data-split")) playSplit(el);
+          else el.classList.add("in-view");
+          if (el.id === "voiceFigureWrap") { playQuote(); preloadLogos(); }
+          io.unobserve(el);
+        });
+      }, { threshold: 0 });
+      splits.forEach((el) => io.observe(el));
+      blocks.forEach((el) => io.observe(el));
+    }
+
+    /* ── LiquidImage ── */
+    let liquidCount = 0;
+    const SVGNS = "http://www.w3.org/2000/svg";
+    function placeholder(label) {
+      const d = document.createElement("div");
+      d.className = "liquid-placeholder";
+      d.innerHTML = `<span>${esc(label || "")}</span>`;
+      return d;
+    }
+    function initLiquid(fig) {
+      const id = "liquid-" + (++liquidCount);
+      const bare = fig.hasAttribute("data-bare");
+      const maxScale = Number(fig.dataset.scale) || 28;
+      const media = $(".liquid-media", fig);
+
+      // media: existing <img>, or data-src, or the branded placeholder
+      let img = $("img", media);
+      if (!img && fig.dataset.src) {
+        img = new Image();
+        img.alt = "";
+        img.decoding = "async";
+        img.loading = "lazy";
+        img.src = fig.dataset.src;
+        media.appendChild(img);
+      }
+      if (img) img.addEventListener("error", () => { img.replaceWith(placeholder(fig.dataset.label)); }, { once: true });
+      else media.appendChild(placeholder(fig.dataset.label));
+
+      // SVG displacement filter
+      const svg = document.createElementNS(SVGNS, "svg");
+      svg.setAttribute("class", "liquid-svg");
+      svg.setAttribute("aria-hidden", "true");
+      svg.innerHTML =
+        `<filter id="${id}" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">` +
+        `<feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/>` +
+        `<feDisplacementMap in="SourceGraphic" in2="noise" scale="1" xChannelSelector="R" yChannelSelector="G"/>` +
+        `</filter>`;
+      fig.prepend(svg);
+      const turb = svg.querySelector("feTurbulence");
+      const disp = svg.querySelector("feDisplacementMap");
+      // The filter is only attached while it animates (hover), so idle images cost nothing to paint
+      const filterOn = (on) => { media.style.filter = on ? `url(#${id})` : ""; };
+
+      if (!bare) {
+        ["liquid-vignette", "liquid-veil", "liquid-glow"].forEach((c) => {
+          const d = document.createElement("div");
+          d.className = c;
+          d.setAttribute("aria-hidden", "true");
+          fig.appendChild(d);
+        });
+      }
+
+      // Spring (tension 140 / friction 13, mass 1) driving the filter attributes
+      const TENSION = 140, FRICTION = 13;
+      let x = 0, v = 0, target = 0, raf = 0, last = 0;
+      const write = () => {
+        const p = Math.max(-0.2, x);
+        disp.setAttribute("scale", (1 + p * (maxScale - 1)).toFixed(2));
+        turb.setAttribute("baseFrequency", Math.max(0.002, 0.009 + p * (0.022 - 0.009)).toFixed(4));
+      };
+      const step = (now) => {
+        let dt = Math.min(0.064, (now - last) / 1000);
+        last = now;
+        while (dt > 0) {
+          const h = Math.min(dt, 1 / 120);
+          const a = -TENSION * (x - target) - FRICTION * v;
+          v += a * h; x += v * h; dt -= h;
+        }
+        write();
+        if (Math.abs(v) < 0.001 && Math.abs(x - target) < 0.001) {
+          x = target; v = 0; write(); raf = 0;
+          if (target === 0) filterOn(false);
+          return;
+        }
+        raf = requestAnimationFrame(step);
+      };
+      const go = (t) => {
+        target = t;
+        if (t > 0) filterOn(true);
+        if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); }
+      };
+
+      const hoverEl = fig.closest("[data-liquid-hover]") || fig;
+      hoverEl.addEventListener("pointerenter", (e) => {
+        if (reduce || e.pointerType === "touch" || !hoverMQ.matches) return;
+        fig.classList.add("is-hover");
+        go(1);
+      });
+      hoverEl.addEventListener("pointerleave", () => {
+        fig.classList.remove("is-hover");
+        go(0);
+      });
+      fig._setSrc = (src, label) => {
+        fig.dataset.label = label;
+        const cur = $("img", media);
+        if (cur) cur.src = src;
+        else { media.innerHTML = ""; const n = new Image(); n.alt = ""; n.src = src; media.appendChild(n); }
+      };
+    }
+
+    /* ── Projects: show all ── */
+    function initMoreProjects() {
+      const btn = $("#moreProjects");
+      if (!btn) return;
+      btn.addEventListener("click", () => {
+        const extra = $$(".venture-extra");
+        extra.forEach((li) => { li.hidden = false; });
+        btn.setAttribute("aria-expanded", "true");
+        btn.closest(".ventures__more").remove();
+        if (extra[0]) { extra[0].tabIndex = -1; extra[0].focus({ preventScroll: true }); }
+      });
+    }
+
+    /* ── 2) Nav, anchors, mobile menu ── */
+    function initNav() {
+      const burger = $("#burger");
+      const menu = $("#mobileMenu");
+      const setMenu = (open) => {
+        burger.setAttribute("aria-expanded", String(open));
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        menu.classList.toggle("is-open", open);
+        menu.setAttribute("aria-hidden", String(!open));
+        root.classList.toggle("chat-hidden", open);
+        if (window.lenis) open ? window.lenis.stop() : window.lenis.start();
+      };
+      burger.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+      addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.classList.contains("is-open")) setMenu(false); });
+      addEventListener("resize", () => { if (innerWidth >= 768 && menu.classList.contains("is-open")) setMenu(false); });
+
+      $$('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href").slice(1);
+          const el = id ? document.getElementById(id) : null;
+          if (!el) return;
+          e.preventDefault();
+          if (menu.classList.contains("is-open")) setMenu(false);
+          scrollToTarget(id === "top" ? 0 : el);
+          history.replaceState(null, "", "#" + id);
+        });
+      });
+    }
+
+    /* ── 8) Clients selector + word-by-word quote ── */
+    let playQuote = () => {};
+    let preloadLogos = () => {};
+    function initVoices() {
+      const btns = $$(".voice-btn");
+      const text = $("#voiceText");
+      const foot = $("#voiceFoot");
+      const fig = $("#voiceFigure");
+      let active = 0;
+      // other logos load only once the Clients section is on screen
+      preloadLogos = () => btns.forEach((b) => { const i = new Image(); i.src = b.dataset.logo; });
+
+      const render = () => {
+        const words = text.textContent.trim().split(/\s+/);
+        text.innerHTML = words.map((w, i) => `<span class="word" style="--i:${i}">${esc(w)}</span>`).join(" ");
+      };
+      playQuote = () => {
+        if (reduce) return;
+        text.classList.remove("is-played");
+        void text.offsetWidth; // restart
+        text.classList.add("is-played");
+      };
+      const setActive = (i) => {
+        if (i === active) return;
+        active = i;
+        const b = btns[i];
+        btns.forEach((x, j) => {
+          x.classList.toggle("is-active", j === i);
+          x.setAttribute("aria-pressed", String(j === i));
+        });
+        text.textContent = b.dataset.text;
+        foot.textContent = `${b.dataset.name} / ${b.dataset.sector}`;
+        fig.setAttribute("aria-label", `${b.dataset.name} logo`);
+        if (fig._setSrc) fig._setSrc(b.dataset.logo, b.dataset.name);
+        render();
+        playQuote();
+      };
+      render();
+      if (reduce) text.classList.add("is-played");
+      btns.forEach((b, i) => {
+        b.addEventListener("pointerenter", (e) => { if (e.pointerType !== "touch") setActive(i); });
+        b.addEventListener("focus", () => setActive(i));
+        b.addEventListener("click", () => setActive(i));
+      });
+    }
+
+    /* ── GitHub contribution calendar (/gh-data) ── */
+    function initGithub() {
+      const box = $("#gh");
+      const grid = $("#ghGrid");
+      const monthsEl = $("#ghMonths");
+      const wdEl = $("#ghWeekdays");
+      const totalEl = $("#ghTotal");
+      const scroller = $("#ghScroll");
+      const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      ["", "Mon", "", "Wed", "", "Fri", ""].forEach((l) => {
+        const s = document.createElement("span");
+        s.textContent = l;
+        wdEl.appendChild(s);
+      });
+
+      const fail = () => {
+        box.classList.add("is-failed");
+        totalEl.textContent = "Could not load GitHub activity right now.";
+      };
+
+      fetch("/gh-data")
+        .then((r) => r.json())
+        .then((data) => {
+          const days = (data && data.contributions) || [];
+          if (!days.length) return fail();
+          build(days);
+        })
+        .catch(fail);
+
+      function build(days) {
+        const weeks = [];
+        let col = new Array(7).fill(null);
+        days.forEach((d) => {
+          const wd = new Date(d.date + "T00:00:00").getDay();
+          if (wd === 0 && col.some(Boolean)) { weeks.push(col); col = new Array(7).fill(null); }
+          col[wd] = d;
+        });
+        if (col.some(Boolean)) weeks.push(col);
+
+        const frag = document.createDocumentFragment();
+        weeks.forEach((week) => {
+          const w = document.createElement("div");
+          w.className = "gh__week";
+          week.forEach((day) => {
+            const c = document.createElement("span");
+            if (!day) c.className = "gh__day gh__day--pad";
+            else {
+              c.className = "gh__day";
+              c.dataset.level = String(day.level);
+              const n = day.count || 0;
+              c.title = `${n} contribution${n === 1 ? "" : "s"} on ${day.date}`;
+            }
+            w.appendChild(c);
+          });
+          frag.appendChild(w);
+        });
+        grid.appendChild(frag);
+
+        const cols = grid.children;
+        let lastMonth = -1, lastLeft = -100;
+        weeks.forEach((week, i) => {
+          const first = week.find(Boolean);
+          if (!first) return;
+          const m = new Date(first.date + "T00:00:00").getMonth();
+          if (m === lastMonth) return;
+          const left = cols[i].offsetLeft;
+          lastMonth = m;
+          if (left - lastLeft < 28) return;
+          lastLeft = left;
+          const s = document.createElement("span");
+          s.className = "gh__month";
+          s.style.left = left + "px";
+          s.textContent = MONTHS[m];
+          monthsEl.appendChild(s);
+        });
+
+        const total = days.reduce((a, d) => a + (d.count || 0), 0);
+        totalEl.innerHTML = `<strong>${total.toLocaleString("en-US")}</strong> contributions in the last year`;
+        scroller.scrollLeft = scroller.scrollWidth; // most recent weeks first on narrow screens
+      }
+    }
+
+    /* ── Chat widget (/chat) ── */
+    function initChat() {
+      const wrap = $("#chat");
+      const toggle = $("#chatToggle");
+      const panel = $("#chatPanel");
+      const closeBtn = $("#chatClose");
+      const form = $("#chatForm");
+      const input = $("#chatInput");
+      const send = $("#chatSend");
+      const msgs = $("#chatMsgs");
+      let open = false;
+
+      const setOpen = (o) => {
+        open = o;
+        wrap.classList.toggle("is-open", o);
+        toggle.setAttribute("aria-expanded", String(o));
+        toggle.setAttribute("aria-label", o ? "Close chat" : "Open chat");
+        panel.setAttribute("aria-hidden", String(!o));
+        if (o) setTimeout(() => input.focus({ preventScroll: true }), 260);
+        else toggle.focus({ preventScroll: true });
+      };
+      toggle.addEventListener("click", () => setOpen(!open));
+      closeBtn.addEventListener("click", () => setOpen(false));
+      addEventListener("keydown", (e) => { if (e.key === "Escape" && open) setOpen(false); });
+
+      const bottom = () => { msgs.scrollTop = msgs.scrollHeight; };
+
+      // Turn emails and known links in bot replies into clickable links (built as DOM nodes, never innerHTML)
+      const LINK_RE = /([\w.+-]+@[\w-]+\.[\w.]+|https?:\/\/\S+|(?:t\.me|github\.com|linkedin\.com|portfolio-kazed\.my\.id|[\w-]+\.vercel\.app)(?:\/\S*)?)/gi;
+      const linkify = (el, text) => {
+        let last = 0;
+        text.replace(LINK_RE, (m, _g, idx) => {
+          const clean = m.replace(/[.,;:!?)]+$/, "");
+          el.appendChild(document.createTextNode(text.slice(last, idx)));
+          const a = document.createElement("a");
+          a.textContent = clean;
+          if (clean.includes("@") && !clean.includes("/")) a.href = "mailto:" + clean;
+          else {
+            let href = /^https?:/i.test(clean) ? clean : "https://" + clean;
+            // own site links (e.g. the CV) resolve against this origin, so they work locally too
+            if (/^https:\/\/portfolio-kazed\.my\.id\//i.test(href)) href = href.replace(/^https:\/\/portfolio-kazed\.my\.id/i, "");
+            a.href = href;
+            a.target = "_blank";
+            a.rel = "noreferrer noopener";
+          }
+          el.appendChild(a);
+          last = idx + clean.length;
+          return m;
+        });
+        el.appendChild(document.createTextNode(text.slice(last)));
+      };
+
+      const add = (text, who) => {
+        const d = document.createElement("div");
+        d.className = `chat__msg chat__msg--${who}`;
+        if (who === "bot") linkify(d, text);
+        else d.textContent = text;
+        msgs.appendChild(d);
+        bottom();
+      };
+
+      // Quick-reply buttons
+      const clearChips = () => $$(".chat__chips", msgs).forEach((c) => c.remove());
+      const showChips = (list) => {
+        clearChips();
+        if (!Array.isArray(list) || !list.length) return;
+        const row = document.createElement("div");
+        row.className = "chat__chips";
+        list.forEach((s) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "chat__chip";
+          b.textContent = s.label;
+          b.addEventListener("click", () => ask(s.message, s.label));
+          row.appendChild(b);
+        });
+        msgs.appendChild(row);
+        bottom();
+      };
+      const typing = (on) => {
+        const t = $("#chatTyping");
+        if (!on) { if (t) t.remove(); return; }
+        const d = document.createElement("div");
+        d.className = "chat__typing";
+        d.id = "chatTyping";
+        d.innerHTML = "<span></span><span></span><span></span>";
+        msgs.appendChild(d);
+        bottom();
+      };
+
+      // `label` is what the visitor sees in their bubble (for quick replies), `text` is what gets sent
+      async function ask(text, label) {
+        if (!text || send.disabled) return;
+        clearChips();
+        add(label || text, "user");
+        typing(true);
+        send.disabled = true; input.disabled = true;
+        try {
+          const res = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text }),
+          });
+          const data = await res.json();
+          typing(false);
+          add(data.response || "Something went wrong. Please try again.", "bot");
+          showChips(data.suggestions);
+        } catch {
+          typing(false);
+          add("Sorry, I couldn't reach the server. Please try again.", "bot");
+        } finally {
+          send.disabled = false; input.disabled = false;
+          input.focus({ preventScroll: true });
+        }
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+        input.value = "";
+        ask(text);
+      });
+
+      // starter quick replies under the greeting (same as chatbot.SUGGESTIONS["en"])
+      showChips([
+        { label: "Projects", message: "what projects have you built" },
+        { label: "Experience", message: "what's your experience" },
+        { label: "Skills", message: "what are your skills" },
+        { label: "Contact", message: "how can I contact you" },
+      ]);
+    }
+
+    /* ── Boot ── */
+    runPreloader();
+    initNav();
+    initHero();
+    $$(".liquid").forEach(initLiquid);
+    initVoices();
+    initMoreProjects();
+    initGithub();
+    initChat();
+    const startReveals = () => initReveals();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(startReveals, startReveals);
+    else addEventListener("load", startReveals);
+  })();
+  </script>
+
+  <script type="module">
+    import Lenis from "lenis";
+    const lenis = new Lenis({ smoothWheel: true });
+    window.lenis = lenis;
+    if (window.__preloading) lenis.stop();
+    function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  </script>
+{% endraw %}
 </body>
 </html>
